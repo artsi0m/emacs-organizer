@@ -1,0 +1,4 @@
+#+STARTUP: latexpreview
+#+latex_header: \usepackage[utf8x]{inputenc}
+#+latex_header: \usepackage[T2A]{fontenc}
+#+latex_header: \usepackage[russian, english]{babel}
