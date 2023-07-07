@@ -39,9 +39,12 @@
   (howm-home-directory "~/Documents/howm/")
   (howm-directory "~/Documents/howm/")
   :init 
-  (setq howm-view-title-header "*"))
+  (setq howm-view-title-header "*")
+  :commands(howm-menu))
 
-(use-package minsk-theme)
+(use-package minsk-theme
+  :config
+  (when window-system (load-theme 'minsk t)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -61,8 +64,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Iosevka" :foundry "outline" :slant normal :weight normal :height 120 :width normal)))))
-
-(when window-system (load-theme 'minsk t))
 
 ;; Load calendar initialization
 (load "~/.emacs.d/init-calendar.el")
