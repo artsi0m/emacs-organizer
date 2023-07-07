@@ -6,10 +6,6 @@
 (setq system-time-locale "C") ;; For dealing with org-pomodoro
 (defvar *fs-encoding* 'utf-8) ;; for org export i need some way to save files in unicode
 
-;; Add FAIL keyword for org-mode
-;; (setq org-todo-keywords
-   ;;   (quote ( (sequence "TODO" "|" "DONE")(sequence "|" "FAIL"))))
-
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/" ) t)
 
@@ -40,10 +36,10 @@
 
 (use-package howm
   :custom
-  (howm-view-title-header "*")
   (howm-home-directory "~/Documents/howm/")
   (howm-directory "~/Documents/howm/")
-  )
+  :config 
+  (setq howm-view-title-header "*"))
 
 
 (custom-set-variables
