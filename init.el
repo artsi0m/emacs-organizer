@@ -16,7 +16,9 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/" ) t)
 
-(package-initialize)
+;; (package-initialize)
+(let ((default-directory (expand-file-name "elpa/" user-emacs-directory)))
+  (normal-top-level-add-subdirs-to-load-path))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
