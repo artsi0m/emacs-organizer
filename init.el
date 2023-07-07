@@ -1,8 +1,17 @@
 ;; artsi0m's emacs config
+
 ;; Windows edition
 
 
 (setq system-time-locale "C") ;; For dealing with org-pomodoro
+(defvar *fs-encoding* 'utf-8) ;; for org export i need some way to save files in unicode
+
+;; Add FAIL keyword for org-mode
+(setq org-todo-keywords
+      (quote (
+	      (sequence "TODO" "|" "DONE")
+	      (sequence "|" "FAIL")
+	      )))
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/" ) t)
@@ -19,7 +28,7 @@
  '(org-pomodoro-audio-player 'sound-wav)
  '(org-time-stamp-custom-formats '("<%y-%m-%d>" . "<%y-%m-%d %H:%M>"))
  '(package-selected-packages
-   '(calfw-ical calfw-org calfw sound-wav org-pomodoro org-drill minsk-theme)))
+   '(esup transpose-frame fb2-reader howm calfw-ical calfw-org calfw sound-wav org-pomodoro org-drill minsk-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -27,7 +36,7 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Iosevka" :foundry "outline" :slant normal :weight normal :height 120 :width normal)))))
 
-(if window-system (load-theme 'minsk t))
+(when window-system (load-theme 'minsk t))
 
 ;; メモフォーマットをorgに
 (require 'org)
