@@ -40,7 +40,7 @@
 
 (use-package howm
   :custom
-  (howm-view-tile-header "*")
+  (howm-view-title-header "*")
   (howm-home-directory "~/Documents/howm/")
   (howm-directory "~/Documents/howm/")
   )
