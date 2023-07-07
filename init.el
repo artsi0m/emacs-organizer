@@ -38,9 +38,10 @@
   :custom
   (howm-home-directory "~/Documents/howm/")
   (howm-directory "~/Documents/howm/")
-  :config 
+  :init 
   (setq howm-view-title-header "*"))
 
+(use-package minsk-theme)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
