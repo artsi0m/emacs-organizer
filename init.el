@@ -29,6 +29,7 @@
   (package-install 'bind-key))
 
 (use-package org
+  :mode ("\\.org\\'" "\\.txt\\'" "\\.howm\\'")
   :custom
   (org-startup-folded nil)
   (org-agenda-files (list "~/Documents/daily.org"
@@ -39,7 +40,9 @@
 (use-package howm
   :custom
   (howm-view-tile-header "*")
-  (howm-home-directory "~/Documents/howm/"))
+  (howm-home-directory "~/Documents/howm/")
+  (howm-directory "~/Documents/howm/")
+  )
 
 
 (custom-set-variables
@@ -52,6 +55,8 @@
  '(org-display-custom-times t)
  '(org-pomodoro-audio-player 'sound-wav)
  '(org-time-stamp-custom-formats '("<%y-%m-%d>" . "<%y-%m-%d %H:%M>"))
+ ;; latex formulas
+ '(org-format-latex-options  :scale 1.7)
  '(package-selected-packages
    '(esup transpose-frame fb2-reader howm calfw-ical calfw-org calfw sound-wav org-pomodoro org-drill minsk-theme)))
 (custom-set-faces
@@ -62,14 +67,6 @@
  '(default ((t (:family "Iosevka" :foundry "outline" :slant normal :weight normal :height 120 :width normal)))))
 
 (when window-system (load-theme 'minsk t))
-
-;; latex formulas
-(setq org-format-latex-options (plist-put org-format-latex-options :scale 1.7))
-;; howm
-(add-hook 'org-mode-hook 'howm-mode)
-(add-to-list 'auto-mode-alist '("\\.howm$" . org-mode))
-(add-to-list 'auto-mode-alist '("\\.txt$" . org-mode))
-
 
 ;; Load calendar initialization
 (load "~/.emacs.d/init-calendar.el")
