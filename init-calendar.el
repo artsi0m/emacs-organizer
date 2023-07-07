@@ -1,6 +1,9 @@
 ;; configure sources for org-agenda
 (setq org-agenda-files (list "~/Documents/Bsuir/4sem.org"
-			     "~/Documents/weekly.org"      
+			     "~/Documents/Bsuir/coursework.org"
+			     "~/Documents/weekly.org"
+			     "~/Documents/2023.org"
+			     "~/Documents/daily.org"
 			     ))
 
 ;; TODO 
