@@ -28,7 +28,18 @@
 (unless (require 'bind-key nil t)
   (package-install 'bind-key))
 
+(use-package org
+  :custom
+  (org-startup-folded nil)
+  (org-agenda-files (list "~/Documents/daily.org"
+			  "~/Documents/weekly.org"
+			  "~/Documents/2023.org"))
+  )
 
+(use-package howm
+  :custom
+  (howm-view-tile-header "*")
+  (howm-home-directory "~/Documents/howm/"))
 
 
 (custom-set-variables
@@ -52,19 +63,13 @@
 
 (when window-system (load-theme 'minsk t))
 
-;; メモフォーマットをorgに
-(require 'org)
 ;; latex formulas
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.7))
 ;; howm
 (add-hook 'org-mode-hook 'howm-mode)
 (add-to-list 'auto-mode-alist '("\\.howm$" . org-mode))
 (add-to-list 'auto-mode-alist '("\\.txt$" . org-mode))
-(setq howm-view-title-header "*") ;; ← howm のロードより前に書くこと
-(setq org-startup-folded nil)
-(setq howm-home-directory "~/Documents/howm/")
-(setq howm-directory "~/Documents/howm/")
-(require 'howm)
+
 
 ;; Load calendar initialization
 (load "~/.emacs.d/init-calendar.el")
