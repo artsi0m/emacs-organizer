@@ -29,13 +29,17 @@
   (package-install 'bind-key))
 
 (use-package org
-  :mode ("\\.org\\'" "\\.txt\\'" "\\.howm\\'")
+  :mode ("\\(\\.txt\\|\\.org\\|\\.howm\\)$" . org-mode)
   :custom
   (org-startup-folded nil)
   (org-agenda-files (list "~/Documents/daily.org"
 			  "~/Documents/weekly.org"
 			  "~/Documents/2023.org"))
-  )
+  (org-format-latex-options
+   '(:foreground default :background default :scale 1.7 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
+		 ("begin" "$1" "$" "$$" "\\(" "\\[")))
+  (org-todo-keywords
+   '((sequence "TODO(1)" | "DONE(2)" "FAIL(3)" ))))
 
 (use-package howm
   :custom
