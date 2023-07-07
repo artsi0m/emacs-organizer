@@ -19,6 +19,18 @@
 ;; (package-initialize)
 (let ((default-directory (expand-file-name "elpa/" user-emacs-directory)))
   (normal-top-level-add-subdirs-to-load-path))
+
+;; use-package
+(setq use-package-enable-imenu-support t)
+(eval-when-compile
+  (unless (require 'use-package nil t)
+    (package-install 'use-package)))
+(unless (require 'bind-key nil t)
+  (package-install 'bind-key))
+
+
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
