@@ -7,11 +7,8 @@
 (defvar *fs-encoding* 'utf-8) ;; for org export i need some way to save files in unicode
 
 ;; Add FAIL keyword for org-mode
-(setq org-todo-keywords
-      (quote (
-	      (sequence "TODO" "|" "DONE")
-	      (sequence "|" "FAIL")
-	      )))
+;; (setq org-todo-keywords
+   ;;   (quote ( (sequence "TODO" "|" "DONE")(sequence "|" "FAIL"))))
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/" ) t)
@@ -39,7 +36,7 @@
    '(:foreground default :background default :scale 1.7 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
 		 ("begin" "$1" "$" "$$" "\\(" "\\[")))
   (org-todo-keywords
-   '((sequence "TODO(1)" | "DONE(2)" "FAIL(3)" ))))
+   '((sequence "TODO(1)" "|" "DONE(2)" "FAIL(3)" ))))
 
 (use-package howm
   :custom
@@ -59,8 +56,6 @@
  '(org-display-custom-times t)
  '(org-pomodoro-audio-player 'sound-wav)
  '(org-time-stamp-custom-formats '("<%y-%m-%d>" . "<%y-%m-%d %H:%M>"))
- ;; latex formulas
- '(org-format-latex-options  :scale 1.7)
  '(package-selected-packages
    '(esup transpose-frame fb2-reader howm calfw-ical calfw-org calfw sound-wav org-pomodoro org-drill minsk-theme)))
 (custom-set-faces
