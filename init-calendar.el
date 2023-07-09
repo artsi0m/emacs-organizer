@@ -1,16 +1,14 @@
 ;; TODO 
-;; configure org-gcal to sync with google-calendar which contains
-;; bsuir schedule
-
+;; configure org-gcal to sync org-agenda tasks
+;; with google-calendar which i use because of my uni schedule
 
 ;; calfw
-(use-package calfw :defer t)
 
-(use-package calfw-org)
-
-(use-package calfw-ical
+(use-package calfw
   :commands (my-open-calendar)
   :config
+  (require 'calfw-ical)
+  (require 'calfw-org)
   (defun my-open-calendar ()
     (interactive)
     (cfw:open-calendar-buffer
