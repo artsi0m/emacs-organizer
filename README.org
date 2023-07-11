@@ -1,0 +1,35 @@
+* emacs-organizer
+
+/чувствую теперь ответственность за твой конфиг/ – @ichernyshovvv
+
+
+** Dependensies
+
+This emacs configuration depends on:
+- ability of emacs to use gui features to render formulas
+- texlive for describing formulas
+- ability of emacs to play sounds 
+
+** Feautures
+
+This emacs configuration is used for:
+
+| Use                                  | packages         |
+|--------------------------------------+------------------|
+| Learning with flashcards             | org-drill        |
+| Sort of time management              | org-pomodoro     |
+| Viewing calendar with agenda         | calfw, calfw-org |
+| Viewing calendar with BSUIR schedule | calfw-ical       |
+
+** Downsides
+
+*** Calendar ugly look
+Calendar looks ugly, because it uses default theme and
+it was not configured to use monospaced font.
+
+** Roadmap
+
+*** TODO Improve calfw calendar look
+
+*** TODO Configure org-gcal to sync agenda
+
