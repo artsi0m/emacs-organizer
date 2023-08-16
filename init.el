@@ -82,3 +82,5 @@
 ;; Load calendar initialization
 ;; (load "~/.emacs.d/init-calendar.el")
 ;; decided to use org-timeblock instead
+(when (string= (system-name) "Azusa")
+  (setq source-directory "/home/artsi0m/ports/pobj/emacs-29.1-gtk3/emacs-29.1"))
