@@ -70,13 +70,12 @@
    '("c:/Users/rakka/Documents/daily.org" "c:/Users/rakka/Documents/weekly.org" "c:/Users/rakka/Documents/July_2023.org" "c:/Users/rakka/Documents/2023.org") nil nil "Customized with use-package org")
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
-   '(org org-ql esup transpose-frame fb2-reader howm calfw-ical calfw-org calfw sound-wav org-pomodoro org-drill minsk-theme)))
+   '(corfu eglot org org-ql esup transpose-frame fb2-reader howm calfw-ical calfw-org calfw sound-wav org-pomodoro org-drill minsk-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- 
  '(default ((t (:family "Iosevka" :foundry "outline" :slant normal :weight regular :height 120 :width normal)))))
 
 ;; Load calendar initialization
@@ -84,3 +83,7 @@
 ;; decided to use org-timeblock instead
 (when (string= (system-name) "Azusa")
   (setq source-directory "/home/artsi0m/ports/pobj/emacs-29.1-gtk3/emacs-29.1"))
+
+(use-package eglot
+  :config (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
+  :hook ((c-mode . eglot-ensure) (c++-mode . eglot-ensure)))
