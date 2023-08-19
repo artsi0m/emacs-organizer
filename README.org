@@ -15,13 +15,15 @@ This emacs configuration depends on:
 
 This emacs configuration is used for:
 
-| Use                                  | packages      |
-|--------------------------------------+---------------|
-| Learning with flashcards             | org-drill     |
-| Sort of time management              | org-pomodoro  |
-| Timeblocking and agenda              | org-timeblock |
-| Viewing calendar with BSUIR schedule |               |
-| C and C++ programming                | eglot, clangd |
+| Use                                  | packages            |
+|--------------------------------------+---------------------|
+| Learning with flashcards             | org-drill           |
+| Sort of time management              | org-pomodoro        |
+| Timeblocking and agenda              | org-timeblock       |
+| Viewing calendar with BSUIR schedule |                     |
+| C and C++ programming                | eglot, clangd       |
+| managing files with dired on OpenBSD | gls (GNU coreutils) |
+
 
 ** Roadmap
 

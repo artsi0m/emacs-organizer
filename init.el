@@ -3,6 +3,9 @@
 (when (eq system-type 'windows-nt)
     (setq system-time-locale "C")) ;; For dealing with org-pomodoro
 
+(when (eq system-type 'berkeley-unix) ;; ls from GNU coreutil on
+  (setq insert-directory-program "gls")) ;; OpenBSD
+
 (defvar *fs-encoding* 'utf-8) ;; for org export i need some way to save files in unicode
 
 (require 'package)
@@ -83,6 +86,7 @@
 ;; decided to use org-timeblock instead
 (when (string= (system-name) "Azusa")
   (setq source-directory "/home/artsi0m/ports/pobj/emacs-29.1-gtk3/emacs-29.1"))
+
 
 (use-package eglot
   :config (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
