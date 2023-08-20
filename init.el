@@ -3,7 +3,7 @@
 (when (eq system-type 'windows-nt)
   (setq system-time-locale "C")) ;; For dealing with org-pomodoro
 
-(when (eq system-type 'berkeley-unix) ;; ls from GNU coreutil on
+(when (eq system-type 'berkeley-unix) ;; ls from GNU coreutils on
   (setq insert-directory-program "gls")) ;; OpenBSD
 
 (defvar *fs-encoding* 'utf-8) ;; for org export i need some way to save files in unicode
@@ -28,8 +28,11 @@
   (package-install 'bind-key))
 
 (use-package reverse-im
-  :custom
-  (reverse-im-input-methods '("russian-computer"))
+  ;; I use colemak keyboard layout
+  :init
+  (load-file "~/.emacs.d/cyrillic-colemak.el")
+  :custom 
+  (reverse-im-input-methods '("cyrillic-colemak"))
   :config
   (reverse-im-mode t))
 
@@ -40,19 +43,10 @@
   :mode ("\\(\\.txt\\|\\.org\\|\\.howm\\)$" . org-mode)
   :custom
   (org-startup-folded nil)
-  (org-agenda-files (cond
-		     ((string= (system-name) "KANAMORI")
-		      '("~/Documents/daily.org"
-			"~/Documents/weekly.org"
-			"~/Documents/July_2023.org"
-			"~/Documents/August_2023.org"
-			"~/Documents/2023.org"
-			"~/Documents/morning.org"))
-		     ((eq system-type 'windows-nt)
-		      '("c:/Users/rakka/Documents/daily.org"
-			"c:/Users/rakka/Documents/weekly.org"
-			"c:/Users/rakka/Documents/July_2023.org"
-			"c:/Users/rakka/Documents/2023.org"))))
+  (org-directory "~/Documents")
+  (org-agenda-files `(,org-directory))
+
+
   (org-format-latex-options
    '(:foreground default :background default :scale 1.7 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
 		 ("begin" "$1" "$" "$$" "\\(" "\\[")))
@@ -85,7 +79,10 @@
    '("7e300d88af7750886190c744f63d2d66580bb2cbb8e371a3cb5109afe3017a5a" default))
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
-   '(corfu eglot org org-ql esup transpose-frame fb2-reader howm calfw-ical calfw-org calfw sound-wav org-pomodoro org-drill minsk-theme)))
+   '(corfu eglot org org-ql esup transpose-frame fb2-reader howm calfw-ical calfw-org calfw sound-wav org-pomodoro org-drill minsk-theme))
+ '(package-vc-selected-packages
+   '((org-timeblock :vc-backend Git :url "https://github.com/ichernyshovvv/org-timeblock")
+     (vc-use-package :vc-backend Git :url "https://github.com/slotThe/vc-use-package"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
