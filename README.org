@@ -1,8 +1,5 @@
 * emacs-organizer
 
-/чувствую теперь ответственность за твой конфиг/ – @ichernyshovvv
-
-
 ** Dependensies
 
 This emacs configuration depends on:
