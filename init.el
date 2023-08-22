@@ -64,7 +64,31 @@
 
 (use-package eglot
   :config (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
+  (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
+  
+  (defun my/eglot-capf ()
+  (setq-local completion-at-point-functions
+              (list (cape-super-capf
+                     #'eglot-completion-at-point
+		     ;; #'tempel-expand ;; I don't use tempel yet
+                     #'cape-file))))
+
+  (add-hook 'eglot-managed-mode-hook #'my/eglot-capf)
   :hook ((c-mode c++-mode) . eglot-ensure))
+
+(use-package corfu
+  :custom
+  (corfu-cycle t)
+  (corfu-preselect 'prompt)
+  :bind
+  ("TAB" . completion-at-point)
+  (:map corfu-map
+	("TAB" . corfu-next)
+	([tab] . corfu-next)
+	("S-TAB" . corfu-previous)
+	([backtab] . corfu-previous))
+  :init
+  (if (display-graphic-p) (global-corfu-mode) (corfu-terminal-mode)))
 
 (use-package minsk-theme
   :config
@@ -79,7 +103,7 @@
    '("7e300d88af7750886190c744f63d2d66580bb2cbb8e371a3cb5109afe3017a5a" default))
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
-   '(corfu eglot org org-ql esup transpose-frame fb2-reader howm calfw-ical calfw-org calfw sound-wav org-pomodoro org-drill minsk-theme))
+   '(cape corfu eglot org org-ql esup transpose-frame fb2-reader howm calfw-ical calfw-org calfw sound-wav org-pomodoro org-drill minsk-theme))
  '(package-vc-selected-packages
    '((org-timeblock :vc-backend Git :url "https://github.com/ichernyshovvv/org-timeblock")
      (vc-use-package :vc-backend Git :url "https://github.com/slotThe/vc-use-package"))))
