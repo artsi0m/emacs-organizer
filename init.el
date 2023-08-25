@@ -1,12 +1,23 @@
 ;; artsi0m's emacs config
 
-(when (eq system-type 'windows-nt)
-  (setq system-time-locale "C")) ;; For dealing with org-pomodoro
+(use-package emacs
+  :init
 
-(when (eq system-type 'berkeley-unix) ;; ls from GNU coreutils on
-  (setq insert-directory-program "gls")) ;; OpenBSD
+  ;; For dealing with org-pomodoro
+  (when (eq system-type 'windows-nt)
+    (setq system-time-locale "C"))
 
-(defvar *fs-encoding* 'utf-8) ;; for org export i need some way to save files in unicode
+  ;; ls from GNU coreutils on OpenBSD
+  (when (eq system-type 'berkeley-unix)
+  (setq insert-directory-program "gls")) 
+
+  ;; for org export i need some way to save files in unicode 
+
+  (defvar *fs-encoding* 'utf-8)
+
+  ;; I use colemak keyboard layout
+  (load-file "~/.emacs.d/cyrillic-colemak.el")
+  (setq default-input-method "cyrillic-colemak"))
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -20,21 +31,10 @@
 
 ;; use-package
 (setq use-package-enable-imenu-support t)
-(eval-when-compile
-  (unless (require 'use-package nil t)
-    (package-install 'use-package)))
 (setq use-package-always-ensure t)
 (unless (require 'bind-key nil t)
   (package-install 'bind-key))
 
-(use-package reverse-im
-  ;; I use colemak keyboard layout
-  :init
-  (load-file "~/.emacs.d/cyrillic-colemak.el")
-  :custom 
-  (reverse-im-input-methods '("cyrillic-colemak"))
-  :config
-  (reverse-im-mode t))
 
 (use-package org-timeblock
   :vc (:fetcher github :repo ichernyshovvv/org-timeblock))
@@ -54,7 +54,11 @@
    '((sequence "TODO(1)" "|" "DONE(2)" "FAIL(3)" ))))
 
 (use-package howm
-  :if (string= (system-name) "KANAMORI")
+  :init 
+  (setq howm-view-title-header "*")
+ 
+  :if (string-match-p "kanamori" (system-name))
+
   :custom
   (howm-home-directory "~/Documents/howm/")
   (howm-directory "~/Documents/howm/")
@@ -67,8 +71,8 @@
   (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
   
   (defun my/eglot-capf ()
-  (setq-local completion-at-point-functions
-              (list (cape-super-capf
+    (setq-local completion-at-point-functions
+		(list (cape-super-capf
                      #'eglot-completion-at-point
 		     ;; #'tempel-expand ;; I don't use tempel yet
                      #'cape-file))))
@@ -81,7 +85,7 @@
   (corfu-cycle t)
   (corfu-preselect 'prompt)
   :bind
-  ("TAB" . completion-at-point)
+  ([C-tab] . completion-at-point)
   (:map corfu-map
 	("TAB" . corfu-next)
 	([tab] . corfu-next)
@@ -103,7 +107,7 @@
    '("7e300d88af7750886190c744f63d2d66580bb2cbb8e371a3cb5109afe3017a5a" default))
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
-   '(cape corfu eglot org org-ql esup transpose-frame fb2-reader howm calfw-ical calfw-org calfw sound-wav org-pomodoro org-drill minsk-theme))
+   '(org-roam-ql cape corfu eglot org org-ql esup transpose-frame fb2-reader calfw-ical calfw-org calfw howm sound-wav org-pomodoro org-drill minsk-theme))
  '(package-vc-selected-packages
    '((org-timeblock :vc-backend Git :url "https://github.com/ichernyshovvv/org-timeblock")
      (vc-use-package :vc-backend Git :url "https://github.com/slotThe/vc-use-package"))))
