@@ -27,11 +27,15 @@ This emacs configuration is used for:
 *** TODO Convert Schedule.json to org mode
 
 *** TODO Make org-pomodoro usable on OpenBSD
-Can be done with one of three nested tasks
+Can be done with one of four nested tasks
+
+**** DONE Patch wav-sound to use OpenBSD aucat
+https://github.com/emacsorphanage/sound-wav/pull/8
 
 **** TODO Write package that will beep with speaker instead of playing sound
 
 **** TODO Write package that will lauch ffplay to play sound
 
 **** TODO Patch OpenBSD emacs port to use sound
+
 
