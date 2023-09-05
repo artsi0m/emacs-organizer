@@ -43,7 +43,7 @@
   :mode ("\\(\\.txt\\|\\.org\\|\\.howm\\)$" . org-mode)
   :custom
   (org-startup-folded nil)
-  (org-directory "~/Documents")
+  (org-directory "~/org")
   (org-agenda-files `(,org-directory))
 
 
