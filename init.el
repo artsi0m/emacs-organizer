@@ -107,7 +107,7 @@
    '("7e300d88af7750886190c744f63d2d66580bb2cbb8e371a3cb5109afe3017a5a" default))
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
-   '(org-roam-ql cape corfu eglot org org-ql esup transpose-frame fb2-reader calfw-ical calfw-org calfw howm sound-wav org-pomodoro org-drill minsk-theme))
+   '(org-roam-ql cape corfu corfu-terminal eglot org org-ql esup transpose-frame fb2-reader calfw-ical calfw-org calfw howm sound-wav org-pomodoro org-drill minsk-theme))
  '(package-vc-selected-packages
    '((org-timeblock :vc-backend Git :url "https://github.com/ichernyshovvv/org-timeblock")
      (vc-use-package :vc-backend Git :url "https://github.com/slotThe/vc-use-package"))))
