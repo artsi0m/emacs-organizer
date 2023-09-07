@@ -43,7 +43,9 @@
   :mode ("\\(\\.txt\\|\\.org\\|\\.howm\\)$" . org-mode)
   :custom
   (org-startup-folded nil)
-  (org-directory "~/org")
+  (if (and (string-match -p "kanamori" (system-name)) (eq system-type 'gnu/linux))
+      (org-directory "/mnt/c/Users/rakka/org")
+    (org-directory "~/org"))
   (org-agenda-files `(,org-directory))
 
 
@@ -60,8 +62,11 @@
   :if (string-match-p "kanamori" (system-name))
 
   :custom
-  (howm-home-directory "~/Documents/howm/")
-  (howm-directory "~/Documents/howm/")
+  (if (and (string-match -p "kanamori" (system-name)) (eq system-type 'gnu/linux))
+      (progn (howm-home-directory "/mnt/c/Users/rakka/Documents/howm/")
+	     (howm-directory "/mnt/c/Users/rakka/Documents/howm/"))
+    (progn (howm-home-directory "~/Documents/howm/")
+	   (howm-directory "~/Documents/howm/")))
   :init 
   (setq howm-view-title-header "*")
   :commands(howm-menu))
