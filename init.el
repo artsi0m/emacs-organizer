@@ -47,13 +47,31 @@
       (org-directory "/mnt/c/Users/rakka/org")
     (org-directory "~/org"))
   (org-agenda-files `(,org-directory))
-
-
   (org-format-latex-options
    '(:foreground default :background default :scale 1.7 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
 		 ("begin" "$1" "$" "$$" "\\(" "\\[")))
   (org-todo-keywords
    '((sequence "TODO(1)" "|" "DONE(2)" "FAIL(3)" ))))
+
+(use-package elfeed
+  :ensure t
+  :config
+  ;; (setq elfeed-db-directory (expand-file-name "elfeed" user-emacs-directory)
+  ;;       elfeed-show-entry-switch 'display-buffer)
+  )
+
+(use-package elfeed-org
+  :ensure t
+  :config
+  (elfeed-org)
+  (if (and (string-match-p "kanamori" (system-name)) (eq system-type 'gnu/linux))
+      (setq rmh-elfeed-org-files (list "/mnt/c/Users/rakka/org/elfeed/youtube.org"
+				       "/mnt/c/Users/rakka/org/elfeed/blogs.org"
+				       "/mnt/c/Users/rakka/org/elfeed/twitter.org"))
+    
+    (setq rmh-elfeed-org-files (list "~/org/elfeed/youtube.org"
+				 "~/org/elfeed/blogs.org"
+				 "~/org/elfeed/twitter.org"))))
 
 (use-package howm
   :init 
@@ -112,7 +130,8 @@
    '("7e300d88af7750886190c744f63d2d66580bb2cbb8e371a3cb5109afe3017a5a" default))
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
-   '(org-roam-ql cape corfu corfu-terminal eglot org org-ql esup transpose-frame fb2-reader calfw-ical calfw-org calfw howm sound-wav org-pomodoro org-drill minsk-theme))
+   '(elfeed-org elfeed org-roam-ql cape corfu corfu-terminal eglot org org-ql esup transpose-frame fb2-reader calfw-ical calfw-org calfw howm sound-wav org-pomodoro org-drill minsk-theme))
+
  '(package-vc-selected-packages
    '((org-timeblock :vc-backend Git :url "https://github.com/ichernyshovvv/org-timeblock")
      (vc-use-package :vc-backend Git :url "https://github.com/slotThe/vc-use-package"))))
