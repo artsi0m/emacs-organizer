@@ -61,7 +61,7 @@
   ;;  (setq elfeed-db-directory "~/.elfeed")
   (if (and (string-match-p "kanamori" (system-name)) (eq system-type 'gnu/linux))
       (setq elfeed-db-directory "/mnt/c/Users/rakka/.elfeed")
-    (setq elfeed-db-directory "~/.elfeed"))
+    (setq elfeed-db-directory "~/.elfeed")))
 
 (use-package elfeed-org
   :ensure t
