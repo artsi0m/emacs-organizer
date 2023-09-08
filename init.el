@@ -1,5 +1,4 @@
 ;; artsi0m's emacs config
-
 (use-package emacs
   :init
 
@@ -43,9 +42,10 @@
   :mode ("\\(\\.txt\\|\\.org\\|\\.howm\\)$" . org-mode)
   :custom
   (org-startup-folded nil)
-  (if (and (string-match -p "kanamori" (system-name)) (eq system-type 'gnu/linux))
-      (org-directory "/mnt/c/Users/rakka/org")
-    (org-directory "~/org"))
+  
+  (if (string-match-p "kanamori" (system-name))
+      (setq org-directory "~/org"))
+  
   (org-agenda-files `(,org-directory))
   (org-format-latex-options
    '(:foreground default :background default :scale 1.7 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
@@ -59,37 +59,25 @@
   ;; (setq elfeed-db-directory (expand-file-name "elfeed" user-emacs-directory)
   ;;       elfeed-show-entry-switch 'display-buffer)
   ;;  (setq elfeed-db-directory "~/.elfeed")
-  (if (and (string-match-p "kanamori" (system-name)) (eq system-type 'gnu/linux))
-      (setq elfeed-db-directory "/mnt/c/Users/rakka/.elfeed")
-    (setq elfeed-db-directory "~/.elfeed")))
+  (if  (string-match-p "kanamori" (system-name))
+      (setq elfeed-db-directory "~/.elfeed")))
 
 (use-package elfeed-org
   :ensure t
   :config
   (elfeed-org)
-  (if (and (string-match-p "kanamori" (system-name)) (eq system-type 'gnu/linux))
-      (setq rmh-elfeed-org-files (list "/mnt/c/Users/rakka/org/elfeed/youtube.org"
-				       "/mnt/c/Users/rakka/org/elfeed/blogs.org"
-				       "/mnt/c/Users/rakka/org/elfeed/twitter.org"))
-    
-    (setq rmh-elfeed-org-files (list "~/org/elfeed/youtube.org"
+  (if (string-match-p "kanamori" (system-name))
+      (setq rmh-elfeed-org-files (list "~/org/elfeed/youtube.org"
 				 "~/org/elfeed/blogs.org"
 				 "~/org/elfeed/twitter.org"))))
 
 (use-package howm
   :init 
   (setq howm-view-title-header "*")
- 
   :if (string-match-p "kanamori" (system-name))
-
   :custom
-  (if (and (string-match -p "kanamori" (system-name)) (eq system-type 'gnu/linux))
-      (progn (howm-home-directory "/mnt/c/Users/rakka/Documents/howm/")
-	     (howm-directory "/mnt/c/Users/rakka/Documents/howm/"))
-    (progn (howm-home-directory "~/Documents/howm/")
-	   (howm-directory "~/Documents/howm/")))
-  :init 
-  (setq howm-view-title-header "*")
+  (setq howm-home-directory "~/howm/")
+  (setq howm-directory "~/howm/")
   :commands(howm-menu))
 
 (use-package eglot
