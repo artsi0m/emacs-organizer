@@ -58,7 +58,10 @@
   :config
   ;; (setq elfeed-db-directory (expand-file-name "elfeed" user-emacs-directory)
   ;;       elfeed-show-entry-switch 'display-buffer)
-  )
+  ;;  (setq elfeed-db-directory "~/.elfeed")
+  (if (and (string-match-p "kanamori" (system-name)) (eq system-type 'gnu/linux))
+      (setq elfeed-db-directory "/mnt/c/Users/rakka/.elfeed")
+    (setq elfeed-db-directory "~/.elfeed"))
 
 (use-package elfeed-org
   :ensure t
@@ -131,7 +134,6 @@
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
    '(elfeed-org elfeed org-roam-ql cape corfu corfu-terminal eglot org org-ql esup transpose-frame fb2-reader calfw-ical calfw-org calfw howm sound-wav org-pomodoro org-drill minsk-theme))
-
  '(package-vc-selected-packages
    '((org-timeblock :vc-backend Git :url "https://github.com/ichernyshovvv/org-timeblock")
      (vc-use-package :vc-backend Git :url "https://github.com/slotThe/vc-use-package"))))
