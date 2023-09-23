@@ -121,10 +121,11 @@
    '("7e300d88af7750886190c744f63d2d66580bb2cbb8e371a3cb5109afe3017a5a" default))
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
-   '(elfeed-org elfeed org-roam-ql cape corfu corfu-terminal eglot org org-ql esup transpose-frame fb2-reader calfw-ical calfw-org calfw howm sound-wav org-pomodoro org-drill minsk-theme))
+   '(org-timeblock vc-use-package elfeed-org elfeed org-roam-ql cape corfu corfu-terminal eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
  '(package-vc-selected-packages
    '((org-timeblock :vc-backend Git :url "https://github.com/ichernyshovvv/org-timeblock")
-     (vc-use-package :vc-backend Git :url "https://github.com/slotThe/vc-use-package"))))
+     (vc-use-package :vc-backend Git :url "https://github.com/slotThe/vc-use-package")))
+ '(speedbar-default-position 'left))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
