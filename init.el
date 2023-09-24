@@ -81,13 +81,13 @@
 (use-package howm
   :init 
   (setq howm-view-title-header "*")
+  (if (eq system-type 'windows-nt)
+    (setq howm-directory "b:/howm/"))
+  (if (eq system-type 'berkeley-unix)
+    (setq howm-directory "/shared/howm/"))
   :if (string-match-p "kanamori" (system-name))
-  :custom
-  (when (eq system-type 'windows-nt)
-    (setq howm-directory "b:/howm/")
-  (when (eq system-type 'berkeley-unix)
-    (setq howm-directory "/shared/howm/")))
   :commands(howm-menu))
+
 
 (use-package eglot
   :config (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
