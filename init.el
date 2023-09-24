@@ -84,9 +84,9 @@
   :if (string-match-p "kanamori" (system-name))
   :custom
   (when (eq system-type 'windows-nt)
-    (setq howm-home-directory "b:/howm/"))
+    (setq howm-directory "b:/howm/")
   (when (eq system-type 'berkeley-unix)
-    (setq howm-home-directory "/shared/howm/"))
+    (setq howm-directory "/shared/howm/")))
   :commands(howm-menu))
 
 (use-package eglot
