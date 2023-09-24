@@ -66,7 +66,7 @@
   (when (eq system-type 'windows-nt)
     (setq elfeed-db-directory "b:/.elfeed/"))
   (when (eq system-type 'berkeley-unix)
-    (setq elfeed-db-directory "/shared/elfeed")))
+    (setq elfeed-db-directory "/shared/.elfeed")))
 
 (use-package elfeed-org
   :if (string-match-p "kanamori" (system-name))
@@ -140,11 +140,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Iosevka NFM" :foundry "outline" :slant normal :weight regular :height 120 :width normal)))))
-
-;; Iosevka font
-(when (string-match-p "kanamori" (system-name))
-  (when (eq system-type 'windows-nt)
-    (set-face-attribute :family "Iosevka NFM" :foundry "outline" :slant normal :weight regular :height 120 :width normal))
-  (when (eq system-type 'berkeley-unix)
-    (set-face-attribute :family "Iosevka" :foundry "outline" :slant normal :weight regular :height 120 :width normal))))
+ '(default ((t (:family "Iosevka Term" :foundry "UKWN" :slant normal :weight regular :height 121 :width normal)))))
