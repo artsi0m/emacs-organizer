@@ -18,6 +18,9 @@
   (load-file "~/.emacs.d/cyrillic-colemak.el")
   (setq default-input-method "cyrillic-colemak"))
 
+;; Load my own subroutines
+(load "~/.emacs.d/artsi0m-defuns.el")
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
@@ -43,8 +46,11 @@
   :custom
   (org-startup-folded nil)
   
-  (if (string-match-p "kanamori" (system-name))
-      (setq org-directory "~/org"))
+  (when (string-match-p "kanamori" (system-name))
+    (when (eq system-type 'berkeley-unix)
+      (setq org-directory "/shared/org"))
+    (when (eq system-type 'windows-nt)
+      (setq org-directory "b:/org/")))
   
   (org-agenda-files `(,org-directory))
   (org-format-latex-options
@@ -54,30 +60,33 @@
    '((sequence "TODO(1)" "|" "DONE(2)" "FAIL(3)" ))))
 
 (use-package elfeed
+  :if (string-match-p "kanamori" (system-name))
   :ensure t
   :config
-  ;; (setq elfeed-db-directory (expand-file-name "elfeed" user-emacs-directory)
-  ;;       elfeed-show-entry-switch 'display-buffer)
-  ;;  (setq elfeed-db-directory "~/.elfeed")
-  (if  (string-match-p "kanamori" (system-name))
-      (setq elfeed-db-directory "~/.elfeed")))
+  (when (eq system-type 'windows-nt)
+    (setq elfeed-db-directory "b:/.elfeed/"))
+  (when (eq system-type 'berkeley-unix)
+    (setq elfeed-db-directory "/shared/elfeed")))
 
 (use-package elfeed-org
+  :if (string-match-p "kanamori" (system-name))
   :ensure t
   :config
   (elfeed-org)
-  (if (string-match-p "kanamori" (system-name))
-      (setq rmh-elfeed-org-files (list "~/org/elfeed/youtube.org"
-				 "~/org/elfeed/blogs.org"
-				 "~/org/elfeed/twitter.org"))))
+  (when (eq system-type 'windows-nt)
+    (setq rmh-elfeed-org-files (expand-file-names-in-dir "b:/org/elfeed")))
+  (when (eq system-type 'berkeley-unix)
+    (setq rmh-elfeed-org-files (expand-file-names-in-dir "/shared/org/elfeed"))))
 
 (use-package howm
   :init 
   (setq howm-view-title-header "*")
   :if (string-match-p "kanamori" (system-name))
   :custom
-  (setq howm-home-directory "~/howm/")
-  (setq howm-directory "~/howm/")
+  (when (eq system-type 'windows-nt)
+    (setq howm-home-directory "b:/howm/"))
+  (when (eq system-type 'berkeley-unix)
+    (setq howm-home-directory "/shared/howm/"))
   :commands(howm-menu))
 
 (use-package eglot
@@ -131,10 +140,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Iosevka" :foundry "outline" :slant normal :weight regular :height 120 :width normal)))))
+ '(default ((t (:family "Iosevka NFM" :foundry "outline" :slant normal :weight regular :height 120 :width normal)))))
 
-;; Load calendar initialization
-;; (load "~/.emacs.d/init-calendar.el")
-;; decided to use org-timeblock instead
-(when (string= (system-name) "Azusa")
-  (setq source-directory (expand-file-name "ports/pobj/emacs-29.1-gtk3/emacs-29.1" (getenv "HOME"))))
+;; Iosevka font
+(when (string-match-p "kanamori" (system-name))
+  (when (eq system-type 'windows-nt)
+    (set-face-attribute :family "Iosevka NFM" :foundry "outline" :slant normal :weight regular :height 120 :width normal))
+  (when (eq system-type 'berkeley-unix)
+    (set-face-attribute :family "Iosevka" :foundry "outline" :slant normal :weight regular :height 120 :width normal))))
