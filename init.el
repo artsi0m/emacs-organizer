@@ -37,27 +37,30 @@
 (unless (require 'bind-key nil t)
   (package-install 'bind-key))
 
-
-(use-package org-timeblock
-  :vc (:fetcher github :repo ichernyshovvv/org-timeblock))
-
 (use-package org
+  :init
+  
+  (if (eq system-type 'berkeley-unix)
+      (setq org-directory "/shared/org"))
+
+  (if (eq system-type 'windows-nt)
+      (setq org-directory "b:/org/"))
+
+  :if (string-match-p "kanamori" (system-name))
   :mode ("\\(\\.txt\\|\\.org\\|\\.howm\\)$" . org-mode)
   :custom
   (org-startup-folded nil)
-  
-  (when (string-match-p "kanamori" (system-name))
-    (when (eq system-type 'berkeley-unix)
-      (setq org-directory "/shared/org"))
-    (when (eq system-type 'windows-nt)
-      (setq org-directory "b:/org/")))
-  
   (org-agenda-files `(,org-directory))
   (org-format-latex-options
    '(:foreground default :background default :scale 1.7 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
 		 ("begin" "$1" "$" "$$" "\\(" "\\[")))
   (org-todo-keywords
    '((sequence "TODO(1)" "|" "DONE(2)" "FAIL(3)" ))))
+
+
+(use-package org-timeblock
+  :vc (:fetcher github :repo ichernyshovvv/org-timeblock))
+
 
 (use-package elfeed
   :if (string-match-p "kanamori" (system-name))
