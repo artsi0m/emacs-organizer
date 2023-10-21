@@ -76,10 +76,8 @@
   :ensure t
   :config
   (elfeed-org)
-  (when (eq system-type 'windows-nt)
-    (setq rmh-elfeed-org-files (expand-file-names-in-dir "b:/org/elfeed")))
-  (when (eq system-type 'berkeley-unix)
-    (setq rmh-elfeed-org-files (expand-file-names-in-dir "/shared/org/elfeed"))))
+  (setq rmh-elfeed-org-files (my-howm-elfeed-file-names)))
+
 
 (use-package howm
   :init 
