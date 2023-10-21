@@ -76,8 +76,8 @@
   :ensure t
   :config
   (elfeed-org)
-  (setq rmh-elfeed-org-files (my-howm-elfeed-file-names)))
-
+  (setq rmh-elfeed-org-files (my-howm-elfeed-file-names))
+  :after howm)
 
 (use-package howm
   :init 
