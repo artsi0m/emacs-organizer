@@ -55,8 +55,13 @@
    '(:foreground default :background default :scale 1.7 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
 		 ("begin" "$1" "$" "$$" "\\(" "\\[")))
   (org-todo-keywords
-   '((sequence "TODO(1)" "|" "DONE(2)" "FAIL(3)" ))))
+   '((sequence "TODO(1)" "|" "DONE(2)" "FAIL(3)" "NGMI(4)" ))))
 
+
+(use-package org-drill
+  :if (string-match-p "kanamori" (system-name))
+  :config (setq org-drill-scope (my-org-drill-file-names-in-howm))
+  :after howm)
 
 (use-package org-timeblock
   :vc (:fetcher github :repo ichernyshovvv/org-timeblock))
