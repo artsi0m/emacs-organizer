@@ -4,8 +4,7 @@
 
 This emacs configuration depends on:
 - ability of emacs to use gui features to render formulas
-- texlive for describing formulas
-- ability of emacs to play sounds
+- texlive or miktex for describing formulas
 - clangd for C and C++ programming
 
 ** Feautures
@@ -14,28 +13,21 @@ This emacs configuration is used for:
 
 | Use                                  | packages            |
 |--------------------------------------+---------------------|
+| Notes                                | howm                |
 | Learning with flashcards             | org-drill           |
 | Sort of time management              | org-pomodoro        |
 | Timeblocking and agenda              | org-timeblock       |
-| Viewing calendar with BSUIR schedule |                     |
+| Viewing calendar with BSUIR schedule | [[https://github.com/ical2org-py/ical2org.py][ical2orgpy]]          |
 | C and C++ programming                | eglot, clangd       |
 | managing files with dired on OpenBSD | gls (GNU coreutils) |
 
 
 ** Roadmap
 
-*** TODO Convert Schedule.json to org mode
 
-*** TODO Make org-pomodoro usable on OpenBSD
+
+*** DONE Make org-pomodoro usable on OpenBSD
 Can be done with one of four nested tasks
 
 **** DONE Patch wav-sound to use OpenBSD aucat
 https://github.com/emacsorphanage/sound-wav/pull/8
-
-**** TODO Write package that will beep with speaker instead of playing sound
-
-**** TODO Write package that will lauch ffplay to play sound
-
-**** TODO Patch OpenBSD emacs port to use sound
-
-
