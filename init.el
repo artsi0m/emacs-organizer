@@ -119,20 +119,21 @@
   :init
   (if (display-graphic-p) (global-corfu-mode) (corfu-terminal-mode)))
 
-(use-package minsk-theme
-  :config
-  (when window-system (load-theme 'minsk t)))
+;; (use-package minsk-theme
+;;   :config
+;;   (when window-system (load-theme 'minsk t)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes '(modus-operandi))
  '(custom-safe-themes
-   '("7e300d88af7750886190c744f63d2d66580bb2cbb8e371a3cb5109afe3017a5a" default))
+   '("a197d6d98f7a01991275578aa0a1311363d4662f0ecfa8e15779ce63e0f76baa" "7e300d88af7750886190c744f63d2d66580bb2cbb8e371a3cb5109afe3017a5a" default))
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
-   '(powershell auctex org-timeblock vc-use-package elfeed-org elfeed org-roam-ql cape corfu corfu-terminal eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
+   '(modus-operandi calfw powershell auctex org-timeblock vc-use-package elfeed-org elfeed org-roam-ql cape corfu corfu-terminal eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
  '(package-vc-selected-packages
    '((org-timeblock :vc-backend Git :url "https://github.com/ichernyshovvv/org-timeblock")
      (vc-use-package :vc-backend Git :url "https://github.com/slotThe/vc-use-package")))
