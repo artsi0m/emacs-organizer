@@ -87,8 +87,8 @@
 (use-package howm
   :init 
   (setq howm-view-title-header "*")
-  :if (string-match-p "kanamori" (system-name))
-  :commands(howm-menu))
+  :if (string-match-p "kanamori" (system-name)))
+
 
 
 (use-package eglot
@@ -133,7 +133,8 @@
    '("a197d6d98f7a01991275578aa0a1311363d4662f0ecfa8e15779ce63e0f76baa" "7e300d88af7750886190c744f63d2d66580bb2cbb8e371a3cb5109afe3017a5a" default))
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
-   '(modus-operandi calfw powershell auctex org-timeblock vc-use-package elfeed-org elfeed org-roam-ql cape corfu corfu-terminal eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
+
+   '(modus-operandi calfw org-drill-table powershell auctex org-timeblock vc-use-package elfeed-org elfeed org-roam-ql cape corfu corfu-terminal eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
  '(package-vc-selected-packages
    '((org-timeblock :vc-backend Git :url "https://github.com/ichernyshovvv/org-timeblock")
      (vc-use-package :vc-backend Git :url "https://github.com/slotThe/vc-use-package")))
