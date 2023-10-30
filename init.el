@@ -37,30 +37,27 @@
 (unless (require 'bind-key nil t)
   (package-install 'bind-key))
 
+(use-package howm
+  :init (setq howm-view-title-header "*")
+  :if (string-match-p "kanamori" (system-name)))
+
 (use-package org
-  :init
-  
-  (if (eq system-type 'berkeley-unix)
-      (setq org-directory "/shared/org"))
-
-  (if (eq system-type 'windows-nt)
-      (setq org-directory "b:/org/"))
-
   :if (string-match-p "kanamori" (system-name))
   :mode ("\\(\\.txt\\|\\.org\\|\\.howm\\)$" . org-mode)
   :custom
   (org-startup-folded nil)
-  (org-agenda-files `(,org-directory))
+  (org-agenda-files (my-org-agenda-file-names-in-howm))
   (org-format-latex-options
    '(:foreground default :background default :scale 1.7 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
 		 ("begin" "$1" "$" "$$" "\\(" "\\[")))
   (org-todo-keywords
-   '((sequence "TODO(1)" "|" "DONE(2)" "FAIL(3)" "NGMI(4)" ))))
+   '((sequence "TODO(1)" "|" "DONE(2)" "FAIL(3)" "NGMI(4)" )))
+  :after howm)
 
 
 (use-package org-drill
   :if (string-match-p "kanamori" (system-name))
-  :config (setq org-drill-scope (my-org-drill-file-names-in-howm))
+  :config (setq org-drill-scope (my-org-drill-file-names-in-howm))q
   :after howm)
 
 (use-package org-timeblock
@@ -71,25 +68,15 @@
   :if (string-match-p "kanamori" (system-name))
   :ensure t
   :config
-  (when (eq system-type 'windows-nt)
-    (setq elfeed-db-directory "b:/.elfeed/"))
-  (when (eq system-type 'berkeley-unix)
-    (setq elfeed-db-directory "/shared/.elfeed")))
+  (setq elfeed-db-directory "~/howm/.elfeed"))
 
 (use-package elfeed-org
   :if (string-match-p "kanamori" (system-name))
   :ensure t
   :config
   (elfeed-org)
-  (setq rmh-elfeed-org-files (my-howm-elfeed-file-names))
+  (setq rmh-elfeed-org-files (my-elfeed-file-names-in-howm))
   :after howm)
-
-(use-package howm
-  :init 
-  (setq howm-view-title-header "*")
-  :if (string-match-p "kanamori" (system-name)))
-
-
 
 (use-package eglot
   :config (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
@@ -133,8 +120,7 @@
    '("a197d6d98f7a01991275578aa0a1311363d4662f0ecfa8e15779ce63e0f76baa" "7e300d88af7750886190c744f63d2d66580bb2cbb8e371a3cb5109afe3017a5a" default))
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
-
-   '(modus-operandi calfw org-drill-table powershell auctex org-timeblock vc-use-package elfeed-org elfeed org-roam-ql cape corfu corfu-terminal eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
+   '(elfeed-protocol modus-operandi calfw org-drill-table powershell auctex org-timeblock vc-use-package elfeed-org elfeed org-roam-ql cape corfu corfu-terminal eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
  '(package-vc-selected-packages
    '((org-timeblock :vc-backend Git :url "https://github.com/ichernyshovvv/org-timeblock")
      (vc-use-package :vc-backend Git :url "https://github.com/slotThe/vc-use-package")))
