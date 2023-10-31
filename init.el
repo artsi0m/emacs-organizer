@@ -57,7 +57,7 @@
 
 (use-package org-drill
   :if (string-match-p "kanamori" (system-name))
-  :config (setq org-drill-scope (my-org-drill-file-names-in-howm))q
+  :config (setq org-drill-scope (my-org-drill-file-names-in-howm))
   :after howm)
 
 (use-package org-timeblock
