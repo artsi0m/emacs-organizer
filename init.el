@@ -85,14 +85,15 @@
   :hook ((c-mode c++-mode) . eglot-ensure))
 
 
+
 (use-package vertico
   :init (vertico-mode)
-  (setq completion-in-region-function
-	(lambda (&rest args)
-	  (apply (if vertico-mode
+(setq completion-in-region-function
+      (lambda (&rest args)
+        (apply (if vertico-mode
                    #'consult-completion-in-region
-		   #'completion--in-region args)))))
-
+                 #'completion--in-region)
+               args))))
 
 ;; (use-package minsk-theme
 ;;   :config
@@ -109,7 +110,7 @@
  '(default-input-method "cyrillic-colemak")
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
-   '(elfeed-protocol modus-operandi calfw org-drill-table powershell auctex org-timeblock vc-use-package elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
+   '(consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex org-timeblock vc-use-package elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
  '(package-vc-selected-packages
    '((org-timeblock :vc-backend Git :url "https://github.com/ichernyshovvv/org-timeblock")
      (vc-use-package :vc-backend Git :url "https://github.com/slotThe/vc-use-package")))
