@@ -13,6 +13,7 @@
   ;; for org export i need some way to save files in unicode 
 
   (defvar *fs-encoding* 'utf-8)
+  (prefer-coding-system 'utf-8-unix)
 
   ;; I use colemak keyboard layout
   (load-file "~/.emacs.d/cyrillic-colemak.el")
