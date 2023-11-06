@@ -80,32 +80,19 @@
   :after howm)
 
 (use-package eglot
-  :config (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
-  (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
-  
-  (defun my/eglot-capf ()
-    (setq-local completion-at-point-functions
-		(list (cape-super-capf
-                     #'eglot-completion-at-point
-		     ;; #'tempel-expand ;; I don't use tempel yet
-                     #'cape-file))))
-
-  (add-hook 'eglot-managed-mode-hook #'my/eglot-capf)
+  :config (add-to-list 'eglot-server-programs
+		       '((c++-mode c-mode) "clangd"))
   :hook ((c-mode c++-mode) . eglot-ensure))
 
-(use-package corfu
-  :custom
-  (corfu-cycle t)
-  (corfu-preselect 'prompt)
-  :bind
-  ([C-tab] . completion-at-point)
-  (:map corfu-map
-	("TAB" . corfu-next)
-	([tab] . corfu-next)
-	("S-TAB" . corfu-previous)
-	([backtab] . corfu-previous))
-  :init
-  (if (display-graphic-p) (global-corfu-mode) (corfu-terminal-mode)))
+
+(use-package vertico
+  :init (vertico-mode)
+  (setq completion-in-region-function
+	(lambda (&rest args)
+	  (apply (if vertico-mode
+                   #'consult-completion-in-region
+		   #'completion--in-region args)))))
+
 
 ;; (use-package minsk-theme
 ;;   :config
@@ -119,9 +106,10 @@
  '(custom-enabled-themes '(modus-operandi))
  '(custom-safe-themes
    '("a197d6d98f7a01991275578aa0a1311363d4662f0ecfa8e15779ce63e0f76baa" "7e300d88af7750886190c744f63d2d66580bb2cbb8e371a3cb5109afe3017a5a" default))
+ '(default-input-method "cyrillic-colemak")
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
-   '(elfeed-protocol modus-operandi calfw org-drill-table powershell auctex org-timeblock vc-use-package elfeed-org elfeed org-roam-ql cape corfu corfu-terminal eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
+   '(elfeed-protocol modus-operandi calfw org-drill-table powershell auctex org-timeblock vc-use-package elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
  '(package-vc-selected-packages
    '((org-timeblock :vc-backend Git :url "https://github.com/ichernyshovvv/org-timeblock")
      (vc-use-package :vc-backend Git :url "https://github.com/slotThe/vc-use-package")))
