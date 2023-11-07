@@ -1,0 +1,128 @@
+fontname "iosevka:size=12:bold"
+gap 50 10 10 10 
+borderwidth 10
+command term "/usr/X11R6/bin/xterm -l"
+
+unbind-key CM-Return
+bind-key C4-Return terminal
+
+unbind-key CM-Delete
+bind-key 4S-l lock
+
+unbind-key M-Return
+bind-key 4-Return window-hide
+
+unbind-key M-Down          
+unbind-key M-Up
+bind-key 4-Down window-lower
+bind-key 4-Up window-raise
+
+unbind-key M-slash
+bind-key 4-slash menu-window
+
+
+unbind-key CM-n
+bind-key C4-l window-menu-label
+
+unbind-key CM-x
+bind-key C4-x window-close
+
+# unbind-key CM-[n]
+unbind-key CM-1
+unbind-key CM-2
+unbind-key CM-3
+unbind-key CM-4
+unbind-key CM-5
+unbind-key CM-6
+unbind-key CM-7
+unbind-key CM-8
+unbind-key CM-9
+unbind-key CM-0
+
+bind-key 4-1 group-toggle-1
+bind-key 4-2 group-toggle-2
+bind-key 4-3 group-toggle-3
+bind-key C-4 group-toggle-4
+bind-key 4-5 group-toggle-5
+bind-key 4-6 group-toggle-6
+bind-key 4-7 group-toggle-7
+bind-key 4-8 group-toggle-8
+bind-key 4-9 group-toggle-9
+
+unbind-key CM-a
+bind-key C4-a group-toggle-all
+
+unbind-key CM-g
+bind-key C4-g window-group
+
+unbind-key M-Right         
+unbind-key M-Left
+bind-key 4-Right window-cycle-ingroup
+bind-key 4-Left window-rcycle-ingroup
+
+unbind-key CMS-f
+bind-key C4S-f window-freeze
+
+unbind-key CM-s
+bind-key C4-s window-stick
+
+unbind-key CM-f
+bind-key C4-f window-fullscreen
+
+unbind-key CM-m
+bind-key C4-m window-maximize
+
+unbind-key CM-equal 
+bind-key C4-equal window-vtile # vtile instead of vmaximize
+unbind-key CMS-equal
+bind-key C4S-equal window-htile # htile instead of hmaximize
+
+## neio instead of hjkl
+# unbind-key M-[hjkl]
+unbind-key M-h
+unbind-key M-j
+unbind-key M-k
+unbind-key M-l
+
+bind-key 4-n window-move-left
+bind-key 4-e window-move-down
+bind-key 4-i window-move-up
+bind-key 4-o window-move-right
+
+# unbind-key MS-[hjkl]
+unbind-key MS-h
+unbind-key MS-j
+unbind-key MS-k
+unbind-key MS-l
+
+bind-key 4S-n window-move-left-big
+bind-key 4S-e window-move-down-big
+bind-key 4S-i window-move-up-big
+bind-key 4S-o window-move-right-big
+
+# unbind-key CM-[hjkl]
+unbind-key CM-h
+unbind-key CM-j
+unbind-key CM-k
+unbind-key CM-l
+
+
+bind-key 4C-n window-resize-left
+bind-key 4C-e window-resize-down
+bind-key 4C-i window-resize-up
+bind-key 4C-o window-resize-right
+
+# unbind-key CMS-[hjkl]
+unbind-key CMS-h
+unbind-key CMS-j
+unbind-key CMS-k
+unbind-key CMS-l
+
+bind-key 4SC-n window-resize-left-big  
+bind-key 4SC-e window-resize-down-big  
+bind-key 4SC-i window-resize-up-big    
+bind-key 4SC-o window-resize-right-big 
+                                       
+
+unbind-key CM-w
+bind-key C4-w menu-exec-wm
