@@ -69,7 +69,7 @@
   :if (string-match-p "kanamori" (system-name))
   :ensure t
   :config
-  (setq elfeed-db-directory "~/howm/elfeed"))
+  (setq elfeed-db-directory "~/howm/.elfeed"))
 
 (use-package elfeed-org
   :if (string-match-p "kanamori" (system-name))
