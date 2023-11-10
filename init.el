@@ -28,9 +28,7 @@
 (unless (require 'vc-use-package nil t)
   (package-vc-install "https://github.com/slotThe/vc-use-package"))
 
-;; (package-initialize)
-(let ((default-directory (expand-file-name "elpa/" user-emacs-directory)))
-  (normal-top-level-add-subdirs-to-load-path))
+(package-initialize)
 
 ;; use-package
 (setq use-package-enable-imenu-support t)
@@ -108,7 +106,7 @@
  '(default-input-method "cyrillic-colemak")
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
-   '(consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex org-timeblock vc-use-package elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
+   '(racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex org-timeblock vc-use-package elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
  '(package-vc-selected-packages
    '((org-timeblock :vc-backend Git :url "https://github.com/ichernyshovvv/org-timeblock")
      (vc-use-package :vc-backend Git :url "https://github.com/slotThe/vc-use-package")))
