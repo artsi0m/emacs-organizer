@@ -15,18 +15,20 @@
   (defvar *fs-encoding* 'utf-8)
   (prefer-coding-system 'utf-8-unix)
 
+  
+  ;; Load my own subroutines
+  (load "~/.emacs.d/artsi0m-defuns.el")
+  
+  ;; Load my advices
+  (load "~/.emacs.d/artsi0m-advices.el")
+
   ;; I use colemak keyboard layout
   (load-file "~/.emacs.d/cyrillic-colemak.el")
+  
   (setq default-input-method "cyrillic-colemak"))
-
-;; Load my own subroutines
-(load "~/.emacs.d/artsi0m-defuns.el")
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-
-(unless (require 'vc-use-package nil t)
-  (package-vc-install "https://github.com/slotThe/vc-use-package"))
 
 (package-initialize)
 
@@ -57,17 +59,19 @@
 (use-package org-drill
   :if (string-match-p "kanamori" (system-name))
   :config (setq org-drill-scope (my-org-drill-file-names-in-howm))
+		(setq org-drill-cram-hours 72)
   :after howm)
 
-(use-package org-timeblock
-  :vc (:fetcher github :repo ichernyshovvv/org-timeblock))
+(use-package org-timeblock)
+
 
 
 (use-package elfeed
   :if (string-match-p "kanamori" (system-name))
   :ensure t
   :config
-  (setq elfeed-db-directory "~/howm/.elfeed"))
+  (setq elfeed-db-directory "~/howm/.elfeed")
+    (setq elfeed-curl-program-name "curl"))
 
 (use-package elfeed-org
   :if (string-match-p "kanamori" (system-name))
@@ -79,8 +83,7 @@
 
 (use-package eglot
   :config (add-to-list 'eglot-server-programs
-		       '((c++-mode c-mode) "clangd"))
-  :hook ((c-mode c++-mode) . eglot-ensure))
+		       '((c++-mode c-mode) "clangd")))
 
 (use-package vertico
   :init (vertico-mode)
@@ -106,10 +109,7 @@
  '(default-input-method "cyrillic-colemak")
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
-   '(mentor racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex org-timeblock vc-use-package elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
- '(package-vc-selected-packages
-   '((org-timeblock :vc-backend Git :url "https://github.com/ichernyshovvv/org-timeblock")
-     (vc-use-package :vc-backend Git :url "https://github.com/slotThe/vc-use-package")))
+   '(org-timeblock mentor racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex vc-use-package elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
  '(speedbar-default-position 'left)
  '(tab-bar-mode t))
 (custom-set-faces
