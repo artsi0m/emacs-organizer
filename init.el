@@ -109,7 +109,7 @@
  '(default-input-method "cyrillic-colemak")
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
-   '(org-timeblock mentor racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex vc-use-package elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
+   '(pyvenv org-timeblock mentor racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex vc-use-package elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
  '(speedbar-default-position 'left)
  '(tab-bar-mode t))
 (custom-set-faces
