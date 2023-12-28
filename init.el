@@ -119,7 +119,7 @@
  '(package-selected-packages
    '(pyvenv org-timeblock mentor racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex vc-use-package elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
  '(smtpmail-default-smtp-server "smtp.gmail.com")
- '(smtpmail-servers-requiring-authorization "smtp.gmail.com")
+ '(smtpmail-servers-requiring-authorization "*")
  '(smtpmail-smtp-server "smtp.gmail.com")
  '(smtpmail-smtp-service 587)
  '(smtpmail-stream-type nil)
