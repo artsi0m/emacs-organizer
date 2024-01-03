@@ -15,6 +15,8 @@
   (defvar *fs-encoding* 'utf-8)
   (prefer-coding-system 'utf-8-unix)
 
+  ;; Load my own variab
+  (load "~/.emacs.d/artsi0m-const.el")
   
   ;; Load my own subroutines
   (load "~/.emacs.d/artsi0m-defuns.el")
@@ -39,14 +41,11 @@
   (package-install 'bind-key))
 
 (use-package howm
-  :init (setq howm-view-title-header "*")
-  :if (string-match-p "kanamori" (system-name)))
+  :init (setq howm-view-title-header "*"))
 
 (use-package org
-  :if (string-match-p "kanamori" (system-name))
   :mode ("\\(\\.txt\\|\\.org\\|\\.howm\\)$" . org-mode)
   :custom
-  (org-startup-folded nil)
   (org-agenda-files (my-org-agenda-file-names-in-howm))
   (org-format-latex-options
    '(:foreground default :background default :scale 1.7 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
@@ -57,7 +56,6 @@
 
 
 (use-package org-drill
-  :if (string-match-p "kanamori" (system-name))
   :config (setq org-drill-scope (my-org-drill-file-names-in-howm))
 		(setq org-drill-cram-hours 72)
   :after howm)
@@ -67,14 +65,12 @@
 
 
 (use-package elfeed
-  :if (string-match-p "kanamori" (system-name))
   :ensure t
   :config
   (setq elfeed-db-directory "~/howm/.elfeed")
     (setq elfeed-curl-program-name "curl"))
 
 (use-package elfeed-org
-  :if (string-match-p "kanamori" (system-name))
   :ensure t
   :config
   (elfeed-org)
