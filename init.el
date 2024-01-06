@@ -58,7 +58,17 @@
 (use-package org-drill
   :config (setq org-drill-scope (my-org-drill-file-names-in-howm))
 		(setq org-drill-cram-hours 72)
-  :after howm)
+		:after howm)
+
+(use-package hydra)
+
+(use-package org-fc
+  :load-path "~/.emacs.d/src/org-fc"
+  :custom
+  (org-fc-directories (my-howm-subsubdirs))
+  (org-fc-review-history-files "~/howm/.org-fc-reviews.tsv")
+  :config
+  (require 'org-fc-hydra))
 
 (use-package org-timeblock)
 
@@ -103,17 +113,20 @@
  '(custom-safe-themes
    '("fc608d4c9f476ad1da7f07f7d19cc392ec0fb61f77f7236f2b6b42ae95801a62" "a197d6d98f7a01991275578aa0a1311363d4662f0ecfa8e15779ce63e0f76baa" "7e300d88af7750886190c744f63d2d66580bb2cbb8e371a3cb5109afe3017a5a" default))
  '(default-input-method "cyrillic-colemak")
+ '(gnus-backup-startup-file 'never)
+ '(gnus-save-score t)
  '(gnus-select-method
    '(nnimap "imap.gmail.com"
 	    (nnmail-expiry-target "nnimap+gmail:[Gmail]/Корзина")
 	    (nnimap-stream ssl)
 	    (gnus-search-engine gnus-search-imap)))
+ '(gnus-startup-file "~/howm/.newsrc")
  '(message-send-mail-function 'smtpmail-send-it)
  '(message-sendmail-envelope-from nil)
  '(org-babel-C-compiler "clang")
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
-   '(pyvenv org-timeblock mentor racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex vc-use-package elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
+   '(magit hydra pyvenv org-timeblock mentor racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex vc-use-package elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
  '(smtpmail-default-smtp-server "smtp.gmail.com")
  '(smtpmail-servers-requiring-authorization "*")
  '(smtpmail-smtp-server "smtp.gmail.com")
