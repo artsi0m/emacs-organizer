@@ -1,0 +1,3 @@
+[submodule "src/org-fc"]
+	path = src/org-fc
+	url = https://git.sr.ht/~l3kn/org-fc
