@@ -48,7 +48,7 @@
   :custom
   (org-agenda-files (my-org-agenda-file-names-in-howm))
   (org-format-latex-options
-   '(:foreground default :background default :scale 1.7 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
+   '(:foreground default :background default :scale 2 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
 		 ("begin" "$1" "$" "$$" "\\(" "\\[")))
   (org-todo-keywords
    '((sequence "TODO(1)" "|" "DONE(2)" "FAIL(3)" "NGMI(4)" )))
@@ -65,8 +65,8 @@
 (use-package org-fc
   :load-path "~/.emacs.d/src/org-fc"
   :custom
+  (org-fc-review-history-file "~/howm/org-fc-reviews.tsv")
   (org-fc-directories (my-howm-subsubdirs))
-  (org-fc-review-history-files "~/howm/.org-fc-reviews.tsv")
   :config
   (require 'org-fc-hydra))
 
@@ -119,14 +119,15 @@
    '(nnimap "imap.gmail.com"
 	    (nnmail-expiry-target "nnimap+gmail:[Gmail]/Корзина")
 	    (nnimap-stream ssl)
-	    (gnus-search-engine gnus-search-imap)))
+	    (gnus-search-engine gnus-search-imap)
+	    (nnmail-expiry-wait 5)))
  '(gnus-startup-file "~/howm/.newsrc")
  '(message-send-mail-function 'smtpmail-send-it)
  '(message-sendmail-envelope-from nil)
  '(org-babel-C-compiler "clang")
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
-   '(magit hydra pyvenv org-timeblock mentor racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex vc-use-package elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
+   '(magit hydra pyvenv org-timeblock racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex vc-use-package elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
  '(smtpmail-default-smtp-server "smtp.gmail.com")
  '(smtpmail-servers-requiring-authorization "*")
  '(smtpmail-smtp-server "smtp.gmail.com")
