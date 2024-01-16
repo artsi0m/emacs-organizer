@@ -41,7 +41,8 @@
   (package-install 'bind-key))
 
 (use-package howm
-  :init (setq howm-view-title-header "*"))
+  :init (setq howm-view-title-header "*")
+  (setq howm-file-name-format "%Y/%m/%Y-%m-%d-%H%M%S.org"))
 
 (use-package org
   :mode ("\\(\\.txt\\|\\.org\\|\\.howm\\)$" . org-mode)
