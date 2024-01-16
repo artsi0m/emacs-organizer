@@ -66,7 +66,7 @@
 (use-package org-fc
   :load-path "~/.emacs.d/src/org-fc"
   :custom
-  (org-fc-review-history-file "~/howm/org-fc-reviews.tsv")
+  (org-fc-review-history-file "~/howm/.org-fc-reviews.tsv")
   (org-fc-directories (my-howm-subsubdirs))
   :config
   (require 'org-fc-hydra))
