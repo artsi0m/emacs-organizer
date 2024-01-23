@@ -39,5 +39,5 @@ https://github.com/emacsorphanage/sound-wav/pull/8
 
 *** TODO Move from org-drill to org-fc
 
-**** TODO Make org-fc usable on OpenBSD
+**** TODO Make org-fc usable on Windows
 
