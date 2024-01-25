@@ -122,6 +122,13 @@
  '(message-send-mail-function 'smtpmail-send-it)
  '(message-sendmail-envelope-from nil)
  '(org-babel-C-compiler "clang")
+ '(org-babel-load-languages
+   '((emacs-lisp . t)
+     (gnuplot . t)
+     (awk . t)
+     (C . t)
+     (dot . t)
+     (python . t)))
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
    '(slime eat clang-format+ magit hydra pyvenv org-timeblock racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex vc-use-package elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
