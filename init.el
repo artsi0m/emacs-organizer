@@ -71,7 +71,6 @@
 (use-package org-timeblock)
 
 
-
 (use-package elfeed
   :ensure t
   :config
@@ -87,6 +86,8 @@
 (use-package eglot
   :config (add-to-list 'eglot-server-programs
 		       '((c++-mode c-mode) "clangd")))
+
+(use-package pyvenv)
 
 (use-package vertico
   :init (vertico-mode)
