@@ -47,7 +47,6 @@
 (use-package org
   :mode ("\\(\\.txt\\|\\.org\\|\\.howm\\)$" . org-mode)
   :custom
-  (org-agenda-files (my-org-agenda-file-names-in-howm))
   (org-format-latex-options
    '(:foreground default :background default :scale 2 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
 		 ("begin" "$1" "$" "$$" "\\(" "\\[")))
@@ -57,9 +56,7 @@
 
 
 (use-package org-drill
-  :config (setq org-drill-scope (my-org-drill-file-names-in-howm))
-		(setq org-drill-cram-hours 72)
-		:after howm)
+  :after howm)
 
 (use-package hydra)
 
@@ -85,7 +82,6 @@
   :ensure t
   :config
   (elfeed-org)
-  (setq rmh-elfeed-org-files (my-elfeed-file-names-in-howm))
   :after howm)
 
 (use-package eglot
