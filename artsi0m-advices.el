@@ -1,3 +1,6 @@
+(define-advice elfeed (:before (&rest _args))
+  (setq rmh-elfeed-org-files (my-elfeed-file-names-in-howm)))
+
 (define-advice elfeed-update (:before (&rest _args))
   (setq rmh-elfeed-org-files (my-elfeed-file-names-in-howm)))
 
@@ -16,3 +19,6 @@
   ;; not tested yet
   (setq org-drill-cram-hours 72)
   (setq org-drill-scope (my-org-drill-file-names-in-howm)))
+
+
+   
