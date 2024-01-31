@@ -15,15 +15,7 @@
   (defvar *fs-encoding* 'utf-8)
   (prefer-coding-system 'utf-8-unix)
 
-  ;; Load my own variab
-  (load "~/.emacs.d/artsi0m-const.el")
-  
-  ;; Load my own subroutines
-  (load "~/.emacs.d/artsi0m-defuns.el")
-  
-  ;; Load my advices
-  (load "~/.emacs.d/artsi0m-advices.el")
-
+  (push "~/.emacs.d/artsi0m/" load-path)
   ;; I use colemak keyboard layout
   (load-file "~/.emacs.d/cyrillic-colemak.el")
   
@@ -61,12 +53,17 @@
 (use-package hydra)
 
 (use-package org-fc
-  :load-path "~/.emacs.d/src/org-fc"
+  :vc (org-fc :url "https://git.sr.ht/~l3kn/org-fc"
+	      :branch "main")
+
+  ;; :load-path ("~/.emacs.d/src/org-fc/"
+  ;; 	      "~/.emacs.d/artsi0m/")
   :custom
   (org-fc-review-history-file "~/howm/.org-fc-reviews.tsv")
   (org-fc-directories (my-howm-subsubdirs))
   :config
   (require 'org-fc-hydra))
+
 
 (use-package org-timeblock)
 
@@ -132,7 +129,9 @@
      (python . t)))
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
-   '(matlab-mode transmission slime eat clang-format+ magit hydra pyvenv org-timeblock racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex vc-use-package elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
+   '(org-fc matlab-mode transmission slime eat clang-format+ magit hydra pyvenv org-timeblock racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex vc-use-package elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
+ '(package-vc-selected-packages
+   '((org-fc :url "https://git.sr.ht/~l3kn/org-fc" :branch "main")))
  '(smtpmail-default-smtp-server "smtp.gmail.com")
  '(smtpmail-servers-requiring-authorization "*")
  '(smtpmail-smtp-server "smtp.gmail.com")
