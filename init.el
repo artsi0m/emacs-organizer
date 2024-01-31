@@ -15,11 +15,20 @@
   (defvar *fs-encoding* 'utf-8)
   (prefer-coding-system 'utf-8-unix)
 
-  (push "~/.emacs.d/artsi0m/" load-path)
+  (load-file "~/.emacs.d/artsi0m/const.el")
+
+  (load-file "~/.emacs.d/artsi0m/defuns.el")
+
+  (load-file "~/.emacs.d/artsi0m/advices.el")
+
   ;; I use colemak keyboard layout
   (load-file "~/.emacs.d/cyrillic-colemak.el")
   
   (setq default-input-method "cyrillic-colemak"))
+
+;; Not working somehow
+;; (add-to-list 'load-path "~/.emacs.d/artsi0m/")
+
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -53,11 +62,8 @@
 (use-package hydra)
 
 (use-package org-fc
-  :vc (org-fc :url "https://git.sr.ht/~l3kn/org-fc"
-	      :branch "main")
-
-  ;; :load-path ("~/.emacs.d/src/org-fc/"
-  ;; 	      "~/.emacs.d/artsi0m/")
+  :load-path ("~/.emacs.d/src/org-fc/"
+	      "~/.emacs.d/artsi0m/")
   :custom
   (org-fc-review-history-file "~/howm/.org-fc-reviews.tsv")
   (org-fc-directories (my-howm-subsubdirs))
