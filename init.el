@@ -125,6 +125,7 @@
  '(gnus-startup-file "~/howm/.newsrc")
  '(message-send-mail-function 'smtpmail-send-it)
  '(message-sendmail-envelope-from nil)
+ '(org-babel-C++-compiler "clang++")
  '(org-babel-C-compiler "clang")
  '(org-babel-load-languages
    '((emacs-lisp . t)
@@ -133,6 +134,8 @@
      (C . t)
      (dot . t)
      (python . t)))
+ '(org-drill-cram-hours 72)
+ '(org-drill-scope 'directory)
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
    '(org-fc matlab-mode transmission slime eat clang-format+ magit hydra pyvenv org-timeblock racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex vc-use-package elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
