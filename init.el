@@ -32,6 +32,7 @@
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
 (package-initialize)
 
@@ -57,6 +58,7 @@
 
 
 (use-package org-drill
+  :pin "melpa-stable"
   :after howm)
 
 (use-package hydra)
@@ -138,7 +140,7 @@
  '(org-drill-scope 'directory)
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
-   '(org-fc matlab-mode transmission slime eat clang-format+ magit hydra pyvenv org-timeblock racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex vc-use-package elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
+   '(org-drill org-fc matlab-mode transmission slime eat clang-format+ magit hydra pyvenv org-timeblock racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw powershell auctex vc-use-package elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro minsk-theme))
  '(package-vc-selected-packages
    '((org-fc :url "https://git.sr.ht/~l3kn/org-fc" :branch "main")))
  '(smtpmail-default-smtp-server "smtp.gmail.com")
