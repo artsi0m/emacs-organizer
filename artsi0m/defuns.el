@@ -40,3 +40,14 @@
      howm-directory directory-files-no-dot-files-regexp t)
     (seq-filter #'file-directory-p)
     (seq-filter #'my-howm-subsubdir-exclude)))
+
+(defun my-org-drill-create ()
+    (interactive)
+  (let ((filename   (format "~/howm/org.drill.cards/%s.org"
+				    (format-time-string "%F-%H%M%S"))))
+	  (make-empty-file filename)
+	  (switch-to-buffer filename)
+	  (set-visited-file-name filename)
+	  (org-mode)
+	  (howm-mode)
+	  (org-insert-heading)))
