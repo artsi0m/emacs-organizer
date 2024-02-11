@@ -67,12 +67,13 @@
   :custom
   (org-fc-review-history-file "~/howm/.org-fc-reviews.tsv")
   (org-fc-directories (my-howm-subsubdirs))
+  (org-fc-mixed-line-endings t)
   :config
   (require 'org-fc-hydra))
 
-
+;; org-timeblock and calfw
 (use-package org-timeblock)
-
+(load-file "~/.emacs.d/init-calendar.el")
 
 (use-package elfeed
   :ensure t
@@ -135,7 +136,7 @@
      (python . t)))
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
-   '(org-fc matlab-mode transmission slime eat clang-format+ magit hydra pyvenv org-timeblock racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex vc-use-package elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
+   '(org-timeblock calfw-howm calfw-org calfw-ical org-fc matlab-mode transmission slime eat clang-format+ magit hydra pyvenv racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex vc-use-package elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
  '(package-vc-selected-packages
    '((org-fc :url "https://git.sr.ht/~l3kn/org-fc" :branch "main")))
  '(smtpmail-default-smtp-server "smtp.gmail.com")

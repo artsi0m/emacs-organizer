@@ -1,3 +1,6 @@
 [submodule "src/org-fc"]
 	path = src/org-fc
 	url = https://git.sr.ht/~l3kn/org-fc
+[submodule "src/calfw-blocks"]
+	path = src/calfw-blocks
+	url = https://github.com/ml729/calfw-blocks
