@@ -44,7 +44,8 @@
 
 (use-package howm
   :init (setq howm-view-title-header "*")
-  (setq howm-file-name-format "%Y/%m/%Y-%m-%d-%H%M%S.org"))
+  (setq howm-file-name-format "%Y/%m/%Y-%m-%d-%H%M%S.org")
+  (setq howm-menu-allow (append '(cfw:howm-schedule-inline) howm-menu-allow)))
 
 (use-package org
   :mode ("\\(\\.txt\\|\\.org\\|\\.howm\\)$" . org-mode)

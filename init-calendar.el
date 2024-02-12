@@ -21,6 +21,7 @@
   
   (defun my-open-calendar ()
     (interactive)
+    (setq org-agenda-files (my-org-agenda-file-names-in-howm))
     (cfw:open-calendar-buffer
      :contents-sources
      (list
