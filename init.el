@@ -45,6 +45,7 @@
 (use-package howm
   :init (setq howm-view-title-header "*")
   (setq howm-file-name-format "%Y/%m/%Y-%m-%d-%H%M%S.org")
+  :custom
   (setq howm-menu-allow (append '(cfw:howm-schedule-inline) howm-menu-allow)))
 
 (use-package org
@@ -59,8 +60,8 @@
 
 
 (use-package org-drill
-  :pin "melpa-stable"
-  :after howm)
+  :after howm
+  :pin melpa-stable)
 
 (use-package hydra)
 
