@@ -73,7 +73,8 @@
   (org-fc-directories (my-howm-subsubdirs))
   (org-fc-mixed-line-endings t)
   :config
-  (require 'org-fc-hydra))
+  (require 'org-fc-hydra)
+  :after howm)
 
 ;; org-timeblock and calfw
 (use-package org-timeblock)
