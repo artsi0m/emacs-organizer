@@ -60,8 +60,8 @@
 
 
 (use-package org-drill
-  :after howm
-  :pin melpa-stable)
+  :after howm)
+
 
 (use-package hydra)
 
