@@ -20,7 +20,7 @@
   (load-file "~/.emacs.d/artsi0m/defuns.el")
 
   (load-file "~/.emacs.d/artsi0m/advices.el")
-
+  
   ;; I use colemak keyboard layout
   (load-file "~/.emacs.d/cyrillic-colemak.el")
   
@@ -45,8 +45,10 @@
 (use-package howm
   :init (setq howm-view-title-header "*")
   (setq howm-file-name-format "%Y/%m/%Y-%m-%d-%H%M%S.org")
-  :custom
-  (setq howm-menu-allow (append '(cfw:howm-schedule-inline) howm-menu-allow)))
+  :after emacs)
+
+;; Calendar
+(load-file "~/.emacs.d/init-calendar.el")
 
 (use-package org
   :mode ("\\(\\.txt\\|\\.org\\|\\.howm\\)$" . org-mode)
@@ -66,18 +68,15 @@
 (use-package hydra)
 
 (use-package org-fc
-  :load-path ("~/.emacs.d/src/org-fc/"
+  :load-path ("~/.emacs.d/site-lisp/org-fc/"
 	      "~/.emacs.d/artsi0m/")
   :custom
   (org-fc-review-history-file "~/howm/.org-fc-reviews.tsv")
   (org-fc-directories (my-howm-subsubdirs))
   (org-fc-mixed-line-endings t)
   :config
-  (require 'org-fc-hydra))
-
-;; org-timeblock and calfw
-(use-package org-timeblock)
-(load-file "~/.emacs.d/init-calendar.el")
+  (require 'org-fc-hydra)
+  :after howm)
 
 (use-package elfeed
   :ensure t
