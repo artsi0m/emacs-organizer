@@ -41,5 +41,5 @@ https://github.com/emacsorphanage/sound-wav/pull/8
 
 **** TODO Make org-fc usable on Windows
 
-**** TODO Create advice for adding files into org-fc all scope
+**** DONE Create advice for adding files into org-fc all scope
 

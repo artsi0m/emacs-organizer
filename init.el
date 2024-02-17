@@ -1,4 +1,6 @@
 ;; artsi0m's emacs config
+(org-babel-load-file "~/.emacs.d/config.org")
+
 (use-package emacs
   :init
 
@@ -76,18 +78,6 @@
   (org-fc-mixed-line-endings t)
   :config
   (require 'org-fc-hydra)
-  :after howm)
-
-(use-package elfeed
-  :ensure t
-  :config
-  (setq elfeed-db-directory "~/howm/.elfeed")
-    (setq elfeed-curl-program-name "curl"))
-
-(use-package elfeed-org
-  :ensure t
-  :config
-  (elfeed-org)
   :after howm)
 
 (use-package eglot

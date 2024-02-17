@@ -1,0 +1,37 @@
+* emacs-organizer
+
+
+** packages 
+*** rss reader — elfeed
+Elfeed in my config is interconneted with howm.
+
+**** elfeed use-package:
+#+BEGIN_SRC elisp
+(use-package elfeed
+  :ensure t
+  :config
+  (setq elfeed-db-directory "~/howm/.elfeed")
+    (setq elfeed-curl-program-name "curl"))
+#+END_SRC
+
+**** elfeed-org use-package
+#+BEGIN_SRC elisp
+(use-package elfeed-org
+  :ensure t
+  :config
+  (elfeed-org)
+  :after howm)
+#+END_SRC
+
+**** advices for interconnecting with howm
+#+BEGIN_SRC elisp
+(define-advice elfeed (:before (&rest _args))
+  (setq rmh-elfeed-org-files (my-elfeed-file-names-in-howm)))
+
+
+(define-advice elfeed-update (:before (&rest _args))
+  (setq rmh-elfeed-org-files (my-elfeed-file-names-in-howm)))
+#+END_SRC
+
+
+
