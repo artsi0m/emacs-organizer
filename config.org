@@ -2,7 +2,41 @@
 ** layout
 I use colemak keyboard layout see layout.org file -- [[./layout.org][link]]
 
-** use cases
+** general emacs
+
+*** window management
+If frame is devided by top and bottom, change it to left and right.
+Transpose operation like with matrices and tables.
+#+BEGIN_SRC elisp
+(use-package transpose-frame)
+#+END_SRC
+
+*** autocomplete
+Press C-M-i to activate emacs autocomplete.
+
+Frankly speaking, I copy this snippet from the official vertico docs:
+
+https://github.com/minad/vertico?tab=readme-ov-file#completion-at-point-and-completion-in-region
+
+This configuration give my ability to perform fuzzy search.
+Like with dmenu, rofi or fzf, but in emacs.
+
+#+BEGIN_SRC elisp
+   (use-package vertico
+     :init (vertico-mode)
+      (setq completion-in-region-function
+	    (lambda (&rest args)
+	      (apply (if vertico-mode
+			 #'consult-completion-in-region
+		       #'completion--in-region)
+		     args))))
+
+    (use-package consult)
+
+    (use-package consult-eglot)
+#+END_SRC
+
+** use cases my emacs config
 I structured my config by use cases I apply emacs in.
 
 
@@ -19,28 +53,6 @@ I structured my config by use cases I apply emacs in.
 (use-package pyvenv)
 #+END_SRC
 
-**** autocomplete
-Press C-M-i to activate emacs autocomplete.
-
-Frankly speaking, I copy this snippet from the official vertico docs:
-
-https://github.com/minad/vertico?tab=readme-ov-file#completion-at-point-and-completion-in-region
-
-
-#+BEGIN_SRC elisp
-   (use-package vertico
-     :init (vertico-mode)
-      (setq completion-in-region-function
-	    (lambda (&rest args)
-	      (apply (if vertico-mode
-			 #'consult-completion-in-region
-		       #'completion--in-region)
-		     args))))
-
-    (use-package consult)
-
-    (use-package consult-eglot)
-#+END_SRC
 
 *** file manages
 I use buildin dired for now.
