@@ -1,8 +1,46 @@
 * emacs-organizer
 
 
-** packages 
-*** rss reader — elfeed
+** use cases 
+*** programming
+**** language server client
+#+BEGIN_SRC elisp
+(use-package eglot
+  :config (add-to-list 'eglot-server-programs
+			  '((c++-mode c-mode) "clangd")))  
+#+END_SRC
+
+**** python venv support
+#+BEGIN_SRC elisp
+(use-package pyvenv)
+#+END_SRC
+
+**** autocomplete
+Press C-M-i to activate emacs autocomplete.
+
+Frankly speaking, I copy this snippet from the official vertico docs:
+https://github.com/minad/vertico?tab=readme-ov-file#completion-at-point-and-completion-in-region
+
+#+BEGIN_SRC elisp
+   (use-package vertico
+     :init (vertico-mode)
+      (setq completion-in-region-function
+	    (lambda (&rest args)
+	      (apply (if vertico-mode
+			 #'consult-completion-in-region
+		       #'completion--in-region)
+		     args))))
+
+    (use-package consult)
+
+    (use-package consult-eglot)
+#+END_SRC
+
+
+
+
+
+*** rss reader 
 Elfeed in my config is interconneted with howm.
 
 **** elfeed use-package:

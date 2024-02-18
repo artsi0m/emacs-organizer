@@ -80,20 +80,7 @@
   (require 'org-fc-hydra)
   :after howm)
 
-(use-package eglot
-  :config (add-to-list 'eglot-server-programs
-		       '((c++-mode c-mode) "clangd")))
 
-(use-package pyvenv)
-
-(use-package vertico
-  :init (vertico-mode)
-(setq completion-in-region-function
-      (lambda (&rest args)
-        (apply (if vertico-mode
-                   #'consult-completion-in-region
-                 #'completion--in-region)
-               args))))
 
 ;; (use-package minsk-theme
 ;;   :config
@@ -133,8 +120,6 @@
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
    '(org-timeblock calfw-howm calfw-org calfw-ical org-fc matlab-mode transmission slime eat clang-format+ magit hydra pyvenv racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex vc-use-package elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
- '(package-vc-selected-packages
-   '((org-fc :url "https://git.sr.ht/~l3kn/org-fc" :branch "main")))
  '(smtpmail-default-smtp-server "smtp.gmail.com")
  '(smtpmail-servers-requiring-authorization "*")
  '(smtpmail-smtp-server "smtp.gmail.com")
