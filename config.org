@@ -1,7 +1,11 @@
 * emacs-organizer
+** layout
+I use colemak keyboard layout see layout.org file -- [[./layout.org][link]]
+
+** use cases
+I structured my config by use cases I apply emacs in.
 
 
-** use cases 
 *** programming
 **** language server client
 #+BEGIN_SRC elisp
@@ -19,7 +23,9 @@
 Press C-M-i to activate emacs autocomplete.
 
 Frankly speaking, I copy this snippet from the official vertico docs:
+
 https://github.com/minad/vertico?tab=readme-ov-file#completion-at-point-and-completion-in-region
+
 
 #+BEGIN_SRC elisp
    (use-package vertico
@@ -36,7 +42,17 @@ https://github.com/minad/vertico?tab=readme-ov-file#completion-at-point-and-comp
     (use-package consult-eglot)
 #+END_SRC
 
+*** file manages
+I use buildin dired for now.
 
+**** Work-arounds
+
+***** OpenBSD
+Use ls from GNU coreutils on OpenBSD
+#+BEGIN_SRC elisp
+  (when (eq system-type 'berkeley-unix)
+  (setq insert-directory-program "gls")) 
+#+END_SRC
 
 
 
