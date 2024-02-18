@@ -1,20 +1,15 @@
+;; coping with codepages
+(defvar *fs-encoding* 'utf-8)
+(prefer-coding-system 'utf-8-unix)
+
 ;; artsi0m's emacs config
 (org-babel-load-file "~/.emacs.d/layout.org")
 (org-babel-load-file "~/.emacs.d/config.org")
 
 (use-package emacs
   :init
-
-  ;; For dealing with org-pomodoro
-  (when (eq system-type 'windows-nt)
-    (setq system-time-locale "C"))
-
-
-
   ;; for org export i need some way to save files in unicode 
 
-  (defvar *fs-encoding* 'utf-8)
-  (prefer-coding-system 'utf-8-unix)
 
   (load-file "~/.emacs.d/artsi0m/const.el")
 
@@ -23,42 +18,21 @@
   (load-file "~/.emacs.d/artsi0m/advices.el"))
   
 
-;; Not working somehow
-;; (add-to-list 'load-path "~/.emacs.d/artsi0m/")
-
-
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
 (package-initialize)
 
-;; use-package
+;; use-package -- added by Illya
 (setq use-package-enable-imenu-support t)
 (setq use-package-always-ensure t)
 (unless (require 'bind-key nil t)
   (package-install 'bind-key))
 
-(use-package howm
-  :init (setq howm-view-title-header "*")
-  (setq howm-file-name-format "%Y/%m/%Y-%m-%d-%H%M%S.org")
-  :after emacs)
 
 ;; Calendar
 (load-file "~/.emacs.d/init-calendar.el")
 
-(use-package org
-  :mode ("\\(\\.txt\\|\\.org\\|\\.howm\\)$" . org-mode)
-  :custom
-  (org-format-latex-options
-   '(:foreground default :background default :scale 2 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
-		 ("begin" "$1" "$" "$$" "\\(" "\\[")))
-  (org-todo-keywords
-   '((sequence "TODO(1)" "|" "DONE(2)" "FAIL(3)" "NGMI(4)" )))
-  :after howm)
-
-
-(use-package org-drill
-  :after howm)
 
 
 (use-package hydra)

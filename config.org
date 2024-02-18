@@ -1,4 +1,8 @@
 * emacs-organizer
+
+Some code should be executing before tangling and evaluating this file.
+So, look at init.el
+
 ** layout
 I use colemak keyboard layout see layout.org file -- [[./layout.org][link]]
 
@@ -11,6 +15,8 @@ Transpose operation like with matrices and tables.
 (use-package transpose-frame)
 #+END_SRC
 
+#+RESULTS:
+
 *** autocomplete
 Press C-M-i to activate emacs autocomplete.
 
@@ -22,22 +28,175 @@ This configuration give my ability to perform fuzzy search.
 Like with dmenu, rofi or fzf, but in emacs.
 
 #+BEGIN_SRC elisp
-   (use-package vertico
-     :init (vertico-mode)
-      (setq completion-in-region-function
+(use-package vertico
+  :init (vertico-mode)
+   (setq completion-in-region-function
 	    (lambda (&rest args)
 	      (apply (if vertico-mode
 			 #'consult-completion-in-region
 		       #'completion--in-region)
 		     args))))
 
-    (use-package consult)
+ (use-package consult)
 
-    (use-package consult-eglot)
+ (use-package consult-eglot)
 #+END_SRC
+
+#+RESULTS:
+
+*** Force UTF-8 and LF line endings
+
+#+BEGIN_SRC elisp
+(defvar *fs-encoding* 'utf-8)
+(prefer-coding-system 'utf-8-unix)
+#+END_SRC
+
+
 
 ** use cases my emacs config
 I structured my config by use cases I apply emacs in.
+
+*** study organizer
+
+**** Notes, personal wiki, z-word — howm
+
+I use handy own wiki mode, and I use it by a lot.
+I use howm with org mode, to do this I
+1. changed =howm-view-title-header= to org-mode title
+2. changed =howm-file-name-format= to end with org file name extension.
+
+
+#+BEGIN_SRC elisp
+  (use-package howm
+    :init (setq howm-view-title-header "*")
+    (setq howm-file-name-format "%Y/%m/%Y-%m-%d-%H%M%S.org"))    
+#+END_SRC
+
+**** I use howm with org-mode
+I also use latex with org-mode.
+Inline latex previews for formulas in flashcards was initial reason to switch to emacs for me.
+
+#+BEGIN_SRC elisp
+(use-package org
+  :custom
+  (org-format-latex-options
+   '(:foreground default :background default :scale 2 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
+		 ("begin" "$1" "$" "$$" "\\(" "\\[")))
+  (org-todo-keywords
+   '((sequence "TODO(1)" "|" "DONE(2)" "FAIL(3)" "NGMI(4)" )))
+  :after howm)
+#+END_SRC
+
+**** pomodoro timer inside notes
+I use org-pomodoro.
+
+#+BEGIN_SRC elisp
+(use-package org-pomodoro)
+#+END_SRC
+
+***** Work arounds
+Use C locale for time on windows
+#+BEGIN_SRC elisp
+(when (eq system-type 'windows-nt)
+(setq system-time-locale "C"))
+#+END_SRC
+
+#+RESULTS:
+: C
+
+**** flashcards inside notes: org-fc
+
+**** flashcards inside notes: org-drill
+I am trying to switch to org-fc by now.
+
+#+BEGIN_SRC elisp
+(use-package org-drill
+  :after howm)
+#+END_SRC
+
+
+
+*****  Function for discovering org-drill cards in howm
+#+BEGIN_SRC elisp
+(defun my-org-drill-file-names-in-howm ()
+  "Return list of absolute filenames of org-drill files in howm"
+  (delete-dups
+   (mapcar #'car (howm-grep "\:drill\:"
+			    (howm-files-in-directory howm-directory)))))
+#+END_SRC
+
+***** Command for creating new org-drill cards.
+
+I want to create less of them, actually.
+But by now I want some kind of separtion,
+therefor there is dedicated dir in howm.
+
+#+BEGIN_SRC elisp
+  (defun my-org-drill-create ()
+    (interactive)
+    (let ((filename   (format "~/howm/org.drill.cards/%s.org"
+				      (format-time-string "%F-%H%M%S"))))
+	    (make-empty-file filename)
+	    (switch-to-buffer filename)
+	    (set-visited-file-name filename)
+	    (org-mode)
+	    (howm-mode)
+	    (org-insert-heading)))
+
+#+END_SRC
+
+#+RESULTS:
+: my-org-drill-create
+
+
+**** calendar interconnected with notes: calfw
+Calfw use dates from holidays.el by default,
+but there is packages that adds org and howm dates support.
+There is also ability to get schedule from iis.bsuir.by in iCalendar format.
+
+#+BEGIN_SRC elisp
+(use-package calfw-org :after calfw)
+(use-package calfw-howm :after calfw)
+#+END_SRC
+
+***** use-package and calendar command
+#+BEGIN_SRC elisp
+  (use-package calfw
+  :config
+  (require 'calfw-org)
+  (require 'calfw-howm)
+  
+  (defun my-open-calendar ()
+    (interactive)
+    (setq org-agenda-files (my-org-agenda-file-names-in-howm))
+    (cfw:open-calendar-buffer
+     :contents-sources
+     (list
+      (cfw:org-create-source)
+      (cfw:howm-create-source))))
+  
+  :after howm)
+#+END_SRC
+
+#+RESULTS:
+
+***** Draw calendar in howm (inline)
+Append function into howm allowed functions,
+that howm would execute after start.
+#+BEGIN_SRC elisp
+(setq howm-menu-allow
+	    (append '(cfw:howm-schedule-inline) howm-menu-allow))
+#+END_SRC
+
+#+RESULTS:
+| cfw:howm-schedule-inline | cfw:howm-schedule-inline | cfw:howm-schedule-inline | howm-menu-schedule | howm-menu-todo | howm-menu-reminder | howm-menu-recent | howm-menu-random | howm-menu-search | howm-menu-categorized-reminder |
+
+**** Timeblocking with org-timeblock
+By now [2024-02-18] org-timeblock is broken on my side.
+However I may use =org-timeblock-list=
+#+BEGIN_SRC elisp
+  (use-package org-timeblock)
+#+END_SRC
 
 
 *** programming
@@ -54,8 +213,8 @@ I structured my config by use cases I apply emacs in.
 #+END_SRC
 
 
-*** file manages
-I use buildin dired for now.
+*** file manager
+I use build in dired for now.
 
 **** Work-arounds
 
@@ -89,7 +248,17 @@ Elfeed in my config is interconneted with howm.
   :after howm)
 #+END_SRC
 
-**** advices for interconnecting with howm
+**** functions for interconnecting with howm
+#+BEGIN_SRC elisp
+(defun my-elfeed-file-names-in-howm ()
+  "Return list of absolute filenames of org-elfeed files in howm"
+  (delete-dups
+   (mapcar #'car (howm-grep "\:elfeed\:"
+		      (howm-files-in-directory howm-directory)))))
+  
+#+END_SRC
+
+**** advices for executing functions
 #+BEGIN_SRC elisp
 (define-advice elfeed (:before (&rest _args))
   (setq rmh-elfeed-org-files (my-elfeed-file-names-in-howm)))
