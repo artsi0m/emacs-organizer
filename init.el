@@ -1,4 +1,5 @@
 ;; artsi0m's emacs config
+(org-babel-load-file "~/.emacs.d/layout.org")
 (org-babel-load-file "~/.emacs.d/config.org")
 
 (use-package emacs
@@ -8,9 +9,7 @@
   (when (eq system-type 'windows-nt)
     (setq system-time-locale "C"))
 
-  ;; ls from GNU coreutils on OpenBSD
-  (when (eq system-type 'berkeley-unix)
-  (setq insert-directory-program "gls")) 
+
 
   ;; for org export i need some way to save files in unicode 
 
@@ -21,12 +20,8 @@
 
   (load-file "~/.emacs.d/artsi0m/defuns.el")
 
-  (load-file "~/.emacs.d/artsi0m/advices.el")
+  (load-file "~/.emacs.d/artsi0m/advices.el"))
   
-  ;; I use colemak keyboard layout
-  (load-file "~/.emacs.d/cyrillic-colemak.el")
-  
-  (setq default-input-method "cyrillic-colemak"))
 
 ;; Not working somehow
 ;; (add-to-list 'load-path "~/.emacs.d/artsi0m/")
@@ -119,7 +114,7 @@
  '(org-drill-scope 'directory)
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
-   '(org-timeblock calfw-howm calfw-org calfw-ical org-fc matlab-mode transmission slime eat clang-format+ magit hydra pyvenv racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex vc-use-package elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
+   '(dired org-timeblock calfw-howm calfw-org calfw-ical org-fc matlab-mode transmission slime eat clang-format+ magit hydra pyvenv racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex vc-use-package elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-pomodoro org-drill minsk-theme))
  '(smtpmail-default-smtp-server "smtp.gmail.com")
  '(smtpmail-servers-requiring-authorization "*")
  '(smtpmail-smtp-server "smtp.gmail.com")
