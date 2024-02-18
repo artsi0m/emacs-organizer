@@ -1,0 +1,39 @@
+* colemak layout and emacs IME
+I use colemak keyboard layout for more than five years.
+
+I started using it when I needed [[https://colemak.com/Multilingual][multilungual]] keyboard layout.
+It happened when I was learning German in Goethe Institut.
+Unfortunately, by now I completely forget what I was learning,
+but now I have this [[https://colemak.com/Ergonomic][ergonomic]] layout.
+I can type in this layout without looking at keyboard,
+and I can't do this with qwerty.
+
+#+BEGIN_SRC elisp
+(load-file "~/.emacs.d/cyrillic-colemak.el")
+  
+(setq default-input-method "cyrillic-colemak")
+  
+#+END_SRC
+** enabling layout
+*** OpenBSD kernel wsconsole
+OpenBSD 6.6 was nice release, where it was introduced:
+
+#+BEGIN_SRC shell :eval no 
+kbd us.colemak
+#+END_SRC
+
+*** X11
+With russian layout
+#+BEGIN_SRC shell :eval no 
+  setxkbmap us, ru -variant colemak,
+#+END_SRC
+
+**** Windows
+
+https://colemak.com/Windows
+
+**** OpenSUSE-Tumbleweed wsl
+#+BEGIN_SRC shell :eval no
+localectl set-keymap us-colemak 
+setxkbmap us -version colemak
+#+END_SRC
