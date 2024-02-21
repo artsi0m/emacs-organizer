@@ -6,18 +6,6 @@
 (org-babel-load-file "~/.emacs.d/layout.org")
 (org-babel-load-file "~/.emacs.d/config.org")
 
-(use-package emacs
-  :init
-  ;; for org export i need some way to save files in unicode 
-
-
-  (load-file "~/.emacs.d/artsi0m/const.el")
-
-  (load-file "~/.emacs.d/artsi0m/defuns.el")
-
-  (load-file "~/.emacs.d/artsi0m/advices.el"))
-  
-
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
@@ -28,26 +16,6 @@
 (setq use-package-always-ensure t)
 (unless (require 'bind-key nil t)
   (package-install 'bind-key))
-
-
-(use-package hydra)
-
-(use-package org-fc
-  :load-path ("~/.emacs.d/site-lisp/org-fc/"
-	      "~/.emacs.d/artsi0m/")
-  :custom
-  (org-fc-review-history-file "~/howm/.org-fc-reviews.tsv")
-  (org-fc-directories (my-howm-subsubdirs))
-  (org-fc-mixed-line-endings t)
-  :config
-  (require 'org-fc-hydra)
-  :after howm)
-
-
-
-;; (use-package minsk-theme
-;;   :config
-;;   (when window-system (load-theme 'minsk t)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
