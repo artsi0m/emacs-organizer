@@ -30,11 +30,6 @@
   (package-install 'bind-key))
 
 
-;; Calendar
-(load-file "~/.emacs.d/init-calendar.el")
-
-
-
 (use-package hydra)
 
 (use-package org-fc

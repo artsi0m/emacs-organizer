@@ -4,13 +4,6 @@
 
 
 
-(defun my-org-agenda-file-names-in-howm ()
-  "Return list of absoulute filenames of files with :agenda: tag in howm"
-  (delete-dups
-   (mapcar #'car (howm-grep "\:agenda\:"
-			    (howm-files-in-directory howm-directory)))))
-
-
 (defun my-howm-subsubdir-exclude (dir)
   (if (string-match-p my-howm-subsubdir-regexp dir)
       (unless
