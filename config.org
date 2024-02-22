@@ -307,7 +307,7 @@ However I may use =org-timeblock-list=
 #+BEGIN_SRC elisp
 (define-advice org-timeblock-redraw-buffers (:before (&rest _args))
   (setq org-agenda-files (my-org-agenda-file-names-in-howm)))
-#END_SRC
+#+END_SRC
 
 ***** TODO Fix org-timeblock
 At first switch to commit when it worked.
