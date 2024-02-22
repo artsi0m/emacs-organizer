@@ -245,7 +245,7 @@ Need this for calfw and org-timeblock.
 
 #+RESULTS:
 : my-org-agenda-file-names-in-howm
-Adive:
+
 
 #+BEGIN_SRC elisp
   (define-advice org-agenda (:before (&rest _args))
@@ -295,17 +295,15 @@ that howm would execute after start.
 	    (append '(cfw:howm-schedule-inline) howm-menu-allow))
 #+END_SRC
 
-#+RESULTS:
-| cfw:howm-schedule-inline | cfw:howm-schedule-inline | cfw:howm-schedule-inline | howm-menu-schedule | howm-menu-todo | howm-menu-reminder | howm-menu-recent | howm-menu-random | howm-menu-search | howm-menu-categorized-reminder |
-
 **** Timeblocking with org-timeblock
 By now [2024-02-18] org-timeblock is broken on my side.
 However I may use =org-timeblock-list=
+
 #+BEGIN_SRC elisp
   (use-package org-timeblock)
 #+END_SRC
 
-Advice for integrating with howm:
+***** Advice for integrating with howm:
 #+BEGIN_SRC elisp
 (define-advice org-timeblock-redraw-buffers (:before (&rest _args))
   (setq org-agenda-files (my-org-agenda-file-names-in-howm)))
@@ -314,12 +312,11 @@ Advice for integrating with howm:
 ***** TODO Fix org-timeblock
 At first switch to commit when it worked.
 
+
 *** programming
 **** language server client
 #+BEGIN_SRC elisp
-(use-package eglot
-  :config (add-to-list 'eglot-server-programs
-			  '((c++-mode c-mode) "clangd")))  
+(use-package eglot)
 #+END_SRC
 
 **** python venv support
