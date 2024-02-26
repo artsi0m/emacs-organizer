@@ -315,6 +315,14 @@ However I may use =org-timeblock-list=
 ***** TODO Fix org-timeblock
 At first switch to commit when it worked.
 
+**** Coursework and various docs
+I write my coursework in xelatex.
+#+BEGIN_SRC elisp
+  (setq-default TeX-engine 'xetex)
+#+END_SRC
+
+#+RESULTS:
+: xetex
 
 *** programming
 **** language server client
