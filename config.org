@@ -121,6 +121,7 @@ Use C locale for time on windows
 
 
 ***** TODO Create ffplay-sound to play sound using cross-platform ffplay
+
 **** flashcards inside notes: org-fc
 
 ***** Integration with howm
@@ -189,6 +190,7 @@ Use C locale for time on windows
 #+RESULTS:
 : t
 ***** TODO Make org-fc usable on Windows
+Try to use wsl.
 
 **** flashcards inside notes: org-drill
 I am trying to switch to org-fc by now.
