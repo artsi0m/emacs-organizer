@@ -1,6 +1,9 @@
-[submodule "src/org-fc"]
+[submodule "site-lisp/org-fc"]
 	path = site-lisp/org-fc
 	url = https://git.sr.ht/~l3kn/org-fc
-[submodule "src/calfw-blocks"]
+[submodule "site-lisp/calfw-blocks"]
 	path = site-lisp/calfw-blocks
 	url = https://github.com/ml729/calfw-blocks
+[submodule "site-lisp/org-timeblock"]
+	path = site-lisp/org-timeblock
+	url = git@github.com:artsi0m/org-timeblock.git
