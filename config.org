@@ -300,8 +300,11 @@ By now [2024-02-18] org-timeblock is broken on my side.
 However I may use =org-timeblock-list=
 
 #+BEGIN_SRC elisp
-  (use-package org-timeblock)
+    (use-package org-timeblock
+      :load-path "~/.emacs.d/site-lisp/org-timeblock")
 #+END_SRC
+
+#+RESULTS:
 
 ***** Advice for integrating with howm:
 #+BEGIN_SRC elisp
