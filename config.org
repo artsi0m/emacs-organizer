@@ -190,7 +190,22 @@ Use C locale for time on windows
 #+RESULTS:
 : t
 ***** TODO Make org-fc usable on Windows
-Try to use wsl.
+****** FAIL Try to use wsl.
+#+BEGIN_SRC elisp
+    (when (eq system-type 'windows-nt)
+      (defun org-fc-awk--find (paths)
+	     (format "wsl find -L %s -type f -name \"*.org\" -not -name \".*\" -print0"
+				  (mapconcat
+				   (lambda (path) (shell-quote-argument (expand-file-name path)))
+				   paths " "))))
+  
+      (when (eq system-type 'windows-nt)
+	(defun org-fc-awk--xargs (command)
+	(concat "wsl xargs -0" command)))
+#+END_SRC
+
+#+RESULTS:
+: org-fc-awk--xargs
 
 **** flashcards inside notes: org-drill
 I am trying to switch to org-fc by now.
