@@ -190,22 +190,35 @@ Use C locale for time on windows
 #+RESULTS:
 : t
 ***** TODO Make org-fc usable on Windows
-****** FAIL Try to use wsl.
+****** Set powershell to default shell on Windos
 #+BEGIN_SRC elisp
-    (when (eq system-type 'windows-nt)
-      (defun org-fc-awk--find (paths)
-	     (format "wsl find -L %s -type f -name \"*.org\" -not -name \".*\" -print0"
-				  (mapconcat
-				   (lambda (path) (shell-quote-argument (expand-file-name path)))
-				   paths " "))))
-  
-      (when (eq system-type 'windows-nt)
-	(defun org-fc-awk--xargs (command)
-	(concat "wsl xargs -0" command)))
+  (when (eq system-type 'windows-nt)
+    (setq shell-file-name "pwsh.exe"))
 #+END_SRC
 
-#+RESULTS:
-: org-fc-awk--xargs
+
+******  Try to use powershell.
+******* FAIL Get-Item in place of find
+#+BEGIN_SRC elisp
+     (when (eq system-type 'windows-nt)
+     (defun org-fc-awk--find (paths)
+	    (format
+	     "Get-ChildItem -Path %s -Name -include '*.org' -exclude '.*' -Recurse"
+	     (mapconcat (lambda (path) (shell-quote-argument (expand-file-name path)))
+				  paths " "))))
+
+
+#+END_SRC
+
+******** TODO Replace expand-file-name part
+
+******* Command substitution in place of xargs
+#+BEGIN_SRC elisp
+  (when (eq system-type 'windows-nt)
+    (defun org-fc-awk--xargs (command)
+      (concat  "%{ @(" command ")" )))
+#+END_SRC
+
 
 **** flashcards inside notes: org-drill
 I am trying to switch to org-fc by now.
