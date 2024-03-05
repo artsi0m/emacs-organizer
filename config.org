@@ -369,6 +369,14 @@ I write my coursework in xelatex.
 *** file manager
 I use build in dired for now.
 
+**** Copy, move, rename files across panes
+#+BEGIN_SRC elisp
+  (setq dired-dwim-target t)
+#+END_SRC
+
+#+RESULTS:
+: t
+
 **** Work-arounds
 
 ***** OpenBSD
