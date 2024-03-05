@@ -24,7 +24,7 @@ Transpose operation like with matrices and tables.
 (use-package transpose-frame)
 #+END_SRC
 
-#+RESULTS:
+
 
 *** autocomplete
 Press C-M-i to activate emacs autocomplete.
@@ -51,7 +51,7 @@ Like with dmenu, rofi or fzf, but in emacs.
  (use-package consult-eglot)
 #+END_SRC
 
-#+RESULTS:
+
 
 *** Force UTF-8 and LF line endings
 
@@ -99,7 +99,7 @@ Inline latex previews for formulas in flashcards was initial reason to switch to
   :after howm)
 #+END_SRC
 
-#+RESULTS:
+
 
 **** pomodoro timer inside notes
 I use org-pomodoro.
@@ -115,8 +115,6 @@ Use C locale for time on windows
 (setq system-time-locale "C"))
 #+END_SRC
 
-#+RESULTS:
-: C
 
 
 
@@ -190,7 +188,7 @@ Use C locale for time on windows
 #+RESULTS:
 : t
 ***** TODO Make org-fc usable on Windows
-****** Set powershell to default shell on Windos
+******  Set powershell to default shell on Windows
 #+BEGIN_SRC elisp
   (when (eq system-type 'windows-nt)
     (setq shell-file-name "pwsh.exe"))
@@ -198,25 +196,34 @@ Use C locale for time on windows
 
 
 ******  Try to use powershell.
-******* FAIL Get-Item in place of find
+******* TODO Get-Item in place of find
 #+BEGIN_SRC elisp
-     (when (eq system-type 'windows-nt)
-     (defun org-fc-awk--find (paths)
-	    (format
-	     "Get-ChildItem -Path %s -Name -include '*.org' -exclude '.*' -Recurse"
-	     (mapconcat (lambda (path) (shell-quote-argument (expand-file-name path)))
-				  paths " "))))
-
-
+(when (eq system-type 'windows-nt)
+(defun org-fc-awk--find (paths)
+	      (format
+"Get-ChildItem -Name -include '*.org' -exclude '.*' -Recurse -Path ~/howm/" )))
 #+END_SRC
 
-******** TODO Replace expand-file-name part
+
+#+RESULTS:
+: org-fc-awk--find
+
+******** DONE Replace expand-file-name part
 
 ******* Command substitution in place of xargs
 #+BEGIN_SRC elisp
   (when (eq system-type 'windows-nt)
     (defun org-fc-awk--xargs (command)
-      (concat  "%{ @(" command ")" )))
+      (concat  "%{ @(" command ") }" )))
+#+END_SRC
+
+#+RESULTS:
+: org-fc-awk--xargs
+
+******* Set path for gawk on windows
+#+BEGIN_SRC elisp
+(when (eq system-type 'windows-nt)
+ (setq org-fc-review-history-file "c:/Users/artsi0m/howm/.org-fc-reviews.tsv"))
 #+END_SRC
 
 
