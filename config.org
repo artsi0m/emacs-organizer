@@ -64,7 +64,7 @@ so this forms also present in init.el.
 
 
 
-** use cases my emacs config
+** use cases of my emacs config
 I structured my config by use cases I apply emacs in.
 
 *** study organizer
@@ -77,11 +77,15 @@ I use howm with org mode, to do this I
 2. changed =howm-file-name-format= to end with org file name extension.
 
 
-#+BEGIN_SRC elisp
+#+begin_src elisp
   (use-package howm
     :init (setq howm-view-title-header "*")
-    (setq howm-file-name-format "%Y/%m/%Y-%m-%d-%H%M%S.org"))    
-#+END_SRC
+    (setq howm-file-name-format "%Y/%m/%Y-%m-%d-%H%M%S.org")
+    :custom
+    (howm-view-use-grep 't))    
+#+end_src
+
+#+RESULTS:
 
 **** I use howm with org-mode
 I also use latex with org-mode.
@@ -107,6 +111,8 @@ I use org-pomodoro.
 #+BEGIN_SRC elisp
 (use-package org-pomodoro)
 #+END_SRC
+
+#+RESULTS:
 
 ***** Work arounds
 Use C locale for time on windows
@@ -436,5 +442,20 @@ Elfeed in my config is interconneted with howm.
   (setq rmh-elfeed-org-files (my-elfeed-file-names-in-howm)))
 #+END_SRC
 
+*** email client
 
+I use gnus with =nnimap= source.
+
+This is not the best choice, because with [[https://cr.yp.to/proto/maildir.html][maildir]] it would be indexed fast.
+Other pluses of maildir:
+- You store your mail locally which means you distrust ifrastracture of mail provider.
+- You store your mail locally which means you don't need internet connection.
+- You can configure other program for fetching and indexing.
+
+Minuses of maildir:
+- You can't use it on Windows, not enough programms to fetch and index.
+  
+**** Configured with custom
+I configured my gnus setup enterily with custom,
+see =custom-set-variables= in init.el
 
