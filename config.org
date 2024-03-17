@@ -194,15 +194,19 @@ Use C locale for time on windows
 #+RESULTS:
 : t
 ***** TODO Make org-fc usable on Windows
+Solve [[https://todo.sr.ht/~l3kn/org-fc/43][this]] issue.
+
 ******  Set powershell to default shell on Windows
 #+BEGIN_SRC elisp
   (when (eq system-type 'windows-nt)
     (setq shell-file-name "pwsh.exe"))
 #+END_SRC
 
+****** TODO Try to use busybox from scoop
+Busybox from [[https://scoop.sh][scoop]] has xargs, find and I already installed gawk
 
-******  Try to use powershell.
-******* TODO Get-Item in place of find
+****** FAIL Try to use powershell.
+******* FAIL Get-Item in place of find
 #+BEGIN_SRC elisp
 (when (eq system-type 'windows-nt)
 (defun org-fc-awk--find (paths)
@@ -377,6 +381,13 @@ I write my coursework in xelatex.
 #+BEGIN_SRC elisp
 (use-package pyvenv)
 #+END_SRC
+
+**** matlab course from university
+https://github.com/emacsmirror/matlab-mode
+***** TODO Try to use matlabShell for MS-Windows
+https://www.cs.umb.edu/~ram/matlabShell/index.html
+
+***** NGMI Try to use matlab from WSL
 
 
 *** file manager
