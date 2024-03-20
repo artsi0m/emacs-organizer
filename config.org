@@ -198,44 +198,41 @@ Use C locale for time on windows
 
 #+RESULTS:
 : t
-***** TODO Make org-fc usable on Windows
+***** DONE Make org-fc usable on Windows
 Solve [[https://todo.sr.ht/~l3kn/org-fc/43][this]] issue.
 
-******  Set powershell to default shell on Windows
-#+BEGIN_SRC elisp
+
+****** DONE Try to use busybox from scoop
+Busybox from [[https://scoop.sh][scoop]] has xargs, find and I already installed gawk.
+
+****** org-fc-awk--find on windows
+Done without =shell-quote-argument= function,
+because this function by escaping files made them impossible to find.
+For instance it escapes =c:/= as =c\:/= and it breaks ability to find files.
+
+#+begin_src elisp
   (when (eq system-type 'windows-nt)
-    (setq shell-file-name "pwsh.exe"))
-#+END_SRC
-
-****** TODO Try to use busybox from scoop
-Busybox from [[https://scoop.sh][scoop]] has xargs, find and I already installed gawk
-
-****** FAIL Try to use powershell.
-******* FAIL Get-Item in place of find
-#+BEGIN_SRC elisp
-(when (eq system-type 'windows-nt)
-(defun org-fc-awk--find (paths)
-	      (format
-"Get-ChildItem -Name -include '*.org' -exclude '.*' -Recurse -Path ~/howm/" )))
-#+END_SRC
-
+    (defun org-fc-awk--find (paths)
+	    (format
+"C:\\Users\\artsi0m\\scoop\\shims\\find.exe -L %s -type f -name \"*.org\" -not -name \".*\"  -print0" ;;
+	   (mapconcat  (lambda (path) (expand-file-name path))
+		       paths " ")))) 
+#+end_src
 
 #+RESULTS:
 : org-fc-awk--find
 
-******** DONE Replace expand-file-name part
-
-******* Command substitution in place of xargs
-#+BEGIN_SRC elisp
+****** org-fc-awk--xargs on windows
+#+begin_src elisp
   (when (eq system-type 'windows-nt)
     (defun org-fc-awk--xargs (command)
-      (concat  "%{ @(" command ") }" )))
-#+END_SRC
+    (concat "C:\\Users\\artsi0m\\scoop\\shims\\xargs -0 " command)))
+#+end_src
 
 #+RESULTS:
 : org-fc-awk--xargs
 
-******* Set path for gawk on windows
+****** Set path for gawk on windows
 #+BEGIN_SRC elisp
 (when (eq system-type 'windows-nt)
  (setq org-fc-review-history-file "c:/Users/artsi0m/howm/.org-fc-reviews.tsv"))
