@@ -382,15 +382,24 @@ I write my coursework in xelatex.
 (use-package eglot)
 #+END_SRC
 
-**** python venv support
+****  python venv support
 #+BEGIN_SRC elisp
 (use-package pyvenv)
 #+END_SRC
 
 **** matlab course from university
 https://github.com/emacsmirror/matlab-mode
-***** TODO Try to use matlabShell for MS-Windows
-https://www.cs.umb.edu/~ram/matlabShell/index.html
+
+***** DONE Try to use matlabShell for MS-Windows
+https://www.emacswiki.org/emacs/MatlabMode#h5o-3
+#+begin_src elisp
+  (setq matlab-shell-command
+	"c:/Users/artsi0m/matlabShell/matlabshell.cmd")
+  (setq matlab-shell-command-switches '())
+  (setq matlab-shell-echoes nil)
+#+end_src
+
+#+RESULTS:
 
 ***** NGMI Try to use matlab from WSL
 
