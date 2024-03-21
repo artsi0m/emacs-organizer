@@ -18,13 +18,20 @@ This emacs configuration depends on:
 ** general emacs
 
 *** window management
+**** transpose frame
 If frame is devided by top and bottom, change it to left and right.
 Transpose operation like with matrices and tables.
 #+BEGIN_SRC elisp
 (use-package transpose-frame)
 #+END_SRC
 
+**** enable tab-bar-mode
+#+begin_src elisp
+  (setq tab-bar-mode t)
+#+end_src
 
+#+RESULTS:
+: t
 
 *** autocomplete
 Press C-M-i to activate emacs autocomplete.
