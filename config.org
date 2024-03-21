@@ -238,6 +238,11 @@ For instance it escapes =c:/= as =c\:/= and it breaks ability to find files.
  (setq org-fc-review-history-file "c:/Users/artsi0m/howm/.org-fc-reviews.tsv"))
 #+END_SRC
 
+****** Error that I get sometimes with this setup
+#+begin_src
+(:path "-" :cards (
+  )  :title nil)
+#+end_src
 
 **** flashcards inside notes: org-drill
 I am trying to switch to org-fc by now.
