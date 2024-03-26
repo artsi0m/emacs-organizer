@@ -7,3 +7,6 @@
 [submodule "site-lisp/org-timeblock"]
 	path = site-lisp/org-timeblock
 	url = git@github.com:artsi0m/org-timeblock.git
+[submodule "site-lisp/org-auctex"]
+	path = site-lisp/org-auctex
+	url = git@github.com:karthink/org-auctex.git
