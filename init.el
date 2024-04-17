@@ -2,6 +2,17 @@
 (defvar *fs-encoding* 'utf-8)
 (prefer-coding-system 'utf-8-unix)
 
+;; Load latest org at first
+(use-package org
+  :load-path "~/.emacs.d/elpa/org-mode/lisp/"
+  :custom
+  (org-format-latex-options
+   '(:foreground default :background default :scale 2 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
+		     ("begin" "$1" "$" "$$" "\\(" "\\[")))
+  (org-todo-keywords
+   '((sequence "TODO(1)" "|" "DONE(2)" "FAIL(3)" "NGMI(4)" ))))
+
+
 ;; artsi0m's emacs config
 (org-babel-load-file "~/.emacs.d/layout.org")
 (org-babel-load-file "~/.emacs.d/config.org")
@@ -48,9 +59,13 @@
      (python . t)))
  '(org-drill-cram-hours 72)
  '(org-drill-scope 'directory)
+ '(org-latex-preview-appearance-options
+   '(:foreground default :background default :scale 2 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
+		 ("begin" "$1" "$" "$$" "\\(" "\\[")) nil nil "Customized with use-package org")
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
-   '(org-pomodoro dired calfw-howm calfw-org calfw-ical matlab-mode transmission slime eat clang-format+ magit hydra pyvenv racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-drill minsk-theme))
+   '(org-mode org-latex-impatient org-pomodoro dired calfw-howm calfw-org calfw-ical matlab-mode transmission slime eat clang-format+ magit hydra pyvenv racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-drill minsk-theme))
+ '(package-vc-selected-packages '((org-mode :url "https://code.tecosaur.net/tec/org-mode")))
  '(smtpmail-default-smtp-server "smtp.gmail.com")
  '(smtpmail-servers-requiring-authorization "*")
  '(smtpmail-smtp-server "smtp.gmail.com")

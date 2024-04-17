@@ -104,25 +104,10 @@ I commented =howm-vies-use-grep= variable, because on windows,
 with installed grep from scoop,
 is is somehow made searching slower.
 
-
-
-
-**** I use howm with org-mode
-I also use latex with org-mode.
+**** I use howm with org-mode with latest version of org-latex-preview
 Inline latex previews for formulas in flashcards was initial reason to switch to emacs for me.
-
-#+BEGIN_SRC elisp
-(use-package org
-
-  :custom
-  (org-format-latex-options
-   '(:foreground default :background default :scale 2 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
-		     ("begin" "$1" "$" "$$" "\\(" "\\[")))
-  (org-todo-keywords
-   '((sequence "TODO(1)" "|" "DONE(2)" "FAIL(3)" "NGMI(4)" )))
-  :after howm)
-#+END_SRC
-
+Installed recent version with better handling of latex by [[https://abode.karthinks.com/org-latex-preview/#org00b65d9][this]] guide.
+See init.el 
 
 
 **** pomodoro timer inside notes
@@ -393,13 +378,6 @@ I write my coursework in xelatex.
 #+RESULTS:
 : xetex
 
-**** Set imagemagick for latex previews
-#+begin_src elisp
- (setq org-latex-create-formula-image-program 'imagemagick)
-#+end_src
-
-#+RESULTS:
-: imagemagick
 
 **** FAIL org-mode latex previews on windows workaround
 https://lists.gnu.org/archive/html/emacs-orgmode/2022-10/msg00536.html
@@ -408,23 +386,6 @@ https://lists.gnu.org/archive/html/emacs-orgmode/2022-10/msg00536.html
 
 #+RESULTS:
 : c:/TEMP/
-
-**** org-auctex as a workaround for latex previews in org-mode 
-#+begin_src elisp
-  (use-package org-auctex
-    :load-path "~/.emacs.d/site-lisp/org-auctex"
-    :hook (org-mode . org-auctex-mode))
-#+end_src
-
-#+RESULTS:
-| org-auctex-mode | #[0 \301\211\207 [imenu-create-index-function org-imenu-get-tree] 2] | #[0 \300\301\302\303\304$\207 [add-hook change-major-mode-hook org-fold-show-all append local] 5] | #[0 \300\301\302\303\304$\207 [add-hook change-major-mode-hook org-babel-show-result-all append local] 5] | org-babel-result-hide-spec | org-babel-hide-all-hashes |
-
-**** Preview formulas in flashcards
-#+BEGIN_SRC elisp
-(setq org-latex-create-formula-image-program 'dvipng)
-#+END_SRC
-#+RESULTS:
-: dvipng
 
 *** programming
 **** language server client
