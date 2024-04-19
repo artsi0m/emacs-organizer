@@ -2,17 +2,6 @@
 (defvar *fs-encoding* 'utf-8)
 (prefer-coding-system 'utf-8-unix)
 
-;; Load latest org at first
-(use-package org
-  :load-path "~/.emacs.d/elpa/org-mode/lisp/"
-  :custom
-  (org-format-latex-options
-   '(:foreground default :background default :scale 2 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
-		     ("begin" "$1" "$" "$$" "\\(" "\\[")))
-  (org-todo-keywords
-   '((sequence "TODO(1)" "|" "DONE(2)" "FAIL(3)" "NGMI(4)" ))))
-
-
 ;; artsi0m's emacs config
 (org-babel-load-file "~/.emacs.d/layout.org")
 (org-babel-load-file "~/.emacs.d/config.org")

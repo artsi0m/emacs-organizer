@@ -69,12 +69,6 @@ so this forms also present in init.el.
 (prefer-coding-system 'utf-8-unix)
 #+END_SRC
 
-***  Set powershell to default shell on Windows
-#+BEGIN_SRC elisp
-  (when (eq system-type 'windows-nt)
-    (setq shell-file-name "pwsh.exe"))
-#+END_SRC
-
 
 ** use cases of my emacs config
 I structured my config by use cases I apply emacs in.
@@ -211,12 +205,13 @@ because this function by escaping files made them impossible to find.
 For instance it escapes =c:/= as =c\:/= and it breaks ability to find files.
 
 #+begin_src elisp
-  (when (eq system-type 'windows-nt)
-    (defun org-fc-awk--find (paths)
-	    (format
-"C:\\Users\\artsi0m\\scoop\\shims\\find.exe -L %s -type f -name \"*.org\" -not -name \".*\"  -print0" ;;
-	   (mapconcat  (lambda (path) (expand-file-name path))
-		       paths " ")))) 
+    (when (eq system-type 'windows-nt)
+      (defun org-fc-awk--find (paths)
+  	    (format
+  "C:\\Users\\artsi0m\\scoop\\shims\\find.exe -L %s -type f -name \"*.org\" -not -name \".*\"  -print0" ;;
+  	   (mapconcat  (lambda (path)
+(shell-quote-argument (expand-file-name path)))
+  		       paths " ")))) 
 #+end_src
 
 #+RESULTS:
@@ -226,7 +221,7 @@ For instance it escapes =c:/= as =c\:/= and it breaks ability to find files.
 #+begin_src elisp
   (when (eq system-type 'windows-nt)
     (defun org-fc-awk--xargs (command)
-    (concat "C:\\Users\\artsi0m\\scoop\\shims\\xargs -0 " command)))
+    (concat "C:\\Users\\artsi0m\\scoop\\shims\\xargs -0 "  command)))
 #+end_src
 
 #+RESULTS:
