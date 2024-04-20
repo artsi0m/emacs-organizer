@@ -98,11 +98,14 @@ I commented =howm-vies-use-grep= variable, because on windows,
 with installed grep from scoop,
 is is somehow made searching slower.
 
-**** I use howm with org-mode with latest version of org-latex-preview
-Inline latex previews for formulas in flashcards was initial reason to switch to emacs for me.
-Installed recent version with better handling of latex by [[https://abode.karthinks.com/org-latex-preview/#org00b65d9][this]] guide.
-See init.el 
+**** Various org-todo-keywords
+#+begin_src elisp
+  (setq org-todo-keywords
+      '((sequence "TODO" "|" "DONE" "FAIL" "NGMI" )))
+#+end_src
 
+#+RESULTS:
+| sequence | TODO |   |   | DONE | FAIL | NGMI |
 
 **** pomodoro timer inside notes
 I use org-pomodoro.
@@ -115,10 +118,14 @@ I use org-pomodoro.
 
 ***** Work arounds
 Use C locale for time on windows
-#+BEGIN_SRC elisp
+
+#+begin_src elisp
 (when (eq system-type 'windows-nt)
 (setq system-time-locale "C"))
-#+END_SRC
+#+end_src
+
+#+RESULTS:
+: C
 
 
 
@@ -374,13 +381,6 @@ I write my coursework in xelatex.
 : xetex
 
 
-**** FAIL org-mode latex previews on windows workaround
-https://lists.gnu.org/archive/html/emacs-orgmode/2022-10/msg00536.html
-=(setq temporary-file-directory "c:/TEMP/")=
-
-
-#+RESULTS:
-: c:/TEMP/
 
 *** programming
 **** language server client
