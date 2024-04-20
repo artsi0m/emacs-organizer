@@ -1,0 +1,19 @@
+# Files resulted from tangle operation
+config.el
+layout.el
+
+.\#*
+network-security.data
+tramp
+
+# eshell
+/eshell/history
+/eshell/lastdir
+
+# directories
+auto-save-list/
+newsticker/
+org-persist/
+persist/
+transient/
+url/
