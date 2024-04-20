@@ -437,11 +437,13 @@ Elfeed in my config is interconneted with howm.
 
 **** elfeed use-package:
 #+BEGIN_SRC elisp
-(use-package elfeed
+  (use-package elfeed
   :ensure t
   :config
   (setq elfeed-db-directory "~/howm/.elfeed")
     (setq elfeed-curl-program-name "curl"))
+  
+  (use-package elfeed-protocol) 
 #+END_SRC
 
 **** elfeed-org use-package
