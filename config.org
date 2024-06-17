@@ -16,19 +16,7 @@ This emacs configuration depends on:
 - gnu coreutils for dired on OpenBSD
 
 ** general emacs
-*** package management
-
-#+begin_src elisp
-(require 'use-package)
-(require 'package)
-(setq use-package-always-ensure t)
-
-(add-to-list 'package-archives '("melpa-stable" . "https://melpa.org/packages/") t)
-(package-initialize)
-#+end_src
-
-#+RESULTS:
-**** Add 4 main package archives
+*** Add 4 main package archives
 #+begin_src elisp
 (require 'package)
 (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
