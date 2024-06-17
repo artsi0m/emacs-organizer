@@ -27,9 +27,9 @@ This emacs configuration depends on:
 #+end_src
 
 #+RESULTS:
-**** Set priorites for package-archives
+*** Set priorites for package-archives
 #+begin_src elisp
-  (setq package-archive-priorities
+(setq package-archive-priorities
   '(("gnu" . 40)
     ("nongnu" . 30)
     ("melpa-stable" . 20)
