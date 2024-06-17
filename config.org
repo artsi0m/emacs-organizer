@@ -16,6 +16,41 @@ This emacs configuration depends on:
 - gnu coreutils for dired on OpenBSD
 
 ** general emacs
+*** package management
+
+#+begin_src elisp
+(require 'use-package)
+(require 'package)
+(setq use-package-always-ensure t)
+
+(add-to-list 'package-archives '("melpa-stable" . "https://melpa.org/packages/") t)
+(package-initialize)
+#+end_src
+
+#+RESULTS:
+**** Add 4 main package archives
+#+begin_src elisp
+(require 'package)
+(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/") t)
+(package-initialize)
+#+end_src
+
+#+RESULTS:
+**** Set priorites for package-archives
+#+begin_src elisp
+  (setq package-archive-priorities
+  '(("gnu" . 40)
+    ("nongnu" . 30)
+    ("melpa-stable" . 20)
+    ("melpa" . 10)))
+#+end_src
+
+#+RESULTS:
+: ((gnu . 40) (nongnu . 30) (melpa-stable . 20) (melpa . 10))
+
 
 *** window management
 **** transpose frame
@@ -24,6 +59,9 @@ Transpose operation like with matrices and tables.
 #+BEGIN_SRC elisp
 (use-package transpose-frame)
 #+END_SRC
+
+#+RESULTS:
+: t
 
 **** enable tab-bar-mode
 #+begin_src elisp
@@ -84,11 +122,12 @@ I use howm with org mode, to do this I
 
 
 #+begin_src elisp
-  (use-package howm
-    :init (setq howm-view-title-header "*")
-    (setq howm-file-name-format "%Y/%m/%Y-%m-%d-%H%M%S.org"))
-    ;; :custom
-    ;; (howm-view-use-grep 't))
+(use-package howm
+  :init (setq howm-view-title-header "*")
+  (setq howm-file-name-format "%Y/%m/%Y-%m-%d-%H%M%S.org")
+  :pin "melpa")
+  ;; :custom
+  ;; (howm-view-use-grep 't))
 #+end_src
 
 #+RESULTS:
@@ -288,30 +327,9 @@ therefor there is dedicated dir in howm.
 #+RESULTS:
 : my-org-drill-create
 
-**** agenda in howm
-Need this for calfw and org-timeblock.
-#+BEGIN_SRC elisp
-  (defun my-org-agenda-file-names-in-howm ()
-  "Return list of absoulute filenames of files with :agenda: tag in howm"
-  (delete-dups
-   (mapcar #'car (howm-grep "\:agenda\:"
-			    (howm-files-in-directory howm-directory)))))
 
-#+END_SRC
-
-#+RESULTS:
-: my-org-agenda-file-names-in-howm
-
-
-#+BEGIN_SRC elisp
-  (define-advice org-agenda (:before (&rest _args))
-  (setq org-agenda-files (my-org-agenda-file-names-in-howm)))
-
-#+END_SRC
-
-#+RESULTS:
-
-***** TODO Try to use org-gcal
+**** DONE Try to use org-gcal
+o
 **** calendar interconnected with notes: calfw
 Calfw use dates from holidays.el by default,
 but there is packages that adds org and howm dates support.
@@ -362,13 +380,7 @@ However I may use =org-timeblock-list=
 
 #+RESULTS:
 
-***** Advice for integrating with howm:
-#+BEGIN_SRC elisp
-(define-advice org-timeblock-redraw-buffers (:before (&rest _args))
-  (setq org-agenda-files (my-org-agenda-file-names-in-howm)))
-#+END_SRC
-
-***** TODO Fix org-timeblock
+***** DONE Fix org-timeblock
 At first switch to commit when it worked.
 
 **** Coursework and various docs
@@ -409,6 +421,13 @@ https://www.emacswiki.org/emacs/MatlabMode#h5o-3
 
 ***** NGMI Try to use matlab from WSL
 
+**** Use sbcl as lisp interpreter
+#+begin_src elisp
+  (setq inferior-lisp-program "sbcl")
+#+end_src
+
+#+RESULTS:
+: sbcl
 
 *** file manager
 I use build in dired for now.

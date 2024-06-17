@@ -1,22 +1,15 @@
-;; coping with codepages
+;; coping with codepages on MS windows
+;; This part should be loaded before reading org files
+;; to make it possible to read 1/3
 (defvar *fs-encoding* 'utf-8)
 (prefer-coding-system 'utf-8-unix)
 
-;; artsi0m's emacs config
+;; 2/3 My org configs and private org-gcal-config.el
 (org-babel-load-file "~/.emacs.d/layout.org")
 (org-babel-load-file "~/.emacs.d/config.org")
+(load-file "~/.emacs.d/org-gcal-config.el")
 
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-
-(package-initialize)
-
-;; use-package -- added by Illya
-(setq use-package-enable-imenu-support t)
-(setq use-package-always-ensure t)
-(unless (require 'bind-key nil t)
-  (package-install 'bind-key))
-
+;; 3/3 variables set by custom
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -37,6 +30,7 @@
  '(gnus-startup-file "~/howm/.newsrc")
  '(message-send-mail-function 'smtpmail-send-it)
  '(message-sendmail-envelope-from nil)
+ '(org-agenda-files nil)
  '(org-babel-C++-compiler "clang++")
  '(org-babel-C-compiler "clang")
  '(org-babel-load-languages
@@ -53,7 +47,7 @@
 		 ("begin" "$1" "$" "$$" "\\(" "\\[")) nil nil "Customized with use-package org")
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
-   '(org-mode org-latex-impatient org-pomodoro dired calfw-howm calfw-org calfw-ical matlab-mode transmission slime eat clang-format+ magit hydra pyvenv racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-drill minsk-theme))
+   '(hyperbole toc-org ox-pandoc org-gcal org-mode org-latex-impatient org-pomodoro dired calfw-howm calfw-org calfw-ical matlab-mode transmission slime eat clang-format+ magit hydra pyvenv racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-drill minsk-theme))
  '(package-vc-selected-packages '((org-mode :url "https://code.tecosaur.net/tec/org-mode")))
  '(smtpmail-default-smtp-server "smtp.gmail.com")
  '(smtpmail-servers-requiring-authorization "*")
