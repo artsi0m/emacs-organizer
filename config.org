@@ -112,12 +112,11 @@ I use howm with org mode, to do this I
 
 
 #+begin_src elisp
-(use-package howm
-  :init (setq howm-view-title-header "*")
-  (setq howm-file-name-format "%Y/%m/%Y-%m-%d-%H%M%S.org")
-  :pin "melpa")
-  ;; :custom
-  ;; (howm-view-use-grep 't))
+  (use-package howm
+    :init (setq howm-view-title-header "*")
+    (setq howm-file-name-format "%Y/%m/%Y-%m-%d-%H%M%S.org"))
+    ;; :custom
+    ;; (howm-view-use-grep 't))
 #+end_src
 
 #+RESULTS:
