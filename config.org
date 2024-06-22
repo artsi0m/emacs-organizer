@@ -390,22 +390,6 @@ I write my coursework in xelatex.
 (use-package pyvenv)
 #+END_SRC
 
-**** matlab course from university
-https://github.com/emacsmirror/matlab-mode
-
-***** DONE Try to use matlabShell for MS-Windows
-https://www.emacswiki.org/emacs/MatlabMode#h5o-3
-#+begin_src elisp
-  (setq matlab-shell-command
-	"c:/Users/artsi0m/matlabShell/matlabshell.cmd")
-  (setq matlab-shell-command-switches '())
-  (setq matlab-shell-echoes nil)
-#+end_src
-
-#+RESULTS:
-
-***** NGMI Try to use matlab from WSL
-
 **** Use sbcl as lisp interpreter
 #+begin_src elisp
   (setq inferior-lisp-program "sbcl")
