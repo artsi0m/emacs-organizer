@@ -107,23 +107,18 @@ I structured my config by use cases I apply emacs in.
 **** Notes, personal wiki, z-word — howm
 
 I use handy own wiki mode, and I use it by a lot.
-I use howm with org mode, to do this I
-1. changed =howm-view-title-header= to org-mode title
-2. changed =howm-file-name-format= to end with org file name extension.
-
+I use howm with org mode, to do this I decided to put
+=# -*- mode: org -*-= in every file with org.
+I also plan to use howm with markdown and other syntaxes later.
 
 #+begin_src elisp
-  (use-package howm
-    :init (setq howm-view-title-header "*")
-    (setq howm-file-name-format "%Y/%m/%Y-%m-%d-%H%M%S.org"))
-    ;; :custom
-    ;; (howm-view-use-grep 't))
+  (use-package howm)
 #+end_src
 
 #+RESULTS:
 
-**** Problem with howm on windows
-I commented =howm-vies-use-grep= variable, because on windows,
+**** Why I dont use external grep
+I removed =howm-vies-use-grep= variable, because on windows,
 with installed grep from scoop,
 is is somehow made searching slower.
 
