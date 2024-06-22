@@ -289,32 +289,9 @@ I am trying to switch to org-fc by now.
 			    (howm-files-in-directory howm-directory)))))
 #+END_SRC
 
-***** Command for creating new org-drill cards.
-
-I want to create less of them, actually.
-But by now I want some kind of separtion,
-therefor there is dedicated dir in howm.
-
-#+BEGIN_SRC elisp
-  (defun my-org-drill-create ()
-    (interactive)
-    (let ((filename   (format "~/howm/org.drill.cards/%s.org"
-				      (format-time-string "%F-%H%M%S"))))
-	    (make-empty-file filename)
-	    (switch-to-buffer filename)
-	    (set-visited-file-name filename)
-	    (org-mode)
-	    (howm-mode)
-	    (org-insert-heading)))
-
-#+END_SRC
-
-#+RESULTS:
-: my-org-drill-create
-
 
 **** DONE Try to use org-gcal
-o
+
 **** calendar interconnected with notes: calfw
 Calfw use dates from holidays.el by default,
 but there is packages that adds org and howm dates support.
