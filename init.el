@@ -4,12 +4,8 @@
 (defvar *fs-encoding* 'utf-8)
 (prefer-coding-system 'utf-8-unix)
 
-;; 2/3 My org configs and private org-gcal-config.el
-(org-babel-load-file "~/.emacs.d/layout.org")
-(org-babel-load-file "~/.emacs.d/config.org")
-(load-file "~/.emacs.d/org-gcal-config.el")
 
-;; 3/3 variables set by custom
+;; 2/3 variables set by custom
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -63,3 +59,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Iosevka Term Extended" :foundry "outline" :slant normal :weight regular :height 120 :width normal)))))
+
+;; 3/3 My org configs and private org-gcal-config.el
+(org-babel-load-file "~/.emacs.d/layout.org")
+(org-babel-load-file "~/.emacs.d/config.org")
+(load-file "~/.emacs.d/org-gcal-config.el")
