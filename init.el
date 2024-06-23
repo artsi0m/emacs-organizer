@@ -4,12 +4,8 @@
 (defvar *fs-encoding* 'utf-8)
 (prefer-coding-system 'utf-8-unix)
 
-;; 2/3 My org configs and private org-gcal-config.el
-(org-babel-load-file "~/.emacs.d/layout.org")
-(org-babel-load-file "~/.emacs.d/config.org")
-(load-file "~/.emacs.d/org-gcal-config.el")
 
-;; 3/3 variables set by custom
+;; 2/3 variables set by custom
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -48,7 +44,6 @@
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
    '(hyperbole toc-org ox-pandoc org-gcal org-mode org-latex-impatient org-pomodoro dired calfw-howm calfw-org calfw-ical matlab-mode transmission slime eat clang-format+ magit hydra pyvenv racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-drill minsk-theme))
- '(package-vc-selected-packages '((org-mode :url "https://code.tecosaur.net/tec/org-mode")))
  '(smtpmail-default-smtp-server "smtp.gmail.com")
  '(smtpmail-servers-requiring-authorization "*")
  '(smtpmail-smtp-server "smtp.gmail.com")
@@ -64,3 +59,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Iosevka Term Extended" :foundry "outline" :slant normal :weight regular :height 120 :width normal)))))
+
+;; 3/3 My org configs and private org-gcal-config.el
+(org-babel-load-file "~/.emacs.d/layout.org")
+(org-babel-load-file "~/.emacs.d/config.org")
+(load-file "~/.emacs.d/org-gcal-config.el")
