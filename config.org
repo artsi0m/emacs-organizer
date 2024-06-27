@@ -231,9 +231,6 @@ Solve [[https://todo.sr.ht/~l3kn/org-fc/43][this]] issue.
 Busybox from [[https://scoop.sh][scoop]] has xargs, find and I already installed gawk.
 
 ****** org-fc-awk--find on windows
-Done without =shell-quote-argument= function,
-because this function by escaping files made them impossible to find.
-For instance it escapes =c:/= as =c\:/= and it breaks ability to find files.
 
 #+begin_src elisp
     (when (eq system-type 'windows-nt)
