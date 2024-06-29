@@ -1,10 +1,19 @@
+# -*- mode: gitignore; -*-
+
 # Files resulted from tangle operation
 config.el
 layout.el
 
 .\#*
 network-security.data
+oauth2-auto.plist
 tramp
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
 
 # eshell
 /eshell/history
@@ -17,3 +26,46 @@ org-persist/
 persist/
 transient/
 url/
+request/
+
+# EIEIO
+srecode-map.el
+
+# Org-mode
+.org-generic-id-locations
+.org-id-locations
+*_archive
+
+# flymake-mode
+*_flymake.*
+
+# eshell files
+/eshell/history
+/eshell/lastdir
+
+# elpa packages
+/elpa/
+
+# reftex files
+*.rel
+
+# AUCTeX auto folder
+/auto/
+
+# cask packages
+.cask/
+dist/
+
+# Flycheck
+flycheck_*.el
+
+# server auth directory
+/server/
+
+# projectiles files
+.projectile
+
+# directory configuration
+.dir-locals.el
+
+
