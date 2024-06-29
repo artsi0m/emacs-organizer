@@ -58,7 +58,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Iosevka Term Extended" :foundry "outline" :slant normal :weight regular :height 120 :width normal)))))
+ '(default ((t (:family "Iosevka Term Extended" :foundry "outline" :slant normal :weight regular :height 120 :width normal))))
+ '(adoc-title-0-face ((t (:inherit adoc-title-face :height 1.5))))
+ '(adoc-title-1-face ((t (:inherit adoc-title-face :height 1.4))))
+ '(adoc-title-2-face ((t (:inherit adoc-title-face :height 1.3))))
+ '(adoc-title-3-face ((t (:inherit adoc-title-face :height 1.2))))
+ '(adoc-title-4-face ((t (:inherit adoc-title-face :height 1.1))))
+ '(adoc-title-5-face ((t (:inherit adoc-title-face :height 1.0)))))
 
 ;; 3/3 My org configs and private org-gcal-config.el
 (org-babel-load-file "~/.emacs.d/layout.org")
