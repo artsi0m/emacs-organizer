@@ -69,4 +69,4 @@
 ;; 3/3 My org configs and private org-gcal-config.el
 (org-babel-load-file "~/.emacs.d/layout.org")
 (org-babel-load-file "~/.emacs.d/config.org")
-(load-file "~/.emacs.d/org-gcal-config.el")
+

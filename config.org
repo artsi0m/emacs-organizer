@@ -328,19 +328,6 @@ that howm would execute after start.
 	    (append '(cfw:howm-schedule-inline) howm-menu-allow))
 #+END_SRC
 
-**** Timeblocking with org-timeblock
-By now [2024-02-18] org-timeblock is broken on my side.
-However I may use =org-timeblock-list=
-
-#+BEGIN_SRC elisp
-    (use-package org-timeblock
-      :load-path "~/.emacs.d/site-lisp/org-timeblock")
-#+END_SRC
-
-#+RESULTS:
-
-***** DONE Fix org-timeblock
-At first switch to commit when it worked.
 
 **** Coursework and various docs
 I write my coursework in xelatex.
