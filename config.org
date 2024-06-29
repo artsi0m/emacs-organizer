@@ -287,48 +287,6 @@ I am trying to switch to org-fc by now.
 #+END_SRC
 
 
-**** DONE Try to use org-gcal
-
-**** calendar interconnected with notes: calfw
-Calfw use dates from holidays.el by default,
-but there is packages that adds org and howm dates support.
-There is also ability to get schedule from iis.bsuir.by in iCalendar format.
-
-#+BEGIN_SRC elisp
-(use-package calfw-org :after calfw)
-(use-package calfw-howm :after calfw)
-#+END_SRC
-
-***** use-package and calendar command
-#+BEGIN_SRC elisp
-  (use-package calfw
-  :config
-  (require 'calfw-org)
-  (require 'calfw-howm)
-  
-  (defun my-open-calendar ()
-    (interactive)
-    (setq org-agenda-files (my-org-agenda-file-names-in-howm))
-    (cfw:open-calendar-buffer
-     :contents-sources
-     (list
-      (cfw:org-create-source)
-      (cfw:howm-create-source))))
-  
-  :after howm)
-#+END_SRC
-
-#+RESULTS:
-
-***** Draw calendar in howm (inline)
-Append function into howm allowed functions,
-that howm would execute after start.
-#+BEGIN_SRC elisp
-(setq howm-menu-allow
-	    (append '(cfw:howm-schedule-inline) howm-menu-allow))
-#+END_SRC
-
-
 **** Coursework and various docs
 I write my coursework in xelatex.
 #+BEGIN_SRC elisp
