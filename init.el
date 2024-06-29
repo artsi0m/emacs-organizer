@@ -44,6 +44,7 @@
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
    '(hyperbole toc-org ox-pandoc org-gcal org-mode org-latex-impatient org-pomodoro dired calfw-howm calfw-org calfw-ical matlab-mode transmission slime eat clang-format+ magit hydra pyvenv racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-drill minsk-theme))
+ '(scroll-bar-mode nil)
  '(smtpmail-default-smtp-server "smtp.gmail.com")
  '(smtpmail-servers-requiring-authorization "*")
  '(smtpmail-smtp-server "smtp.gmail.com")
