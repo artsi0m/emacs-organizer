@@ -163,7 +163,6 @@ I write my coursework in xelatex.
 : xetex
 
 
-
 *** programming
 **** language server client
 #+BEGIN_SRC elisp
@@ -199,13 +198,17 @@ I use build in dired for now.
 ***** OpenBSD
 Use ls from GNU coreutils on OpenBSD
 #+BEGIN_SRC elisp
-  (when (eq system-type 'berkeley-unix)
-  (setq insert-directory-program "gls")) 
+    (when (eq system-type 'berkeley-unix)
+    (setq insert-directory-program "gls")
+    (setq find-program "gfind"))
 #+END_SRC
 
+#+RESULTS:
+: gfind
 
 
-*** rss reader 
+
+*** rss reader
 Elfeed in my config is interconneted with howm.
 
 **** elfeed use-package:
@@ -215,7 +218,6 @@ Elfeed in my config is interconneted with howm.
   :config
   (setq elfeed-db-directory "~/howm/.elfeed")
     (setq elfeed-curl-program-name "curl"))
-  
   (use-package elfeed-protocol) 
 #+END_SRC
 
