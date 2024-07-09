@@ -62,6 +62,13 @@ Transpose operation like with matrices and tables.
 #+RESULTS:
 : t
 
+**** disable scroll-bar
+#+begin_src elisp
+  (setq scroll-bar-mode nil)
+#+end_src
+
+#+RESULTS:
+
 *** autocomplete
 Press C-M-i to activate emacs autocomplete.
 
