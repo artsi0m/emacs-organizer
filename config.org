@@ -79,7 +79,7 @@ https://github.com/minad/vertico?tab=readme-ov-file#completion-at-point-and-comp
 This configuration give my ability to perform fuzzy search.
 Like with dmenu, rofi or fzf, but in emacs.
 
-#+BEGIN_SRC elisp
+#+begin_src elisp
 (use-package vertico
   :init (vertico-mode)
    (setq completion-in-region-function
@@ -92,7 +92,9 @@ Like with dmenu, rofi or fzf, but in emacs.
  (use-package consult)
 
  (use-package consult-eglot)
-#+END_SRC
+#+end_src
+
+#+results:
 
 
 
@@ -213,8 +215,6 @@ Use ls from GNU coreutils on OpenBSD
 
 #+RESULTS:
 : gfind
-
-
 
 *** rss reader
 Elfeed in my config is interconneted with howm.
