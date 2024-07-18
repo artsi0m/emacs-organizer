@@ -205,17 +205,6 @@ I use build in dired for now.
 
 **** Work-arounds
 
-***** OpenBSD
-Use ls from GNU coreutils on OpenBSD
-#+BEGIN_SRC elisp
-    (when (eq system-type 'berkeley-unix)
-    (setq insert-directory-program "gls")
-    (setq find-program "gfind"))
-#+END_SRC
-
-#+RESULTS:
-: gfind
-
 *** rss reader
 Elfeed in my config is interconneted with howm.
 

@@ -1,0 +1,11 @@
+** I used OpenBSD back than
+
+Use ls from GNU coreutils on OpenBSD
+#+begin_src elisp
+  (when (eq system-type 'berkeley-unix)
+    (setq insert-directory-program "gls")
+    (setq find-program "gfind"))
+#+end_src
+
+
+
