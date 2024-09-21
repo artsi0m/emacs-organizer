@@ -134,6 +134,8 @@ like two-panel file manager
 *** git client
 #+begin_src elisp
   (use-package magit :ensure t)
+
+  (use-package git-modes :ensure t)
 #+end_src
 
 #+RESULTS:

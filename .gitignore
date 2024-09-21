@@ -2,7 +2,9 @@
 
 # Files resulted from tangle operation
 config.el
-layout.el
+
+# org
+.org-generic-id-locations
 
 .\#*
 network-security.data
@@ -20,6 +22,9 @@ auto-save-list
 /eshell/lastdir
 
 # directories
+games/
+emms/
+eln-cache/
 auto-save-list/
 newsticker/
 org-persist/
@@ -31,14 +36,6 @@ request/
 # EIEIO
 srecode-map.el
 
-# Org-mode
-.org-generic-id-locations
-.org-id-locations
-*_archive
-
-# flymake-mode
-*_flymake.*
-
 # eshell files
 /eshell/history
 /eshell/lastdir
@@ -46,26 +43,15 @@ srecode-map.el
 # elpa packages
 /elpa/
 
-# reftex files
-*.rel
+session.*
 
-# AUCTeX auto folder
-/auto/
+# nov epub reader
+nov-places
+places
 
-# cask packages
-.cask/
-dist/
+# rmsbolt and bearbolt
+beardbolt-sandbox/
+compiler-explorer
 
-# Flycheck
-flycheck_*.el
-
-# server auth directory
-/server/
-
-# projectiles files
-.projectile
-
-# directory configuration
-.dir-locals.el
-
-
+# eww
+eww-bookmarks
