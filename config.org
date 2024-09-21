@@ -345,3 +345,10 @@ Elfeed in my config is interconneted with howm.
 
 #+RESULTS:
 | nnimap | gmail | (nnimap-address imap.gmail.com) | (nnmail-expiry-target nnimap+gmail:[Gmail]/Корзина) | (nnimap-server-port 993) | (nnimap-stream ssl) | (gnus-search-engine gnus-search-imap) | (nnmail-expiry-wait 5) |
+
+*** epub reader
+#+begin_src elisp
+  (use-package nov :ensure t)
+#+end_src
+
+#+RESULTS:
