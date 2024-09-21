@@ -116,6 +116,19 @@ use emacs icons instead of gtk ones
 #+RESULTS:
 : yes-or-no
 
+*** modus-themes
+
+Enable only in graphical mode.
+#+begin_src elisp
+  (use-package modus-themes :ensure t)
+
+  (when (display-graphic-p)
+    (enable-theme 'modus-operandi))
+#+end_src
+
+#+RESULTS:
+
+
 ** config by use cases
 I structured my config by use cases I apply emacs in.
 
