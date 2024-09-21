@@ -123,6 +123,7 @@ Enable only in graphical mode.
   (use-package modus-themes :ensure t)
 
   (when (display-graphic-p)
+    (load-theme 'modus-operandi t)
     (enable-theme 'modus-operandi))
 #+end_src
 
