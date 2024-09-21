@@ -6,17 +6,9 @@ So, look at init.el
 ** layout
 I use colemak keyboard layout see layout.org file -- [[./layout.org][link]]
 
-** Dependensies
-
-This emacs configuration depends on:
-- ability of emacs to use gui features to render formulas
-- texlive or miktex for describing formulas
-- perl as a dependency for latexmk
-- clangd for C and C++ programming
-- gnu coreutils for dired on OpenBSD
-
 ** general emacs
-*** Add 4 main package archives
+*** package management
+Add 4 main package archives
 #+begin_src elisp
   (require 'package)
   (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
@@ -30,7 +22,7 @@ This emacs configuration depends on:
 : t
 
 
-*** Set priorites for package-archives
+Set priorites for package-archives
 #+begin_src elisp
 (setq package-archive-priorities
   '(("gnu" . 40)
@@ -44,17 +36,15 @@ This emacs configuration depends on:
 
 
 *** window management
-**** transpose frame
 If frame is devided by top and bottom, change it to left and right.
 Transpose operation like with matrices and tables.
 #+BEGIN_SRC elisp
-(use-package transpose-frame)
+(use-package transpose-frame :ensure t)
 #+END_SRC
 
 #+RESULTS:
-: t
 
-**** enable tab-bar-mode
+Enable tab-bar-mode
 #+begin_src elisp
   (setq tab-bar-mode t)
 #+end_src
@@ -62,7 +52,7 @@ Transpose operation like with matrices and tables.
 #+RESULTS:
 : t
 
-**** disable scroll-bar
+Disable scroll-bar
 #+begin_src elisp
   (setq scroll-bar-mode nil)
 #+end_src
@@ -80,18 +70,19 @@ This configuration give my ability to perform fuzzy search.
 Like with dmenu, rofi or fzf, but in emacs.
 
 #+begin_src elisp
-(use-package vertico
-  :init (vertico-mode)
-   (setq completion-in-region-function
-	    (lambda (&rest args)
-	      (apply (if vertico-mode
-			 #'consult-completion-in-region
-		       #'completion--in-region)
-		     args))))
+  (use-package vertico
+    :init (vertico-mode)
+     (setq completion-in-region-function
+	      (lambda (&rest args)
+		(apply (if vertico-mode
+			   #'consult-completion-in-region
+			 #'completion--in-region)
+		       args)))
+     :ensure t)
 
- (use-package consult)
+   (use-package consult :ensure t)
 
- (use-package consult-eglot)
+   (use-package consult-eglot :ensure t)
 #+end_src
 
 #+results:
@@ -107,31 +98,84 @@ so this forms also present in init.el.
 (prefer-coding-system 'utf-8-unix)
 #+END_SRC
 
-
-** use cases of my emacs config
-I structured my config by use cases I apply emacs in.
-
-*** study organizer
-
-**** Notes, personal wiki, z-word — howm
-
-I use handy own wiki mode, and I use it by a lot.
-I use howm with org mode, to do this I decided to put
-=# -*- mode: org -*-= in every file with org.
-I also plan to use howm with markdown and other syntaxes later.
+*** tool-bar
+Show both icons and caption
+#+begin_src elisp
+   (setq tool-bar-style 'both)
+#+end_src
+use emacs icons instead of gtk ones
 
 #+begin_src elisp
-  (use-package howm)
+  (advice-add #'x-gtk-map-stock :override #'ignore)
+#+end_src
+*** y-or-n
+#+begin_src elisp
+  (defalias 'yes-or-no #'y-or-n-p)
+#+end_src
+
+#+RESULTS:
+: yes-or-no
+
+** config by use cases
+I structured my config by use cases I apply emacs in.
+
+*** file manager
+I use build in dired for now.
+
+Copy, move, rename files across panes,
+like two-panel file manager
+#+begin_src elisp
+    (setq dired-dwim-target t)
+#+end_src
+
+#+RESULTS:
+: t
+
+*** git client
+#+begin_src elisp
+  (use-package magit :ensure t)
 #+end_src
 
 #+RESULTS:
 
-**** Why I dont use external grep
-I removed =howm-vies-use-grep= variable, because on windows,
-with installed grep from scoop,
-is is somehow made searching slower.
+*** organizer
+#+begin_src elisp
+     (use-package howm :config
+       (setq howm-view-use-grep t)
+       :ensure t)
+#+end_src
 
-**** Various org-todo-keywords
+#+RESULTS:
+
+Function to add prop-line,
+so I can use howm with any other major mode,
+with org-mode for examlpe
+#+begin_src elisp
+      (defun howm-insert-prop-line ()
+  "Activate major mode and modify the file so that this mode is activated
+  automatically the next time it is opened"
+      (interactive)
+      (howm-mode)
+      (let*
+	  ((modes (mapcar #'cdr auto-mode-alist))
+	   (mode-name (completing-read "Choose major mode: " modes))
+	   (mode (intern-soft mode-name)))
+	(unless (or (null mode)
+	    (eq mode major-mode))
+	  (funcall mode)
+	  (howm-mode)
+	  (add-file-local-variable-prop-line
+	   'mode (intern (string-trim-right mode-name "-mode\\'"))))))
+#+end_src
+
+*** flascards
+#+begin_src elisp
+  (use-package anki-editor :ensure t)
+#+end_src
+
+#+RESULTS:
+
+*** todo list and pomodoro
 #+begin_src elisp
   (setq org-todo-keywords
       '((sequence "TODO" "|" "DONE" "FAIL" "NGMI" )))
@@ -140,16 +184,13 @@ is is somehow made searching slower.
 #+RESULTS:
 | sequence | TODO |   |   | DONE | FAIL | NGMI |
 
-**** pomodoro timer inside notes
-I use org-pomodoro.
-
 #+BEGIN_SRC elisp
-(use-package org-pomodoro)
+(use-package org-pomodoro :ensure t)
 #+END_SRC
 
 #+RESULTS:
 
-***** Work arounds
+**** Work arounds
 Use C locale for time on windows
 
 #+begin_src elisp
@@ -160,10 +201,13 @@ Use C locale for time on windows
 #+RESULTS:
 : C
 
+*** xelatex editor
+#+begin_src elisp
+  (use-package auctex :ensure t)
+#+end_src
 
-***** TODO Create ffplay-sound to play sound using cross-platform ffplay
+#+RESULTS:
 
-**** Coursework and various docs
 I write my coursework in xelatex.
 #+BEGIN_SRC elisp
 (setq-default TeX-engine 'xetex)
@@ -173,18 +217,28 @@ I write my coursework in xelatex.
 : xetex
 
 
-*** programming
-**** language server client
-#+BEGIN_SRC elisp
-(use-package eglot)
-#+END_SRC
+*** code editor
 
-****  python venv support
-#+BEGIN_SRC elisp
-(use-package pyvenv)
-#+END_SRC
+****  python 
+#+begin_src elisp
+  (use-package pyvenv :ensure t)
+#+end_src
 
-**** Use sbcl as lisp interpreter
+#+RESULTS:
+
+#+begin_src elisp
+  (use-package elpy :ensure t)
+#+end_src
+
+#+RESULTS:
+
+**** common lisp
+#+begin_src elisp
+  (use-package slime :ensure t)
+#+end_src
+
+#+RESULTS:
+
 #+begin_src elisp
   (setq inferior-lisp-program "sbcl")
 #+end_src
@@ -192,19 +246,26 @@ I write my coursework in xelatex.
 #+RESULTS:
 : sbcl
 
-*** file manager
-I use build in dired for now.
-
-**** Copy, move, rename files across panes
-#+BEGIN_SRC elisp
-  (setq dired-dwim-target t)
-#+END_SRC
+**** EditorConfig
+#+begin_src elisp
+  (use-package editorconfig :ensure t)
+#+end_src
 
 #+RESULTS:
-: t
 
-**** Work-arounds
+**** assembly
+#+begin_src elisp
+  (use-package rmsbolt :ensure t)
+#+end_src
 
+*** terminal
+#+begin_src elisp
+  (use-package eat
+    :config
+    (setq eat-kill-buffer-on-exit t)
+    (setq eat-enable-mouse t)
+    :ensure t)
+#+end_src
 *** rss reader
 Elfeed in my config is interconneted with howm.
 
@@ -218,6 +279,8 @@ Elfeed in my config is interconneted with howm.
   (use-package elfeed-protocol) 
 #+END_SRC
 
+#+RESULTS:
+
 **** elfeed-org use-package
 #+BEGIN_SRC elisp
 (use-package elfeed-org
@@ -226,6 +289,9 @@ Elfeed in my config is interconneted with howm.
   (elfeed-org)
   :after howm)
 #+END_SRC
+
+#+RESULTS:
+: t
 
 **** functions for interconnecting with howm
 #+BEGIN_SRC elisp
@@ -237,6 +303,9 @@ Elfeed in my config is interconneted with howm.
   
 #+END_SRC
 
+#+RESULTS:
+: my-elfeed-file-names-in-howm
+
 **** advices for executing functions
 #+BEGIN_SRC elisp
 (define-advice elfeed (:before (&rest _args))
@@ -247,20 +316,30 @@ Elfeed in my config is interconneted with howm.
   (setq rmh-elfeed-org-files (my-elfeed-file-names-in-howm)))
 #+END_SRC
 
+#+RESULTS:
+
 *** email client
+#+begin_src elisp
+  (setq 
+     user-full-name "Корякин Артём"
+     user-mail-address "karakin2000@gmail.com"
+     send-mail-function 'smtpmail-send-it
+     smtpmail-smtp-server "smtp.gmail.com"
+     smtpmail-stream-type 'starttls ;; was nil (upgrade with STARTTLS if possible)
+     smtpmail-smtp-service 587
+     smtpmail-servers-requiring-authorization "*"
+     gnus-save-score t
+     gnus-startup-file "~/howm/.newsrc"
+     gnus-backup-startup-file 'never
+     gnus-select-method
+     '(nnimap "gmail"
+	      (nnimap-address "imap.gmail.com")
+	      (nnmail-expiry-target "nnimap+gmail:[Gmail]/Корзина")
+	      (nnimap-server-port 993)
+	      (nnimap-stream ssl)
+	      (gnus-search-engine gnus-search-imap)
+	      (nnmail-expiry-wait 5)))
+#+end_src
 
-I use gnus with =nnimap= source.
-
-This is not the best choice, because with [[https://cr.yp.to/proto/maildir.html][maildir]] it would be indexed fast.
-Other pluses of maildir:
-- You store your mail locally which means you distrust ifrastracture of mail provider.
-- You store your mail locally which means you don't need internet connection.
-- You can configure other program for fetching and indexing.
-
-Minuses of maildir:
-- You can't use it on Windows, not enough programms to fetch and index.
-  
-**** Configured with custom
-I configured my gnus setup enterily with custom,
-see =custom-set-variables= in init.el
-
+#+RESULTS:
+| nnimap | gmail | (nnimap-address imap.gmail.com) | (nnmail-expiry-target nnimap+gmail:[Gmail]/Корзина) | (nnimap-server-port 993) | (nnimap-stream ssl) | (gnus-search-engine gnus-search-imap) | (nnmail-expiry-wait 5) |

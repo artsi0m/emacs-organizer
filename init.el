@@ -4,7 +4,6 @@
 (defvar *fs-encoding* 'utf-8)
 (prefer-coding-system 'utf-8-unix)
 
-
 ;; 2/3 variables set by custom
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -15,6 +14,7 @@
  '(custom-safe-themes
    '("b40f11c174e7e475508f1e2c1cfca354d37212494c143a494f27239c7d71a294" "2cc1b50120c0d608cc5064eb187bcc22c50390eb091fddfa920bf2639112adb6" "fc608d4c9f476ad1da7f07f7d19cc392ec0fb61f77f7236f2b6b42ae95801a62" "a197d6d98f7a01991275578aa0a1311363d4662f0ecfa8e15779ce63e0f76baa" "7e300d88af7750886190c744f63d2d66580bb2cbb8e371a3cb5109afe3017a5a" default))
  '(default-input-method "cyrillic-colemak")
+ '(delete-selection-mode nil)
  '(gnus-backup-startup-file 'never)
  '(gnus-save-score t)
  '(gnus-select-method
@@ -24,11 +24,11 @@
 	    (gnus-search-engine gnus-search-imap)
 	    (nnmail-expiry-wait 5)))
  '(gnus-startup-file "~/howm/.newsrc")
+ '(holiday-other-holidays '((holiday-fixed 7 28 "My birthday")))
  '(message-send-mail-function 'smtpmail-send-it)
  '(message-sendmail-envelope-from nil)
  '(org-agenda-files nil)
- '(org-babel-C++-compiler "clang++")
- '(org-babel-C-compiler "clang")
+ '(org-babel-C-compiler "cc")
  '(org-babel-load-languages
    '((emacs-lisp . t)
      (gnuplot . t)
@@ -36,11 +36,16 @@
      (C . t)
      (dot . t)
      (python . t)))
+ '(org-babel-python-command "python3.11")
  '(org-drill-cram-hours 72)
  '(org-drill-scope 'directory)
+ '(org-format-latex-options
+   '(:foreground default :background default :scale 2.0 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
+		 ("begin" "$1" "$" "$$" "\\(" "\\[")))
  '(org-pomodoro-audio-player 'sound-wav)
  '(package-selected-packages
-   '(org-timeblock csv-mode hyperbole toc-org ox-pandoc org-gcal org-mode org-latex-impatient org-pomodoro dired calfw-howm calfw-org calfw-ical matlab-mode transmission slime eat clang-format+ magit hydra pyvenv racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex elfeed-org elfeed org-roam-ql vertico eglot org org-ql esup transpose-frame fb2-reader howm sound-wav org-drill minsk-theme))
+   '(editorconfig elpy company-jedi pydoc markdown-mode anki-editor ement rmsbolt nasm-mode compiler-explorer disaster adoc-mode emms systemd org-fc nnhackernews nov org-timeblock csv-mode hyperbole toc-org ox-pandoc org-gcal org-mode org-latex-impatient org-pomodoro dired calfw-howm calfw-org calfw-ical matlab-mode transmission slime eat clang-format+ magit hydra pyvenv racket-mode consult-eglot consult elfeed-protocol modus-operandi calfw org-drill-table powershell auctex elfeed-org elfeed org-roam-ql vertico eglot org esup transpose-frame fb2-reader howm sound-wav org-drill minsk-theme))
+ '(pydoc-python-command "python3.11")
  '(smtpmail-default-smtp-server "smtp.gmail.com")
  '(smtpmail-servers-requiring-authorization "*")
  '(smtpmail-smtp-server "smtp.gmail.com")
@@ -48,6 +53,7 @@
  '(smtpmail-stream-type nil)
  '(speedbar-default-position 'left)
  '(tab-bar-mode t)
+ '(tool-bar-style 'both)
  '(user-full-name "Корякин Артём")
  '(user-mail-address "karakin2000@gmail.com"))
 (custom-set-faces
@@ -63,7 +69,14 @@
  '(adoc-title-4-face ((t (:inherit adoc-title-face :height 1.1))))
  '(adoc-title-5-face ((t (:inherit adoc-title-face :height 1.0)))))
 
-;; 3/3 My org configs and private org-gcal-config.el
-(org-babel-load-file "~/.emacs.d/layout.org")
-(org-babel-load-file "~/.emacs.d/config.org")
 
+;; 3/3
+
+;; layout
+(load-file
+ (expand-file-name "cyrillic-colemak.el" user-emacs-directory))
+
+(setq default-input-method "cyrillic-colemak")
+
+(org-babel-load-file
+ (expand-file-name "config.org" user-emacs-directory))
