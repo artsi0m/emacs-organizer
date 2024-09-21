@@ -1,6 +1,0 @@
-[submodule "site-lisp/org-fc"]
-	path = site-lisp/org-fc
-	url = https://git.sr.ht/~l3kn/org-fc
-[submodule "site-lisp/org-timeblock"]
-	path = site-lisp/org-timeblock
-	url = git@github.com:artsi0m/org-timeblock.git
