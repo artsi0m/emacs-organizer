@@ -15,11 +15,10 @@ Add 4 main package archives
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
   (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
   (add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/") t)
-  (package-initialize)
 #+end_src
 
 #+RESULTS:
-: t
+: ((gnu . https://elpa.gnu.org/packages/) (nongnu . https://elpa.nongnu.org/nongnu/) (melpa . https://melpa.org/packages/) (melpa-stable . https://stable.melpa.org/packages/))
 
 
 Set priorites for package-archives
@@ -46,18 +45,11 @@ Transpose operation like with matrices and tables.
 
 Enable tab-bar-mode
 #+begin_src elisp
-  (setq tab-bar-mode t)
+  (tab-bar-mode)
 #+end_src
 
 #+RESULTS:
 : t
-
-Disable scroll-bar
-#+begin_src elisp
-  (setq scroll-bar-mode nil)
-#+end_src
-
-#+RESULTS:
 
 *** autocomplete
 Press C-M-i to activate emacs autocomplete.
@@ -200,14 +192,8 @@ with org-mode for examlpe
 #+RESULTS:
 | sequence | TODO |   |   | DONE | FAIL | NGMI |
 
-#+BEGIN_SRC elisp
-(use-package org-pomodoro :ensure t)
-#+END_SRC
-
-#+RESULTS:
-
 **** Work arounds
-Use C locale for time on windows
+Use C locale for time on windows for org-pomodoro
 
 #+begin_src elisp
 (when (eq system-type 'windows-nt)
@@ -269,10 +255,34 @@ I write my coursework in xelatex.
 
 #+RESULTS:
 
-**** assembly
+**** assembly and compiler exploration
+Compiler explorer
 #+begin_src elisp
   (use-package rmsbolt :ensure t)
 #+end_src
+
+Assembly 
+#+begin_src elisp
+  (use-package nasm-mode :ensure t)
+#+end_src
+
+#+RESULTS:
+: t
+
+**** data and config files
+Systemd units
+#+begin_src elisp
+  (use-package systemd :ensure t)
+#+end_src
+
+#+RESULTS:
+
+Comma separated values
+#+begin_src elisp
+  (use-package csv :ensure t)
+#+end_src
+
+#+RESULTS:
 
 *** terminal
 #+begin_src elisp
