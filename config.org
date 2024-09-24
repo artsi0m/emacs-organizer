@@ -1,3 +1,8 @@
+#+latex_compiler: xelatex
+#+latex_header: \usepackage[AUTO]{polyglossia}
+#+latex_header: \setmainfont{Noto Sans}
+#+latex_header: \setmonofont{Iosevka}
+
 * emacs-organizer
 
 Some code should be executing before tangling and evaluating this file.
