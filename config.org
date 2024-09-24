@@ -218,6 +218,14 @@ I write my coursework in xelatex.
 #+RESULTS:
 : xetex
 
+From auctex info:
+#+begin_src elisp
+     (setq TeX-auto-save t)
+     (setq TeX-parse-self t)
+     (setq-default TeX-master nil)
+#+end_src
+
+#+RESULTS:
 
 *** code editor
 
