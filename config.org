@@ -181,6 +181,26 @@ with org-mode for examlpe
 	   'mode (intern (string-trim-right mode-name "-mode\\'"))))))
 #+end_src
 
+*** spelling
+#+begin_src elisp
+  (use-package ispell
+  :defer t
+  :custom
+  (ispell-local-dictionary-alist
+   '(("russian"
+      "[АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯабвгдеёжзийклмнопрстуфхцчшщьыъэюяі’A-Za-z]"
+      "[^АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯабвгдеёжзийклмнопрстуфхцчшщьыъэюяі’A-Za-z]"
+      "[-']"  nil ("-d" "be_BY,ru_RU,en_US") nil utf-8)))
+  (ispell-program-name "hunspell")
+  (ispell-dictionary "russian")
+  (ispell-really-aspell nil)
+  (ispell-really-hunspell t)
+  (ispell-encoding8-command t)
+  (ispell-silently-savep t))
+#+end_src
+
+#+RESULTS:
+
 *** flascards
 #+begin_src elisp
   (use-package anki-editor :ensure t)
