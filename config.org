@@ -9,7 +9,20 @@ Some code should be executing before tangling and evaluating this file.
 So, look at init.el
 
 ** layout
-I use colemak keyboard layout see layout.org file -- [[./layout.org][link]]
+See layout.org file -- [[./layout.org][link]]
+
+#+begin_src elisp
+    (use-package reverse-im
+    :ensure t
+    :custom
+    (reverse-im-input-methods '("cyrillic-colemak"))
+    :config
+    (reverse-im-mode t)
+    :pin melpa)
+#+end_src
+
+#+RESULTS:
+: t
 
 ** general emacs
 *** package management
@@ -188,8 +201,8 @@ with org-mode for examlpe
   :custom
   (ispell-local-dictionary-alist
    '(("russian"
-      "[АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯабвгдеёжзийклмнопрстуфхцчшщьыъэюяі’A-Za-z]"
-      "[^АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯабвгдеёжзийклмнопрстуфхцчшщьыъэюяі’A-Za-z]"
+      "[АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯабвгдеёжзийклмнопрстуфхцчшщьыъэюяіў’A-Za-z]"
+      "[^АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯабвгдеёжзийклмнопрстуфхцчшщьыъэюяіў’A-Za-z]"
       "[-']"  nil ("-d" "be_BY,ru_RU,en_US") nil utf-8)))
   (ispell-program-name "hunspell")
   (ispell-dictionary "russian")

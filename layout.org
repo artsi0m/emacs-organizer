@@ -1,4 +1,4 @@
-* colemak layout and emacs IME
+* Multilingua layouts and emacs IME
 I use colemak keyboard layout for more than five years.
 
 I started using it when I needed [[https://colemak.com/Multilingual][multilungual]] keyboard layout.
@@ -8,7 +8,23 @@ but now I have this [[https://colemak.com/Ergonomic][ergonomic]] layout.
 I can type in this layout without looking at keyboard,
 and I can't do this with qwerty.
 
-** enabling layout
+As for October 2024 I use Russian (Belarus) layout which is also an
+multilingual layout that contain Cyrillic letters with some of them
+used in Belarusian language and accessible with Alt-GR. I also started
+using reverse-im package.
+
+** =setxkbmap -query= output:
+#+begin_src
+rules:      evdev
+model:      microsoftpro
+layout:     us,by
+variant:    colemak,ru
+options:    grp:win_space_toggle
+#+end_src
+
+
+
+** enabling colemak layout
 *** OpenBSD kernel wsconsole
 OpenBSD 6.6 was nice release, where it was introduced:
 
@@ -19,7 +35,7 @@ kbd us.colemak
 *** X11
 With russian layout
 #+BEGIN_SRC shell :eval no 
-  setxkbmap us, ru -variant colemak,
+  setxkbmap us, by -variant colemak,ru
 #+END_SRC
 
 **** Windows

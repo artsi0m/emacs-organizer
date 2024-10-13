@@ -59,7 +59,9 @@
  ("w" ?ц)
  ("v" ?м)
  ("z" ?я)
- 
+;; ("˘" ?і) ;; somehow wouldn't work by itself without reverse-im
+ ("ü" ?ў)
+
  ("!" ?!)
  ("@" ?\")
  ("#" ?№)
