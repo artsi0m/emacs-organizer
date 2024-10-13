@@ -8,22 +8,6 @@
 Some code should be executing before tangling and evaluating this file.
 So, look at init.el
 
-** layout
-See layout.org file -- [[./layout.org][link]]
-
-#+begin_src elisp
-    (use-package reverse-im
-    :ensure t
-    :custom
-    (reverse-im-input-methods '("cyrillic-colemak"))
-    :config
-    (reverse-im-mode t)
-    :pin melpa)
-#+end_src
-
-#+RESULTS:
-: t
-
 ** general emacs
 *** package management
 Add 4 main package archives
@@ -50,6 +34,22 @@ Set priorites for package-archives
 
 #+RESULTS:
 : ((gnu . 40) (nongnu . 30) (melpa-stable . 20) (melpa . 10))
+
+*** layout
+See layout.org file -- [[./layout.org][link]]
+
+#+begin_src elisp
+    (use-package reverse-im
+    :ensure t
+    :custom
+    (reverse-im-input-methods '("cyrillic-colemak"))
+    :config
+    (reverse-im-mode t)
+    :pin melpa)
+#+end_src
+
+#+RESULTS:
+: t
 
 
 *** window management
