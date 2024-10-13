@@ -1,4 +1,4 @@
-* Multilingua layouts and emacs IME
+* Multilingual layouts and emacs IME
 I use colemak keyboard layout for more than five years.
 
 I started using it when I needed [[https://colemak.com/Multilingual][multilungual]] keyboard layout.
