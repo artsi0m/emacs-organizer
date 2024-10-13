@@ -164,7 +164,7 @@ like two-panel file manager
 
 #+RESULTS:
 
-*** organizer
+*** organizer & writer's tool
 #+begin_src elisp
      (use-package howm :config
        (setq howm-view-use-grep t)
@@ -194,7 +194,7 @@ with org-mode for examlpe
 	   'mode (intern (string-trim-right mode-name "-mode\\'"))))))
 #+end_src
 
-*** spelling
+**** spelling
 #+begin_src elisp
   (use-package ispell
   :defer t
@@ -213,6 +213,31 @@ with org-mode for examlpe
 #+end_src
 
 #+RESULTS:
+
+**** org-mode as better notebook
+#+begin_src elisp
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((C . t)
+     (shell . t)
+     (lisp . t)
+     (emacs-lisp . t)
+     (python . t)
+     (dot . t)
+     (plantuml . t)))
+#+end_src
+
+#+RESULTS:
+
+**** diagrams with plantuml
+Installed plantuml from openSUSE package manager.
+
+#+begin_src elisp
+  (setq org-plantuml-exec-mode 'plantuml) 
+#+end_src
+
+#+RESULTS:
+: plantuml
 
 *** flascards
 #+begin_src elisp
