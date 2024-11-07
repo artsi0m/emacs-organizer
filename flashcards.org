@@ -1,0 +1,22 @@
+* flashcards
+** org-drill
+
+#+begin_src elisp
+  (defun my-org-drill-file-names-in-howm ()
+  "Return list of absolute filenames of org-drill files in howm"
+  (delete-dups
+   (mapcar #'car (howm-grep "\:drill\:"
+			    (howm-files-in-directory howm-directory)))))
+#+end_src
+
+#+RESULTS:
+: my-org-drill-file-names-in-howm
+
+#+begin_src elisp
+  (use-package org-drill
+    :custom
+    (setq org-drill-scope (my-org-drill-file-names-in-howm))
+  :after howm)
+#+end_src
+
+#+RESULTS:
