@@ -177,22 +177,23 @@ Function to add prop-line,
 so I can use howm with any other major mode,
 with org-mode for examlpe
 #+begin_src elisp
-      (defun howm-insert-prop-line ()
-  "Activate major mode and modify the file so that this mode is activated
-  automatically the next time it is opened"
-      (interactive)
+	(defun howm-insert-prop-line (mode)
+      "Activate major mode and modify the file so that this mode is activated
+    automatically the next time it is opened"
+      (interactive (list (intern-soft
+			  (completing-read "Choose major mode: "
+					   (mapcar #'cdr auto-mode-alist)))))
       (howm-mode)
-      (let*
-	  ((modes (mapcar #'cdr auto-mode-alist))
-	   (mode-name (completing-read "Choose major mode: " modes))
-	   (mode (intern-soft mode-name)))
-	(unless (or (null mode)
-	    (eq mode major-mode))
-	  (funcall mode)
-	  (howm-mode)
-	  (add-file-local-variable-prop-line
-	   'mode (intern (string-trim-right mode-name "-mode\\'"))))))
+      (unless (or (null mode)
+		  (eq mode major-mode))
+	(funcall mode)
+	(howm-mode)
+	(add-file-local-variable-prop-line
+	 'mode (intern (string-trim-right (symbol-name mode) "-mode\\'")))))
 #+end_src
+
+#+RESULTS:
+: howm-insert-prop-line
 
 **** spelling
 #+begin_src elisp
@@ -247,6 +248,12 @@ Installed plantuml from openSUSE package manager.
 #+RESULTS:
 
 *** todo list and pomodoro
+#+begin_src elisp
+  (use-package pomm :ensure t :pin melpa)
+#+end_src
+
+#+RESULTS:
+
 #+begin_src elisp
   (setq org-todo-keywords
       '((sequence "TODO" "|" "DONE" "FAIL" "NGMI" )))
@@ -358,6 +365,19 @@ Comma separated values
 YAML
 #+begin_src elisp
   (use-package yaml-mode :ensure t)
+#+end_src
+
+#+RESULTS:
+
+**** chip design
+#+begin_src elisp
+  (use-package verilog-mode :ensure t)
+#+end_src
+
+#+RESULTS:
+
+#+begin_src elisp
+  (use-package verilog-ext :ensure t)
 #+end_src
 
 #+RESULTS:
