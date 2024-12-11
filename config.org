@@ -241,11 +241,39 @@ Installed plantuml from openSUSE package manager.
 : plantuml
 
 *** flascards
+Even with all of org-drill bugs I like it much more than Anki
+-[2024-12-12]
+
 #+begin_src elisp
-  (use-package anki-editor :ensure t)
+      (use-package org-drill
+      :after howm
+      :pin melpa
+      :ensure t)
 #+end_src
 
-#+RESULTS:
+#+begin_src elisp
+  (defun my-org-drill-file-names-in-howm ()
+  "Return list of absolute filenames of org-drill files in howm"
+  (delete-dups
+   (mapcar #'car (howm-grep "\:drill\:"
+			    (howm-files-in-directory howm-directory)))))
+#+end_src
+
+#+begin_src elisp
+  (defun my-org-drill-update-scope ()
+    (interactive)
+    "Update org-drill scope variable populating it with files from howm"
+    (setq org-drill-scope (my-org-drill-file-names-in-howm)))
+#+end_src
+
+**** workarounds
+#+begin_src elisp
+  (defun org-drill-time-to-inactive-org-timestamp (time)
+  "Convert TIME into org-mode timestamp."
+  (format-time-string
+   (concat "[" (cdr org-time-stamp-formats) "]")
+   time))
+#+end_src
 
 *** todo list and pomodoro
 #+begin_src elisp
