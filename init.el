@@ -33,5 +33,3 @@
 (org-babel-load-file
  (expand-file-name "config.org" user-emacs-directory))
 
-(org-babel-load-file
- (expand-file-name "flashcards.org" user-emacs-directory))
