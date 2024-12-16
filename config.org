@@ -109,22 +109,20 @@ so this forms also present in init.el.
 #+END_SRC
 
 *** tool-bar
-Show both icons and caption
+Use C-c C-c in LaTeX buffers instead
 #+begin_src elisp
-   (setq tool-bar-style 'both)
-#+end_src
-use emacs icons instead of gtk ones
-
-#+begin_src elisp
-  (advice-add #'x-gtk-map-stock :override #'ignore)
-#+end_src
-*** y-or-n
-#+begin_src elisp
-  (defalias 'yes-or-no #'y-or-n-p)
+  (tool-bar-mode -1)
 #+end_src
 
 #+RESULTS:
-: yes-or-no
+
+*** menu-bar
+Use ESC-tilde instead
+#+begin_src elisp
+  (menu-bar-mode -1)
+#+end_src
+
+#+RESULTS:
 
 *** modus-themes
 
