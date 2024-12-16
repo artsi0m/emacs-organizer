@@ -15,7 +15,6 @@ Add 4 main package archives
   (require 'package)
   (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-  (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
   (add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/") t)
 #+end_src
 
@@ -28,12 +27,11 @@ Set priorites for package-archives
 (setq package-archive-priorities
   '(("gnu" . 40)
     ("nongnu" . 30)
-    ("melpa-stable" . 20)
-    ("melpa" . 10)))
+    ("melpa" . 20)))
 #+end_src
 
 #+RESULTS:
-: ((gnu . 40) (nongnu . 30) (melpa-stable . 20) (melpa . 10))
+: ((gnu . 40) (nongnu . 30) (melpa . 20))
 
 *** layout
 See layout.org file -- [[./layout.org][link]]
