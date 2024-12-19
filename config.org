@@ -163,8 +163,14 @@ like two-panel file manager
 *** organizer & writer's tool
 #+begin_src elisp
      (use-package howm :config
-       (setq howm-view-use-grep t)
        :ensure t)
+#+end_src
+
+#+RESULTS:
+
+#+begin_src elisp
+    (when (not (eq system-type 'windows-nt))
+         (setq howm-view-use-grep t))
 #+end_src
 
 #+RESULTS:
