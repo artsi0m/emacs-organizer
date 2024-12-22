@@ -106,22 +106,6 @@ so this forms also present in init.el.
 (prefer-coding-system 'utf-8-unix)
 #+END_SRC
 
-*** tool-bar
-Use C-c C-c in LaTeX buffers instead
-#+begin_src elisp
-  (tool-bar-mode -1)
-#+end_src
-
-#+RESULTS:
-
-*** menu-bar
-Use ESC-tilde instead
-#+begin_src elisp
-  (menu-bar-mode -1)
-#+end_src
-
-#+RESULTS:
-
 *** modus-themes
 
 Enable only in graphical mode.
