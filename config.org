@@ -263,12 +263,6 @@ Even with all of org-drill bugs I like it much more than Anki
 
 *** todo list and pomodoro
 #+begin_src elisp
-  (use-package pomm :ensure t :pin melpa)
-#+end_src
-
-#+RESULTS:
-
-#+begin_src elisp
   (setq org-todo-keywords
       '((sequence "TODO" "|" "DONE" "FAIL" "NGMI" )))
 #+end_src
