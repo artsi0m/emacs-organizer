@@ -237,6 +237,8 @@ Even with all of org-drill bugs I like it much more than Anki
       :ensure t)
 #+end_src
 
+#+RESULTS:
+
 #+begin_src elisp
   (defun my-org-drill-file-names-in-howm ()
   "Return list of absolute filenames of org-drill files in howm"
@@ -251,6 +253,26 @@ Even with all of org-drill bugs I like it much more than Anki
     "Update org-drill scope variable populating it with files from howm"
     (setq org-drill-scope (my-org-drill-file-names-in-howm)))
 #+end_src
+
+#+begin_src elisp
+    (defun my-org-drill-set-scope ()
+      (interactive)
+	(let ((scope-var
+	      (completing-read "Choose scope for org-drill" (list
+		   "howm"
+		   "file"
+		   "tree"
+		   "file-no-restriction"
+		   "agenda"
+		   "agenda-with-archives"
+		  "directory"))))
+	(if (equal scope-var "howm")
+      (setq org-drill-scope (my-org-drill-file-names-in-howm))
+    (setq org-drill-scope (intern scope-var)))))
+#+end_src
+
+#+RESULTS:
+: my-org-drill-set-scope
 
 **** workarounds
 #+begin_src elisp
