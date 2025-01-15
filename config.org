@@ -496,11 +496,11 @@ Elfeed in my config is interconneted with howm.
 	      (nnimap-server-port 993)
 	      (nnimap-stream ssl)
 	      (gnus-search-engine gnus-search-imap)
-	      (nnmail-expiry-wait 5)))
+	      (nnmail-expiry-wait immediate)))
 #+end_src
 
 #+RESULTS:
-| nnimap | gmail | (nnimap-address imap.gmail.com) | (nnmail-expiry-target nnimap+gmail:[Gmail]/Корзина) | (nnimap-server-port 993) | (nnimap-stream ssl) | (gnus-search-engine gnus-search-imap) | (nnmail-expiry-wait 5) |
+| nnimap | gmail | (nnimap-address imap.gmail.com) | (nnmail-expiry-target nnimap+gmail:[Gmail]/Корзина) | (nnimap-server-port 993) | (nnimap-stream ssl) | (gnus-search-engine gnus-search-imap) | (nnmail-expiry-wait 1) |
 
 *** epub reader
 #+begin_src elisp
