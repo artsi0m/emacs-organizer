@@ -274,6 +274,16 @@ Even with all of org-drill bugs I like it much more than Anki
 #+RESULTS:
 : my-org-drill-set-scope
 
+#+begin_src elisp
+  (define-advice org-drill (:before (&rest _args))
+    (my-org-drill-set-scope))
+
+  (define-advice org-drill-cram (:before (&rest _args))
+    (my-org-drill-set-scope))
+#+end_src
+
+#+RESULTS:
+
 **** workarounds
 #+begin_src elisp
   (defun org-drill-time-to-inactive-org-timestamp (time)
