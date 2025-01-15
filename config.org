@@ -247,12 +247,6 @@ Even with all of org-drill bugs I like it much more than Anki
 			    (howm-files-in-directory howm-directory)))))
 #+end_src
 
-#+begin_src elisp
-  (defun my-org-drill-update-scope ()
-    (interactive)
-    "Update org-drill scope variable populating it with files from howm"
-    (setq org-drill-scope (my-org-drill-file-names-in-howm)))
-#+end_src
 
 #+begin_src elisp
     (defun my-org-drill-set-scope ()
