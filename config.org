@@ -184,22 +184,17 @@ with org-mode for examlpe
 **** spelling
 #+begin_src elisp
   (use-package ispell
-  :defer t
+  :init
+  (ispell-set-spellchecker-params)
+  (ispell-hunspell-add-multi-dic "en_US,ru_RU,be_BY")
   :custom
-  (ispell-local-dictionary-alist
-   '(("russian"
-      "[АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯабвгдеёжзийклмнопрстуфхцчшщьыъэюяіў’A-Za-z]"
-      "[^АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯабвгдеёжзийклмнопрстуфхцчшщьыъэюяіў’A-Za-z]"
-      "[-']"  nil ("-d" "be_BY,ru_RU,en_US") nil utf-8)))
   (ispell-program-name "hunspell")
-  (ispell-dictionary "russian")
-  (ispell-really-aspell nil)
-  (ispell-really-hunspell t)
-  (ispell-encoding8-command t)
-  (ispell-silently-savep t))
+  (ispell-dictionary "en_US,ru_RU,be_BY"))
 #+end_src
 
+
 #+RESULTS:
+
 
 **** org-mode as better notebook
 #+begin_src elisp
@@ -252,7 +247,7 @@ Even with all of org-drill bugs I like it much more than Anki
     (defun my-org-drill-set-scope ()
       (interactive)
 	(let ((scope-var
-	      (completing-read "Choose scope for org-drill" (list
+	      (completing-read "Choose scope for org-drill: " (list
 		   "howm"
 		   "file"
 		   "tree"
