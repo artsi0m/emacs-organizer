@@ -328,7 +328,7 @@ From auctex info:
 
 #+RESULTS:
 
-*** code editor
+*** code & config editor
 
 ****  python 
 #+begin_src elisp
