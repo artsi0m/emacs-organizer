@@ -421,19 +421,6 @@ NGINX and Angie
 
 #+RESULTS:
 
-**** chip design
-#+begin_src elisp
-  (use-package verilog-mode :ensure t)
-#+end_src
-
-#+RESULTS:
-
-#+begin_src elisp
-  (use-package verilog-ext :ensure t)
-#+end_src
-
-#+RESULTS:
-
 *** terminal
 #+begin_src elisp
   (use-package eat
