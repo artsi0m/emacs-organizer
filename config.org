@@ -229,7 +229,6 @@ Even with all of org-drill bugs I like it much more than Anki
 
 #+begin_src elisp
       (use-package org-drill
-      :after howm
       :pin melpa
       :ensure t)
 #+end_src
