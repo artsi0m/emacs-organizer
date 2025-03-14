@@ -398,6 +398,14 @@ YAML
 
 #+RESULTS:
 
+NGINX and Angie
+
+#+begin_src elisp
+  (use-package nginx-mode :ensure t)
+#+end_src
+
+#+RESULTS:
+
 **** chip design
 #+begin_src elisp
   (use-package verilog-mode :ensure t)
