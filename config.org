@@ -119,6 +119,12 @@ Enable only in graphical mode.
 
 #+RESULTS:
 
+*** use build in emacs icons instead of gtk
+#+begin_src elisp
+  (advice-add #'x-gtk-map-stock :override #'ignore)
+#+end_src
+
+#+RESULTS:
 
 ** config by use cases
 I structured my config by use cases I apply emacs in.
