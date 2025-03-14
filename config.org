@@ -146,8 +146,10 @@ like two-panel file manager
 
 *** organizer & writer's tool
 #+begin_src elisp
-     (use-package howm :config
-       :ensure t)
+  (use-package howm
+    :custom
+    (howm-search-other-dir t)
+    :ensure t)
 #+end_src
 
 #+RESULTS:
