@@ -9,6 +9,17 @@ Some code should be executing before tangling and evaluating this file.
 So, look at init.el
 
 ** general emacs
+
+*** backups
+#+begin_src elisp
+  (use-package files
+    :custom
+    (backup-directory-alist `(("." . "~/.emacs.d/backups")))
+    (backup-by-copying t))
+#+end_src
+
+#+RESULTS:
+
 *** package management
 Add 4 main package archives
 #+begin_src elisp
@@ -420,6 +431,18 @@ NGINX and Angie
 #+end_src
 
 #+RESULTS:
+
+Terraform
+#+begin_src elisp
+  (use-package terraform-mode :ensure t
+    :config
+    (defun my-terraform-mode-init ()
+      (outline-minor-mode 1))
+  (add-hook 'terraform-mode-hook 'my-terraform-mode-init))
+#+end_src
+
+#+RESULTS:
+: t
 
 *** terminal
 #+begin_src elisp

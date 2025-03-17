@@ -3,6 +3,9 @@
 # Files resulted from tangle operation
 config.el
 
+# backup files
+backups/
+
 # org
 .org-generic-id-locations
 
