@@ -202,13 +202,14 @@ with org-mode for examlpe
 
 **** spelling
 #+begin_src elisp
-  (use-package ispell
-  :init
-  (ispell-set-spellchecker-params)
-  (ispell-hunspell-add-multi-dic "en_US,ru_RU,be_BY")
-  :custom
-  (ispell-program-name "hunspell")
-  (ispell-dictionary "en_US,ru_RU,be_BY"))
+    (use-package ispell
+    :init
+    (ispell-set-spellchecker-params)
+    (ispell-hunspell-add-multi-dic "en_US,ru_RU,be_BY")
+    :custom
+    (ispell-program-name "hunspell")
+    (ispell-dictionary "en_US,ru_RU,be_BY")
+    (ispell-personal-dictionary "~/howm/.hunspell_personal"))
 #+end_src
 
 
