@@ -425,7 +425,7 @@ YAML
 
 #+RESULTS:
 
-NGINX and Angie
+**** NGINX and Angie
 
 #+begin_src elisp
   (use-package nginx-mode :ensure t)
@@ -433,7 +433,7 @@ NGINX and Angie
 
 #+RESULTS:
 
-Terraform
+**** Terraform
 #+begin_src elisp
   (use-package terraform-mode :ensure t
     :config
@@ -444,6 +444,22 @@ Terraform
 
 #+RESULTS:
 : t
+
+**** docker
+#+begin_src elisp
+  (use-package dockerfile-mode :ensure t)
+#+end_src
+
+#+RESULTS:
+
+**** Ansible
+Ansible differs from just YAML in the fact that it uses jinja style
+substituion for variables.
+#+begin_src elisp
+  (use-package ansible :ensure t)
+#+end_src
+
+#+RESULTS:
 
 *** terminal
 #+begin_src elisp
