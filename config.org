@@ -203,7 +203,7 @@ with org-mode for examlpe
 **** spelling
 #+begin_src elisp
     (use-package ispell
-    :init
+    :config
     (ispell-set-spellchecker-params)
     (ispell-hunspell-add-multi-dic "en_US,ru_RU,be_BY")
     :custom
@@ -214,6 +214,7 @@ with org-mode for examlpe
 
 
 #+RESULTS:
+: t
 
 
 **** org-mode as better notebook
@@ -346,12 +347,13 @@ I write my coursework in xelatex.
 
 From auctex info:
 #+begin_src elisp
-     (setq TeX-auto-save t)
-     (setq TeX-parse-self t)
-     (setq-default TeX-master nil)
+  (setq TeX-auto-save t)
+  (setq TeX-parse-self t)
+  (setq-default TeX-master nil)
 #+end_src
 
 #+RESULTS:
+
 
 *** code & config editor
 
