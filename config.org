@@ -476,15 +476,6 @@ substituion for variables.
 
 #+RESULTS:
 
-**** Ansible
-Ansible differs from just YAML in the fact that it uses jinja style
-substituion for variables.
-#+begin_src elisp
-  (use-package ansible :ensure t)
-#+end_src
-
-#+RESULTS:
-
 *** terminal
 #+begin_src elisp
   (use-package eat
