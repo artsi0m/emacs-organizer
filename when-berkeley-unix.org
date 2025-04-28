@@ -1,4 +1,4 @@
-** I used OpenBSD back than
+** I used OpenBSD back then
 
 Use ls from GNU coreutils on OpenBSD
 #+begin_src elisp
