@@ -418,12 +418,36 @@ Comma separated values
 
 #+RESULTS:
 
-YAML
+**** YAML
 #+begin_src elisp
   (use-package yaml-mode :ensure t)
 #+end_src
 
 #+RESULTS:
+
+***** docker-compose
+#+begin_src elisp
+  (use-package docker-compose-mode :ensure t)
+#+end_src
+
+#+RESULTS:
+
+***** Ansible
+Ansible differs from just YAML in the fact that it uses jinja style
+substituion for variables.
+#+begin_src elisp
+  (use-package ansible :ensure t)
+#+end_src
+
+#+RESULTS:
+
+***** Prometheus
+#+begin_src elisp
+  (use-package prometheus-mode :ensure t)
+#+end_src
+
+#+RESULTS:
+
 
 **** NGINX and Angie
 
