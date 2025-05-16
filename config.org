@@ -309,6 +309,9 @@ Even with all of org-drill bugs I like it much more than Anki
 #+end_src
 
 *** todo list and pomodoro
+NGMI is «not gonna make it», but not in the sense of a meme.  Here, it
+means that I have one reason or another for not doing this task.
+
 #+begin_src elisp
   (setq org-todo-keywords
       '((sequence "TODO" "|" "DONE" "FAIL" "NGMI" )))
