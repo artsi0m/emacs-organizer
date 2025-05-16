@@ -119,13 +119,11 @@ so this forms also present in init.el.
 
 *** modus-themes
 
-Enable only in graphical mode.
+Load both in graphical and terminal mode.
 #+begin_src elisp
   (use-package modus-themes :ensure t)
-
-  (when (display-graphic-p)
-    (load-theme 'modus-operandi t)
-    (enable-theme 'modus-operandi))
+  (load-theme 'modus-operandi)
+  (enable-theme 'modus-operandi)
 #+end_src
 
 #+RESULTS:
