@@ -3,11 +3,15 @@
 # Files resulted from tangle operation
 config.el
 
+# I decided that custom should be local for each machine
+custom.el
+
 # backup files
 backups/
 
 # org
 .org-generic-id-locations
+.org-id-locations
 
 .\#*
 network-security.data
