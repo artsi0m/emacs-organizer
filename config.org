@@ -320,11 +320,10 @@ Even with all of org-drill bugs I like it much more than Anki
 | sequence | TODO |   |   | DONE | FAIL | NGMI |
 
 **** Work arounds
-Use C locale for time on windows for org-pomodoro
+Use C locale for time. Needed for org-pomodoro on windows.
 
 #+begin_src elisp
-(when (eq system-type 'windows-nt)
-(setq system-time-locale "C"))
+(setq system-time-locale "C")
 #+end_src
 
 #+RESULTS:
