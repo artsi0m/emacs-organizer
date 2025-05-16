@@ -320,6 +320,20 @@ means that I have one reason or another for not doing this task.
 #+RESULTS:
 | sequence | TODO |   |   | DONE | FAIL | NGMI |
 
+Use [[https://desktime.com/blog/52-17-updated][112/26]] ratio with org-pomodoro.
+
+#+begin_src elisp
+  (use-package org-pomodoro
+    :custom
+    (org-pomodoro-keep-killed-pomodoro-time 't)
+    (org-pomodoro-length 112)
+    (org-pomodoro-short-break-length 26)
+    (org-pomodoro-long-break-length 35)
+    :ensure t)
+#+end_src
+
+#+RESULTS:
+
 **** Work arounds
 Use C locale for time. Needed for org-pomodoro on windows.
 
