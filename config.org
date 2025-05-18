@@ -373,12 +373,29 @@ From auctex info:
 
 *** code & config editor
 
-****  python 
+****  python
+Quick and dirty way to make emacs use right python executable:
+
+https://fredrikmeyer.net/2020/08/26/emacs-python-venv.html
+
 #+begin_src elisp
-  (use-package pyvenv :ensure t)
+  (use-package pyvenv
+  :ensure t
+  :config
+  (pyvenv-mode t)
+
+  ;; Set correct Python interpreter on Windows
+  (when (eq system-type 'windows-nt)
+  (setq pyvenv-post-activate-hooks
+	(list (lambda ()
+		(setq python-shell-interpreter (concat pyvenv-virtual-env "Scripts/python.exe")))))
+  (setq pyvenv-post-deactivate-hooks
+	(list (lambda ()
+		(setq python-shell-interpreter "python.exe"))))))
 #+end_src
 
 #+RESULTS:
+: t
 
 #+begin_src elisp
   (use-package elpy :ensure t)
