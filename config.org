@@ -320,15 +320,17 @@ means that I have one reason or another for not doing this task.
 #+RESULTS:
 | sequence | TODO |   |   | DONE | FAIL | NGMI |
 
-Use [[https://desktime.com/blog/52-17-updated][112/26]] ratio with org-pomodoro.
+I tried [[https://desktime.com/blog/52-17-updated][112/26]] ratio with org-pomodoro, and completed 112 minutes
+cycle only once. I decided to move back to 52/17 and 25/5 seems to
+short.
 
 #+begin_src elisp
   (use-package org-pomodoro
     :custom
     (org-pomodoro-keep-killed-pomodoro-time 't)
-    (org-pomodoro-length 112)
-    (org-pomodoro-short-break-length 26)
-    (org-pomodoro-long-break-length 35)
+    (org-pomodoro-length 52)
+    (org-pomodoro-short-break-length 17)
+    (org-pomodoro-long-break-length 25)
     :ensure t)
 #+end_src
 
