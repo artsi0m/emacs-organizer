@@ -324,13 +324,16 @@ I tried [[https://desktime.com/blog/52-17-updated][112/26]] ratio with org-pomod
 cycle only once. I decided to move back to 52/17 and 25/5 seems to
 short.
 
+[2025-05-25] UPD: Now no one will distract me except for cats, so I
+can use 112/26 again.
+
 #+begin_src elisp
   (use-package org-pomodoro
     :custom
     (org-pomodoro-keep-killed-pomodoro-time 't)
-    (org-pomodoro-length 52)
-    (org-pomodoro-short-break-length 17)
-    (org-pomodoro-long-break-length 25)
+    (org-pomodoro-length 112)
+    (org-pomodoro-short-break-length 26)
+    (org-pomodoro-long-break-length 35)
     :ensure t)
 #+end_src
 
