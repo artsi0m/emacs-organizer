@@ -335,6 +335,14 @@ means that I have one reason or another for not doing this task.
 
 #+RESULTS:
 
+#+begin_src elisp
+      (use-package org-pomodoro-third-time
+        :vc (:url "git@github.com:telotortium/org-pomodoro-third-time.git")
+        :ensure t)
+#+end_src
+
+#+RESULTS:
+
 **** Work arounds
 Use C locale for time. Needed for org-pomodoro on windows.
 
