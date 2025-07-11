@@ -110,10 +110,11 @@ Like with dmenu, rofi or fzf, but in emacs.
 
    (use-package consult :ensure t)
 
-   (use-package consult-eglot :ensure t)
+   (use-package consult-eglot :commands (eglot) :ensure t)
 #+end_src
 
 #+results:
+: #s(hash-table data (:use-package (26737 18082 961578 687000) :init (26737 18082 961568 811000) :init-secs (0 0 43 763000) :use-package-secs (0 0 210 445000)))
 
 
 
