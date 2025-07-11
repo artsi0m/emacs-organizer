@@ -56,18 +56,19 @@ Set priorites for package-archives
 See layout.org file -- [[./layout.org][link]]
 
 #+begin_src elisp
-   (use-package reverse-im
-   :ensure t
-   :custom
-   (reverse-im-input-methods '("cyrillic-colemak"))
-   :commands (reverse-im-add-input-method reverse-im-translate-region)
-   ;; reverse-im does not always work, so I decided to defer it and use less
-   ;; often
-   :pin melpa)
+  (use-package reverse-im
+  :ensure t
+  :custom
+  (reverse-im-input-methods '("cyrillic-colemak"))
+  (reverse-im-cache-file "~/.emacs.d/reverse-im-cache.el")
+  :commands (reverse-im-add-input-method reverse-im-translate-region)
+  ;; reverse-im does not always work, so I decided to defer it and use less
+  ;; often
+  :pin melpa)
 #+end_src
 
 #+RESULTS:
-: #s(hash-table data (:use-package (26737 17721 935463 243000) :init (26737 17721 935456 584000) :config (26737 17721 935433 577000) :config-secs (0 0 5 280000) :init-secs (0 0 57 958000) :use-package-secs (0 0 541 544000)))
+: #s(hash-table data (:use-package (26737 25231 997694 926000) :init (26737 25231 997675 831000) :init-secs (0 0 45 726000) :use-package-secs (0 0 243 292000)))
 
 
 *** window management
@@ -210,19 +211,20 @@ with org-mode for examlpe
 
 **** spelling
 #+begin_src elisp
-    (use-package ispell
-    :config
-    (ispell-set-spellchecker-params)
-    (ispell-hunspell-add-multi-dic "en_US,ru_RU,be_BY")
-    :custom
-    (ispell-program-name "hunspell")
-    (ispell-dictionary "en_US,ru_RU,be_BY")
-    (ispell-personal-dictionary "~/howm/.hunspell_personal"))
+  (use-package ispell
+  :commands (ispell ispell-region ispell-word)
+  :config
+  (ispell-set-spellchecker-params)
+  (ispell-hunspell-add-multi-dic "en_US,ru_RU,be_BY")
+  :custom
+  (ispell-program-name "hunspell")
+  (ispell-dictionary "en_US,ru_RU,be_BY")
+  (ispell-personal-dictionary "~/howm/.hunspell_personal"))
 #+end_src
 
 
 #+RESULTS:
-: t
+: #s(hash-table data (:use-package (26737 23756 356974 180000) :init (26737 23756 356967 31000) :config (26737 23756 356937 339000) :config-secs (0 0 10206 115000) :init-secs (0 0 10268 742000) :use-package-secs (0 0 10473 203000)))
 
 
 **** org-mode as better notebook
