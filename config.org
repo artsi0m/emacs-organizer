@@ -413,10 +413,11 @@ https://fredrikmeyer.net/2020/08/26/emacs-python-venv.html
 
 **** common lisp
 #+begin_src elisp
-  (use-package slime :ensure t)
+  (use-package slime :commands (slime) :ensure t)
 #+end_src
 
 #+RESULTS:
+: #s(hash-table data (:use-package (26737 17592 377607 9000) :init (26737 17592 377585 969000) :init-secs (0 0 47 888000) :use-package-secs (0 0 474 330000)))
 
 #+begin_src elisp
   (setq inferior-lisp-program "sbcl")
