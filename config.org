@@ -390,21 +390,20 @@ https://fredrikmeyer.net/2020/08/26/emacs-python-venv.html
 #+begin_src elisp
   (use-package pyvenv
   :ensure t
+  :commands (pyvenv-activate pyvenv-workon)
   :config
-  (pyvenv-mode t)
-
   ;; Set correct Python interpreter on Windows
   (when (eq system-type 'windows-nt)
   (setq pyvenv-post-activate-hooks
-	(list (lambda ()
-		(setq python-shell-interpreter (concat pyvenv-virtual-env "Scripts/python.exe")))))
+  	(list (lambda ()
+  		(setq python-shell-interpreter (concat pyvenv-virtual-env "Scripts/python.exe")))))
   (setq pyvenv-post-deactivate-hooks
-	(list (lambda ()
-		(setq python-shell-interpreter "python.exe"))))))
+  	(list (lambda ()
+  		(setq python-shell-interpreter "python.exe"))))))
 #+end_src
 
 #+RESULTS:
-: t
+: #s(hash-table data (:use-package (26737 17551 283935 712000) :init (26737 17551 283924 670000) :config (26737 17551 283893 375000) :config-secs (0 0 19 262000) :init-secs (0 0 77 790000) :use-package-secs (0 0 489 726000)))
 
 #+begin_src elisp
   (use-package elpy :ensure t)
