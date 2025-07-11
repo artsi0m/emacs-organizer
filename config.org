@@ -10,6 +10,14 @@ So, look at init.el
 
 ** general emacs
 
+*** use-package profiler
+#+begin_src elisp
+  (setq use-package-compute-statistics 't)
+#+end_src
+
+#+RESULTS:
+: t
+
 *** backups
 #+begin_src elisp
   (use-package files
