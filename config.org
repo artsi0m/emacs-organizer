@@ -406,7 +406,7 @@ https://fredrikmeyer.net/2020/08/26/emacs-python-venv.html
 : #s(hash-table data (:use-package (26737 17551 283935 712000) :init (26737 17551 283924 670000) :config (26737 17551 283893 375000) :config-secs (0 0 19 262000) :init-secs (0 0 77 790000) :use-package-secs (0 0 489 726000)))
 
 #+begin_src elisp
-  (use-package elpy :ensure t)
+  (use-package pydoc :ensure t)
 #+end_src
 
 #+RESULTS:
