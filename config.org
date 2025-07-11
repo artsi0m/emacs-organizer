@@ -56,17 +56,18 @@ Set priorites for package-archives
 See layout.org file -- [[./layout.org][link]]
 
 #+begin_src elisp
-    (use-package reverse-im
-    :ensure t
-    :custom
-    (reverse-im-input-methods '("cyrillic-colemak"))
-    :config
-    (reverse-im-mode t)
-    :pin melpa)
+   (use-package reverse-im
+   :ensure t
+   :custom
+   (reverse-im-input-methods '("cyrillic-colemak"))
+   :commands (reverse-im-add-input-method reverse-im-translate-region)
+   ;; reverse-im does not always work, so I decided to defer it and use less
+   ;; often
+   :pin melpa)
 #+end_src
 
 #+RESULTS:
-: t
+: #s(hash-table data (:use-package (26737 17721 935463 243000) :init (26737 17721 935456 584000) :config (26737 17721 935433 577000) :config-secs (0 0 5 280000) :init-secs (0 0 57 958000) :use-package-secs (0 0 541 544000)))
 
 
 *** window management
