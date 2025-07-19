@@ -61,9 +61,6 @@ See layout.org file -- [[./layout.org][link]]
   :custom
   (reverse-im-input-methods '("cyrillic-colemak"))
   (reverse-im-cache-file "~/.emacs.d/reverse-im-cache.el")
-  :commands (reverse-im-add-input-method reverse-im-translate-region)
-  ;; reverse-im does not always work, so I decided to defer it and use less
-  ;; often
   :pin melpa)
 #+end_src
 
@@ -141,10 +138,19 @@ Load both in graphical and terminal mode.
 
 *** use build in emacs icons instead of gtk
 #+begin_src elisp
-  (advice-add #'x-gtk-map-stock :override #'ignore)
+  (setopt icon-map-list nil)
 #+end_src
 
 #+RESULTS:
+
+*** minor modes enabled by default
+#+begin_src elisp
+  (reverse-im-mode)
+  (which-key-mode)
+#+end_src
+
+#+RESULTS:
+: t
 
 ** config by use cases
 I structured my config by use cases I apply emacs in.
