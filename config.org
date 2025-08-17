@@ -587,36 +587,20 @@ Elfeed in my config is interconneted with howm.
 #+END_SRC
 
 #+RESULTS:
-
-*** email client
-#+begin_src elisp
-  (setq 
-     user-full-name "Корякин Артём"
-     user-mail-address "karakin2000@gmail.com"
-     send-mail-function 'smtpmail-send-it
-     smtpmail-smtp-server "smtp.gmail.com"
-     smtpmail-stream-type 'starttls ;; was nil (upgrade with STARTTLS if possible)
-     smtpmail-smtp-service 587
-     smtpmail-servers-requiring-authorization "*"
-     gnus-save-score t
-     gnus-startup-file "~/howm/.newsrc"
-     gnus-backup-startup-file 'never
-     gnus-select-method
-     '(nnimap "gmail"
-	      (nnimap-address "imap.gmail.com")
-	      (nnmail-expiry-target "nnimap+gmail:[Gmail]/Корзина")
-	      (nnimap-server-port 993)
-	      (nnimap-stream ssl)
-	      (gnus-search-engine gnus-search-imap)
-	      (nnmail-expiry-wait immediate)))
-#+end_src
-
-#+RESULTS:
-| nnimap | gmail | (nnimap-address imap.gmail.com) | (nnmail-expiry-target nnimap+gmail:[Gmail]/Корзина) | (nnimap-server-port 993) | (nnimap-stream ssl) | (gnus-search-engine gnus-search-imap) | (nnmail-expiry-wait 1) |
-
 *** epub reader
 #+begin_src elisp
   (use-package nov :ensure t)
 #+end_src
 
 #+RESULTS:
+
+*** rfc-mode
+#+begin_src elisp
+    (use-package rfc-mode
+      :custom (rfc-mode-directory
+  	     (expand-file-name "~/Downloads/RFC-all"))
+      :ensure t)
+#+end_src
+
+#+RESULTS:
+: #s(hash-table data (:use-package (26749 26741 310357 891000) :init (26749 26741 310351 897000) :config (26749 26741 310326 353000) :config-secs (0 0 6 988000) :init-secs (0 0 27955 496000) :use-package-secs (0 3 748024 30000)))
