@@ -536,57 +536,7 @@ substituion for variables.
     (setq eat-enable-mouse t)
     :ensure t)
 #+end_src
-*** rss reader
-Elfeed in my config is interconneted with howm.
 
-**** elfeed use-package:
-#+BEGIN_SRC elisp
-  (use-package elfeed
-  :ensure t
-  :config
-  (setq elfeed-db-directory "~/howm/.elfeed")
-    (setq elfeed-curl-program-name "curl"))
-  (use-package elfeed-protocol) 
-#+END_SRC
-
-#+RESULTS:
-
-**** elfeed-org use-package
-#+BEGIN_SRC elisp
-(use-package elfeed-org
-  :ensure t
-  :config
-  (elfeed-org)
-  :after howm)
-#+END_SRC
-
-#+RESULTS:
-: t
-
-**** functions for interconnecting with howm
-#+BEGIN_SRC elisp
-(defun my-elfeed-file-names-in-howm ()
-  "Return list of absolute filenames of org-elfeed files in howm"
-  (delete-dups
-   (mapcar #'car (howm-grep "\:elfeed\:"
-		      (howm-files-in-directory howm-directory)))))
-  
-#+END_SRC
-
-#+RESULTS:
-: my-elfeed-file-names-in-howm
-
-**** advices for executing functions
-#+BEGIN_SRC elisp
-(define-advice elfeed (:before (&rest _args))
-  (setq rmh-elfeed-org-files (my-elfeed-file-names-in-howm)))
-
-
-(define-advice elfeed-update (:before (&rest _args))
-  (setq rmh-elfeed-org-files (my-elfeed-file-names-in-howm)))
-#+END_SRC
-
-#+RESULTS:
 *** epub reader
 #+begin_src elisp
   (use-package nov :ensure t)
