@@ -125,17 +125,6 @@ so this forms also present in init.el.
 (prefer-coding-system 'utf-8-unix)
 #+END_SRC
 
-*** modus-themes
-
-Load both in graphical and terminal mode.
-#+begin_src elisp
-  (use-package modus-themes :ensure t)
-  ;; (load-theme 'modus-operandi)
-  ;; (enable-theme 'modus-operandi)
-#+end_src
-
-#+RESULTS:
-
 *** use build in emacs icons instead of gtk
 #+begin_src elisp
   (setopt icon-map-list nil)
