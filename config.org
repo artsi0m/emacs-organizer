@@ -379,6 +379,29 @@ From auctex info:
 
 *** code & config editor
 
+**** shell
+
+=-n= Option check
+#+begin_src elisp
+  (use-package flymake-shell
+    :hook (sh-mode . flymake-shell-load)
+    :ensure t)
+#+end_src
+
+#+RESULTS:
+: #s(hash-table data (:use-package (26863 43104 582220 716000) :init (26863 43104 582197 789000) :init-secs (0 0 46 343000) :use-package-secs (0 0 246 930000)))
+
+shellcheck
+
+#+begin_src elisp
+  (use-package flymake-shellcheck
+    :when (executable-find "shellcheck")
+    :hook (sh-mode . flymake-shellcheck-load) :ensure t)
+#+end_src
+
+#+RESULTS:
+: #s(hash-table data (:use-package (26863 43931 479545 431000) :use-package-secs (0 2 206974 114000) :init (26863 43931 479528 755000) :init-secs (0 0 81 416000)))
+
 ****  python
 Quick and dirty way to make emacs use right python executable:
 
