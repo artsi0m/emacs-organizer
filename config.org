@@ -500,10 +500,33 @@ Comma separated values
 Ansible differs from just YAML in the fact that it uses jinja style
 substituion for variables.
 #+begin_src elisp
-  (use-package ansible :ensure t)
+  (use-package ansible
+    :hook (ansible-mode . whitespace-mode)
+    :ensure t)
 #+end_src
 
 #+RESULTS:
+: #s(hash-table data (:use-package (26869 13026 405336 270000) :init (26869 13026 405323 75000) :config (26869 13026 405292 735000) :config-secs (0 0 5 882000) :init-secs (0 0 67 406000) :use-package-secs (0 0 262 968000)))
+
+#+begin_src elisp
+  (use-package flymake-ansible-lint
+  :ensure t
+  :commands flymake-ansible-lint-setup
+  :hook (((ansible-mode) . flymake-ansible-lint-setup)
+         ((ansible-mode) . flymake-mode)))
+#+end_src
+
+#+RESULTS:
+: #s(hash-table data (:use-package (26868 62887 574198 751000) :init (26868 62887 574181 955000) :init-secs (0 0 92 351000) :use-package-secs (0 2 580448 72000)))
+
+#+begin_src elisp
+  (use-package ansible-doc
+    :ensure t
+    :hook (ansible-mode . ansible-doc-mode))
+#+end_src
+
+#+RESULTS:
+: #s(hash-table data (:use-package (26869 548 499680 811000) :init (26869 548 499666 940000) :init-secs (0 0 79 585000) :use-package-secs (0 2 50848 133000)))
 
 ***** Prometheus
 #+begin_src elisp
