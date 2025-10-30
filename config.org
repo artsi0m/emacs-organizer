@@ -573,6 +573,14 @@ substituion for variables.
 
 #+RESULTS:
 
+#+begin_src elisp
+  (use-package flymake-hadolint :ensure t)
+  (add-hook 'dockerfile-mode-hook #'flymake-hadolint-setup)
+#+end_src
+
+#+RESULTS:
+| flymake-hadolint-setup |
+
 *** terminal
 #+begin_src elisp
   (use-package eat
