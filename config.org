@@ -491,6 +491,14 @@ Comma separated values
 
 #+RESULTS:
 
+#+begin_src elisp
+  (use-package flymake-yamllint :ensure t)
+  (add-hook 'yaml-mode-hook 'flymake-yamllint-setup)
+#+end_src
+
+#+RESULTS:
+| flymake-yamllint-setup | yaml-set-imenu-generic-expression |
+
 ***** docker-compose
 #+begin_src elisp
   (use-package docker-compose-mode :ensure t)
