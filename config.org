@@ -600,10 +600,8 @@ substituion for variables.
 *** rfc-mode
 #+begin_src elisp
     (use-package rfc-mode
-      :custom (rfc-mode-directory
-  	     (expand-file-name "~/Downloads/RFC-all"))
       :ensure t)
 #+end_src
 
 #+RESULTS:
-: #s(hash-table data (:use-package (26749 26741 310357 891000) :init (26749 26741 310351 897000) :config (26749 26741 310326 353000) :config-secs (0 0 6 988000) :init-secs (0 0 27955 496000) :use-package-secs (0 3 748024 30000)))
+: #s(hash-table data (:use-package (26950 54624 556143 739000) :init (26950 54624 556133 658000) :config (26950 54624 556106 363000) :config-secs (0 0 6 725000) :init-secs (0 0 313 72000) :use-package-secs (0 0 921 406000)))
