@@ -320,19 +320,21 @@ means that I have one reason or another for not doing this task.
 | sequence | TODO |   |   | DONE | FAIL | NGMI |
 
 
-[2025-06-04] I decided to stick to university-like schedule.
+
+[2026-01-28] Got a job and a new schedule.
 
 #+begin_src elisp
   (use-package org-pomodoro
     :custom
     (org-pomodoro-keep-killed-pomodoro-time 't)
-    (org-pomodoro-length 80)
-    (org-pomodoro-short-break-length 15)
-    (org-pomodoro-long-break-length 35)
+    (org-pomodoro-length 60) ;; SLA for solving ticket is 1h
+    (org-pomodoro-short-break-length 15) ;; ⅓
+    (org-pomodoro-long-break-length 60) ;; обед по ТК
     :ensure t)
 #+end_src
 
 #+RESULTS:
+: #s(hash-table data (:use-package (27001 45024 540939 286000) :init (27001 45024 540936 700000) :config (27001 45024 540927 283000) :config-secs (0 0 2 483000) :init-secs (0 0 15 275000) :use-package-secs (0 0 114 17000)))
 
 #+begin_src elisp
   (use-package org-pomodoro-third-time
