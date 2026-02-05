@@ -313,11 +313,11 @@ means that I have one reason or another for not doing this task.
 
 #+begin_src elisp
   (setq org-todo-keywords
-      '((sequence "TODO" "|" "DONE" "FAIL" "NGMI" )))
+      '((sequence "TODO" "FAIL" "|" "DONE"  "NGMI" )))
 #+end_src
 
 #+RESULTS:
-| sequence | TODO |   |   | DONE | FAIL | NGMI |
+| sequence | TODO | FAIL |   |   | DONE | NGMI |
 
 
 
