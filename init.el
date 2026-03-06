@@ -17,9 +17,58 @@
 
 (setq default-input-method "cyrillic-colemak")
 
-;; 4/4 config file in org mode and gnus
-(org-babel-load-file
- (expand-file-name "config.org" user-emacs-directory))
+
+(setq use-package-compute-statistics 't)
+
+(load-file
+ (expand-file-name "backups.el" user-emacs-directory))
+
+(load-file
+ (expand-file-name "package-manager.el" user-emacs-directory))
+
+(load-file
+ (expand-file-name "language.el" user-emacs-directory))
+
+(load-file
+ (expand-file-name "appearance.el" user-emacs-directory))
+
+(load-file
+ (expand-file-name "autocomplete.el" user-emacs-directory))
+
+(load-file
+ (expand-file-name "file-manager.el" user-emacs-directory))
+
+(load-file
+ (expand-file-name "vcs.el" user-emacs-directory))
+
+(load-file        ;; Also flashcards
+ (expand-file-name "notebook.el" user-emacs-directory))
+
+(load-file
+ (expand-file-name "pomodoro.el" user-emacs-directory))
+
+(load-file
+ (expand-file-name "tex.el" user-emacs-directory))
+
+(load-file
+ (expand-file-name "shell.el" user-emacs-directory))
+
+(load-file
+ (expand-file-name "python.el" user-emacs-directory))
+
+(load-file
+ (expand-file-name "common-lisp.el" user-emacs-directory))
+
+(load-file
+ (expand-file-name "compiler-explorer.el" user-emacs-directory))
+
+(load-file
+ (expand-file-name "yaml.el" user-emacs-directory))
+
+(use-package rfc-mode)
+(use-package helm-info)
+
+(use-package nov)
 
 (let ((fname "~/howm/gnus.el"))
         (when (file-exists-p fname)
