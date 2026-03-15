@@ -51,9 +51,6 @@
  (expand-file-name "tex.el" user-emacs-directory))
 
 (load-file
- (expand-file-name "shell.el" user-emacs-directory))
-
-(load-file
  (expand-file-name "python.el" user-emacs-directory))
 
 (load-file
