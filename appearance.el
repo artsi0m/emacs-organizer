@@ -4,5 +4,8 @@
 
 (which-key-mode) ;; key suggestions
 
+(global-visual-line-mode)
+
 (use-package modus-themes
-  :init (load-theme 'modus-operandi-tinted))
+  :init (load-theme 'modus-operandi))
+
