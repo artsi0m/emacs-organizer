@@ -7,5 +7,6 @@
 (global-visual-line-mode)
 
 (use-package modus-themes
-  :init (load-theme 'modus-operandi))
+  :init (load-theme 'modus-operandi)
+  :when (not (eq window-system nil)))
 
