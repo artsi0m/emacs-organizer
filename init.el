@@ -41,8 +41,11 @@
 (load-file
  (expand-file-name "vcs.el" user-emacs-directory))
 
-(load-file        ;; Also flashcards
+(load-file       
  (expand-file-name "notebook.el" user-emacs-directory))
+
+(load-file  ;; Load notebook.el first     
+ (expand-file-name "flashcards.el" user-emacs-directory))
 
 (load-file
  (expand-file-name "pomodoro.el" user-emacs-directory))
