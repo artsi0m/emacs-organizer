@@ -62,6 +62,9 @@
 (load-file
  (expand-file-name "yaml.el" user-emacs-directory))
 
+(when (executable-find "ebuild")
+  (load-file (expand-file-name "gentoo.el" user-emacs-directory)))
+
 (use-package rfc-mode)
 (use-package helm-info)
 
