@@ -42,7 +42,7 @@ With russian layout
 
 https://colemak.com/Windows
 
-**** OpenSUSE-Tumbleweed
+**** Systemd based systems
 #+BEGIN_SRC shell :eval no
 localectl set-keymap us-colemak 
 #+END_SRC
