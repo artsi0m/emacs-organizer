@@ -277,7 +277,7 @@
 #+RESULTS:
 : luatex
 
-** mail-client
+** mail-client-and-rss
 
 *** user-info
 #+begin_src elisp
@@ -306,24 +306,27 @@
 
 *** imap
 #+begin_src elisp
-    (use-package gnus
-      :custom
-         (gnus-save-score t)
-         (gnus-startup-file "~/howm/.newsrc")
-         (gnus-backup-startup-file 'never)
-         (gnus-select-method
-         '(nnimap "gmail"
-    	      (nnimap-address "imap.gmail.com")
-    	      (nnmail-expiry-target "nnimap+gmail:[Gmail]/Корзина")
-    	      (nnimap-server-port 993)
-    	      (nnimap-stream ssl)
-    	      (gnus-search-engine gnus-search-imap)
-    	      (nnmail-expiry-wait immediate)))
-         :ensure nil)
+  (use-package gnus
+    :custom
+       (gnus-save-score t)
+       (gnus-startup-file "~/howm/.newsrc")
+       (gnus-backup-startup-file 'never)
+       (nnrss-use-local t)
+       (gnus-use-cache t)
+       (gnus-select-method
+       '(nnimap "gmail"
+  	      (nnimap-address "imap.gmail.com")
+  	      (nnmail-expiry-target "nnimap+gmail:[Gmail]/Корзина")
+  	      (nnimap-server-port 993)
+  	      (nnimap-stream ssl)
+  	      (gnus-search-engine gnus-search-imap)
+  	      (nnmail-expiry-wait immediate)))
+       :ensure nil)
+
 #+end_src
 
 #+RESULTS:
-: #s(hash-table data (:use-package (27160 29706 452023 100000) :init (27160 29706 452012 289000) :config (27160 29706 451987 743000) :config-secs (0 0 7 715000) :init-secs (0 0 178 634000) :use-package-secs (0 0 300 212000)))
+: #s(hash-table data (:use-package (27160 31509 798649 714000) :init (27160 31509 798642 913000) :config (27160 31509 798619 875000) :config-secs (0 0 6 845000) :init-secs (0 0 745 567000) :use-package-secs (0 0 969 339000)))
 
 ** book-reader
 *** epub
