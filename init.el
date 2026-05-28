@@ -18,63 +18,6 @@
 (setq default-input-method "cyrillic-colemak")
 
 
-(setq use-package-compute-statistics 't)
+;; 4/4
 
-(load-file
- (expand-file-name "backups.el" user-emacs-directory))
-
-(load-file
- (expand-file-name "package-manager.el" user-emacs-directory))
-
-(load-file
- (expand-file-name "language.el" user-emacs-directory))
-
-(load-file
- (expand-file-name "appearance.el" user-emacs-directory))
-
-(load-file
- (expand-file-name "autocomplete.el" user-emacs-directory))
-
-(load-file
- (expand-file-name "file-manager.el" user-emacs-directory))
-
-(load-file
- (expand-file-name "vcs.el" user-emacs-directory))
-
-(load-file       
- (expand-file-name "notebook.el" user-emacs-directory))
-
-(load-file  ;; Load notebook.el first     
- (expand-file-name "flashcards.el" user-emacs-directory))
-
-(load-file
- (expand-file-name "pomodoro.el" user-emacs-directory))
-
-(load-file
- (expand-file-name "tex.el" user-emacs-directory))
-
-(load-file
- (expand-file-name "python.el" user-emacs-directory))
-
-(load-file
- (expand-file-name "common-lisp.el" user-emacs-directory))
-
-(load-file
- (expand-file-name "compiler-explorer.el" user-emacs-directory))
-
-(load-file
- (expand-file-name "yaml.el" user-emacs-directory))
-
-(when (executable-find "ebuild")
-  (load-file (expand-file-name "gentoo.el" user-emacs-directory)))
-
-(use-package rfc-mode)
-(use-package helm-info)
-
-(use-package nov)
-
-(let ((fname "~/howm/gnus.el"))
-        (when (file-exists-p fname)
-  	(load fname)))
-
-
+(org-babel-load-file "README.org")

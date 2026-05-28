@@ -1,13 +1,11 @@
 # -*- mode: gitignore; -*-
 
 # Files resulted from tangle operation
-config.el
+README.el
 
 # I decided that custom should be local for each machine
 custom.el
 
-# backup files
-backups/
 
 # org
 .org-generic-id-locations
@@ -62,3 +60,5 @@ compiler-explorer
 
 # eww
 eww-bookmarks
+
+projects
