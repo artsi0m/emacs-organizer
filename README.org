@@ -146,8 +146,9 @@
 
 *** file-management
 #+begin_src elisp
-  (use-package dired
-    :custom (dired-dwim-target t))
+    (use-package dired
+      :custom (dired-dwim-target t)
+      :ensure nil)
 #+end_src
 
 *** git-gui
@@ -264,45 +265,70 @@
 
 ** TeX-editor
 #+begin_src elisp
-    (use-package auctex
-    :init (setq TeX-auto-save t)
-    (setq TeX-parse-self t)
-    (setq-default TeX-master nil)
-    :pin melpa)
+      (use-package auctex
+      :init (setq TeX-auto-save t)
+      (setq TeX-parse-self t)
+      (setq-default TeX-master nil)
+      :pin gnu)
 
-  (setq-default TeX-engine 'luatex)
-#+end_src
-
-** mail-client
-#+begin_src elisp
-  (setq 
-     user-full-name "artsi0m"
-     user-mail-address "karakin2000@gmail.com"
-     send-mail-function 'smtpmail-send-it
-     smtpmail-smtp-server "smtp.gmail.com"
-     smtpmail-stream-type 'starttls ;; was nil (upgrade with STARTTLS if possible)
-     smtpmail-smtp-service 587
-     smtpmail-servers-requiring-authorization "*"
-     gnus-save-score t
-     gnus-startup-file "~/howm/.newsrc"
-     gnus-backup-startup-file 'never
-     gnus-select-method
-     '(nnimap "gmail"
-	      (nnimap-address "imap.gmail.com")
-	      (nnmail-expiry-target "nnimap+gmail:[Gmail]/Корзина")
-	      (nnimap-server-port 993)
-	      (nnimap-stream ssl)
-	      (gnus-search-engine gnus-search-imap)
-	      (nnmail-expiry-wait immediate)))
+    (setq-default TeX-engine 'luatex)
 #+end_src
 
 #+RESULTS:
-| nnimap | gmail | (nnimap-address imap.gmail.com) | (nnmail-expiry-target nnimap+gmail:[Gmail]/Корзина) | (nnimap-server-port 993) | (nnimap-stream ssl) | (gnus-search-engine gnus-search-imap) | (nnmail-expiry-wait immediate) |
+: luatex
+
+** mail-client
+
+*** user-info
+#+begin_src elisp
+    (setq 
+     user-full-name "artsi0m"
+     user-mail-address "karakin2000@gmail.com")
+#+end_src
+
+#+RESULTS:
+: karakin2000@gmail.com
+
+*** smtp
+#+begin_src elisp
+  (use-package smtpmail
+    :custom
+    (smtpmail-smtp-server "smtp.gmail.com")
+     (smtpmail-stream-type 'starttls )
+     (smtpmail-smtp-service 587)
+     (smtpmail-servers-requiring-authorization "*")
+     (send-mail-function 'smtpmail-send-it)
+     :ensure nil)
+#+end_src
+
+#+RESULTS:
+: #s(hash-table data (:use-package (27160 29509 944260 380000) :init (27160 29509 944253 59000) :config (27160 29509 944232 831000) :config-secs (0 0 4 59000) :init-secs (0 0 102 100000) :use-package-secs (0 0 217 736000)))
+
+*** imap
+#+begin_src elisp
+    (use-package gnus
+      :custom
+         (gnus-save-score t)
+         (gnus-startup-file "~/howm/.newsrc")
+         (gnus-backup-startup-file 'never)
+         (gnus-select-method
+         '(nnimap "gmail"
+    	      (nnimap-address "imap.gmail.com")
+    	      (nnmail-expiry-target "nnimap+gmail:[Gmail]/Корзина")
+    	      (nnimap-server-port 993)
+    	      (nnimap-stream ssl)
+    	      (gnus-search-engine gnus-search-imap)
+    	      (nnmail-expiry-wait immediate)))
+         :ensure nil)
+#+end_src
+
+#+RESULTS:
+: #s(hash-table data (:use-package (27160 29706 452023 100000) :init (27160 29706 452012 289000) :config (27160 29706 451987 743000) :config-secs (0 0 7 715000) :init-secs (0 0 178 634000) :use-package-secs (0 0 300 212000)))
 
 ** book-reader
 *** epub
 #+begin_src elisp
-  (use-package nov :ensure t)
+  (use-package nov)
 #+end_src
 
 #+RESULTS:
